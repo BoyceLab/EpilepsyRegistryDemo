@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rare Epilepsy Registry — Patient-Directed Demo</title>
+<style>
+:root{
+  --brand:#6d28d9; --brand-dark:#5b21b6; --brand-deep:#4c1d95; --accent:#7c3aed;
+  --line:#e8e2f3; --muted:#6a6480; --ink:#241c34; --soft:#faf7ff; --link:#6d28d9;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:#fbfaff;font-size:14px;line-height:1.5}
+a{color:var(--link)}
+code{font-family:Consolas,Menlo,monospace;font-size:.9em;background:#f3eefc;padding:1px 4px;border-radius:3px;color:#5b21b6}
+.disclaimer{background:#fbf3d9;border-bottom:1px solid #ecd98f;color:#7a5b00;font-size:12px;padding:6px 16px}
+.top{background:linear-gradient(90deg,var(--brand-deep),var(--brand));color:#fff;padding:11px 16px;display:flex;align-items:center;gap:12px}
+.top .logo{width:30px;height:30px;border-radius:7px;background:#fff;color:var(--brand-deep);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px}
+.top h1{font-size:15px;margin:0;font-weight:700}
+.top .sub{font-size:11px;opacity:.85;margin-left:auto}
+.wrap{display:flex;min-height:calc(100vh - 84px)}
+.side{width:255px;background:#fff;border-right:1px solid var(--line);padding:10px 0;flex-shrink:0;overflow-y:auto}
+.grp{margin-bottom:10px}
+.grphd{font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:#9a93ad;padding:6px 16px 3px;font-weight:700}
+.nav{display:flex;align-items:center;gap:8px;padding:7px 16px;font-size:12.5px;color:#3a3350;cursor:pointer;text-decoration:none;border-left:3px solid transparent}
+.nav:hover{background:var(--soft)}
+.nav.active{background:#f3eefc;border-left-color:var(--brand);color:var(--brand-deep);font-weight:600}
+.nav .ic{width:16px;text-align:center;opacity:.8}
+.main{flex:1;padding:22px 30px;max-width:1080px}
+h2{font-size:22px;color:var(--brand-deep);margin:0 0 4px}
+h3{font-size:15px;color:var(--brand-deep);margin:18px 0 8px}
+h4{margin:0}
+.crumbs{font-size:11.5px;color:var(--muted);margin-bottom:8px}
+.muted{color:var(--muted)}
+.note{background:#f6f1fe;border-left:4px solid var(--brand);border-radius:7px;padding:12px 14px;font-size:12.5px;margin:10px 0}
+.btn{display:inline-block;background:var(--brand);color:#fff;border:none;border-radius:6px;padding:8px 14px;font-size:12.5px;font-weight:600;cursor:pointer;text-decoration:none}
+.btn:hover{background:var(--brand-dark)}
+.btn.sec{background:#fff;color:var(--brand-deep);border:1px solid #d9cdf2}
+.btn.sec:hover{background:var(--soft)}
+.btn.gray{background:#eee;color:#444}
+.btn.sm{padding:6px 11px;font-size:11.5px}
+.flexrow{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:12px 0}
+.card{border:1px solid var(--line);border-radius:9px;padding:14px;background:#fff}
+.card h4{font-size:12px;color:var(--muted);font-weight:600}
+.card .big{font-size:26px;font-weight:800;color:var(--brand-deep);margin:4px 0 2px}
+.card .sub{font-size:11px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th,td{text-align:left;padding:7px 9px;border-bottom:1px solid #eee;vertical-align:top}
+th{background:var(--brand-deep);color:#fff;font-weight:600;position:sticky;top:0}
+.tbl-wrap{border:1px solid var(--line);border-radius:8px;overflow:auto;max-height:560px}
+.searchbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:10px 0}
+.searchbar input,.searchbar select{padding:8px;border:1px solid #cdbff0;border-radius:6px;font-size:12.5px}
+.searchbar input{min-width:240px;flex:1}
+.rescount{font-size:12px;color:var(--muted);margin:6px 0}
+.pill{display:inline-block;padding:2px 8px;border-radius:11px;font-size:10px;font-weight:700;color:#fff}
+.flow{display:flex;flex-wrap:wrap;border:1px solid var(--line);border-radius:9px;overflow:hidden;margin:12px 0}
+.flow .stage{flex:1;min-width:155px;padding:14px;border-right:1px dashed #ddd4f0;position:relative}
+.flow .stage:last-child{border-right:none}
+.flow .stage .icon{font-size:21px}
+.flow .stage h4{margin:6px 0 3px;font-size:13px;color:var(--brand-deep)}
+.flow .stage p{font-size:11px;color:var(--muted);margin:0}
+.flow .s1{background:#faf5ff}.flow .s2{background:#f3eefc}.flow .s3{background:#eef4fb}.flow .s4{background:#eefaf3}.flow .s5{background:#fdf0f8}.flow .s6{background:#fff7ed}
+.howto{margin:6px 0 16px;padding:14px 16px;border:1px solid #d9cdf2;background:#f7f2fe;border-left:4px solid var(--brand);border-radius:8px}
+.howto-hd{font-weight:800;color:var(--brand-deep);font-size:14px;margin-bottom:3px}
+.howto-sub{font-size:11.5px;color:var(--muted);margin-bottom:9px}
+.howto-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:12px;font-size:12px;line-height:1.5}
+.howto-grid .step{font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--brand)}
+.howto-grid a{display:inline-block;margin-top:4px;color:var(--link);text-decoration:none;font-weight:600;font-size:11.5px}
+.survey-band{margin:-4px 0 16px;padding:11px 13px;border:1px solid #e0d5f5;border-top:3px solid var(--brand);border-radius:0 0 8px 8px;background:#fcfaff}
+.loop-row{display:flex;gap:8px;font-size:11.5px;color:#6a5a86;margin-bottom:9px;padding-bottom:9px;border-bottom:1px dashed #e6dcf6}
+.loop-row .lic{font-size:18px;color:var(--brand)}
+.survey-band-hd{font-size:11.5px;font-weight:700;color:var(--brand-deep);margin-bottom:8px}
+.schips{display:flex;flex-wrap:wrap;gap:8px}
+.schip{font-size:11px;padding:5px 11px;border:1px solid #d6c7f2;border-radius:14px;background:#fff;color:var(--brand-deep);text-decoration:none;cursor:pointer}
+.schip:hover{background:var(--brand);color:#fff;border-color:var(--brand)}
+.src-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:10px;margin:8px 0}
+.src-card{display:block;padding:11px 13px;border:1px solid var(--line);border-radius:8px;text-decoration:none;color:inherit;background:#fff}
+.src-card:hover{border-color:var(--brand);box-shadow:0 1px 5px rgba(109,40,217,.12)}
+.src-card b{display:block;color:var(--brand-deep);font-size:12px;margin-bottom:3px}
+.src-card span{font-size:11px;color:var(--muted)}
+.src-strip{font-size:11.5px;color:var(--muted);background:#f8f5fe;border:1px solid #e7ddf8;border-radius:6px;padding:8px 11px;margin:8px 0 12px;line-height:1.8}
+.src-strip b{color:var(--brand-deep)}
+.src-strip a{color:var(--link);text-decoration:none}
+.stepper{display:flex;flex-wrap:wrap;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:12px 0;font-size:11px}
+.stepper .st{flex:1;min-width:90px;text-align:center;padding:8px 6px;color:#9a93ad;border-right:1px solid #eee}
+.stepper .st.active{background:var(--brand);color:#fff;font-weight:700}
+.stepper .st.done{background:#eef6ee;color:#2f7a47}
+.stagebox{border:1px solid var(--line);border-radius:9px;padding:18px;background:#fff;min-height:160px}
+.q{margin:12px 0;padding-bottom:10px;border-bottom:1px solid #f2eefb}
+.qlabel{font-weight:600;font-size:13px;margin-bottom:6px}
+.opt{display:block;padding:3px 0;font-size:12.5px;color:#3a3350}
+.ftxt{width:100%;max-width:380px;padding:7px;border:1px solid #cdbff0;border-radius:5px}
+.survey-shell{border:1px solid var(--line);border-radius:12px;overflow:hidden;max-width:640px;margin-top:8px}
+.survey-hd{background:linear-gradient(90deg,var(--brand-deep),var(--brand));color:#fff;padding:14px 16px}
+.survey-hd h3{color:#fff;margin:0}
+.survey-hd .desc{font-size:11.5px;opacity:.85}
+.survey-body{padding:16px}
+.progress{height:6px;background:#eee;border-radius:3px;overflow:hidden}
+.progress span{display:block;height:100%;background:var(--brand);width:0}
+.fakeauth{border:1px solid #ddd;border-radius:8px;max-width:430px;margin:10px 0;overflow:hidden}
+.fakeauth .ah{background:#1f2937;color:#fff;padding:10px 12px;font-size:13px;font-weight:600}
+.fakeauth .ab{padding:14px}
+.fakeauth label{font-size:11px;color:#555;display:block;margin-top:8px}
+.fakeauth input{width:100%;padding:7px;border:1px solid #ccc;border-radius:4px;margin-top:3px}
+.scope{display:flex;gap:9px;align-items:flex-start;padding:7px 0;border-bottom:1px solid #f0f0f0;font-size:12px}
+.feedrow{display:flex;gap:8px;align-items:center;padding:8px 10px;border:1px solid var(--line);border-radius:6px;margin:6px 0;background:#fff;font-size:12px}
+.feedrow .res{font-weight:600;color:var(--brand-deep)}
+.feedrow .arr{color:#bbb}.feedrow .tgt{color:#555}.feedrow .cnt{margin-left:auto;color:#999;font-size:11px}
+.uploadbox{border:2px dashed #cdbff0;border-radius:10px;padding:26px;text-align:center;cursor:pointer;background:#fcfaff}
+.hide{display:none}
+.center{text-align:center}.mt{margin-top:12px}.right{text-align:right}
+.bar{height:13px;border-radius:7px;background:var(--brand)}
+ul{font-size:12.5px}
+.kbcard{border:1px solid var(--line);border-radius:9px;margin:9px 0;overflow:hidden;background:#fff}
+.kbhd{display:flex;align-items:center;gap:9px;padding:11px 13px;cursor:pointer}
+.kbhd:hover{background:var(--soft)}
+.kbtag{font-size:9.5px;text-transform:uppercase;letter-spacing:.04em;font-weight:700;color:#fff;background:var(--accent);padding:2px 7px;border-radius:10px;white-space:nowrap}
+.kbtoggle{margin-left:auto;font-weight:700;color:var(--brand);font-size:17px}
+.kbblurb{padding:0 13px 11px;font-size:12px;color:var(--muted)}
+.kbdetail{padding:2px 13px 13px;font-size:12.5px;border-top:1px solid var(--line)}
+.kbdetail p{margin:10px 0}
+.kblinks{display:flex;flex-wrap:wrap;gap:8px}
+.kblinks a{font-size:11.5px;color:var(--link);text-decoration:none;border:1px solid #d9cdf2;border-radius:12px;padding:4px 9px}
+.kblinks a:hover{background:var(--soft)}
+.pcard{border:1px solid var(--line);border-radius:9px;padding:13px 14px;margin:10px 0;background:#fff}
+.pcard .pq{font-weight:700;color:var(--brand-deep);font-size:13px}
+.pcard .ph{font-size:11.5px;color:var(--muted);margin:2px 0 8px}
+.popts{display:flex;flex-wrap:wrap;gap:7px}
+.popt{display:flex;gap:7px;align-items:flex-start;border:1px solid #e4dcf4;border-radius:8px;padding:7px 10px;font-size:12px;cursor:pointer;flex:1 1 220px}
+.popt:hover{border-color:var(--brand)}
+.popt input{margin-top:2px}
+.popt .od{display:block;font-size:10.5px;color:var(--muted)}
+.cmat{width:100%;border-collapse:collapse;margin-top:8px;font-size:12px}
+.cmat th{text-align:left;color:var(--brand-deep);font-size:11px;padding:4px 6px;border-bottom:1px solid #ede7fb}
+.cmat td{padding:5px 6px;border-bottom:1px solid #f4f0fb;vertical-align:middle}
+.cmat td:first-child{font-weight:600;color:#333;width:38%}
+.cmat select{width:100%;padding:4px;border:1px solid #d9cdf2;border-radius:6px;font-size:11.5px;background:#fff}
+.repsec{border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0;background:#fff}
+.repsec h3{margin-top:0}
+.flag{border-left:4px solid #b45309;background:#fdf6ec;border-radius:7px;padding:10px 12px;margin:8px 0;font-size:12.5px}
+.flag.hi{border-left-color:#b91c1c;background:#fdecec}
+.flag b{color:var(--brand-deep)}
+.rec{border-left:4px solid var(--brand);background:#f6f1fe;border-radius:7px;padding:10px 12px;margin:8px 0;font-size:12.5px}
+.rec .rt{font-weight:700;color:var(--brand-deep);margin-bottom:3px}
+.chips2{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.checklist{list-style:none;padding:0;margin:6px 0}
+.checklist li{padding:6px 0 6px 26px;position:relative;font-size:12.5px;border-bottom:1px solid #f2eefb}
+.checklist li:before{content:'\2610';position:absolute;left:0;color:var(--brand);font-size:15px}
+.psec{margin:20px 0 4px;color:var(--brand-deep);font-size:14px;font-weight:700;border-bottom:2px solid #ede7fb;padding-bottom:4px}
+.pcard+.psec{margin-top:22px}
+.pfind{margin-top:9px;font-size:11.5px}
+.pfind summary{cursor:pointer;color:var(--brand);font-weight:600;list-style:none;display:inline-block}
+.pfind summary::-webkit-details-marker{display:none}
+.pfind summary:before{content:'\25B8\00a0'}
+.pfind[open] summary:before{content:'\25BE\00a0'}
+.pfind>div{padding:6px 0 2px 14px;color:var(--muted);line-height:1.5}
+.pfind .schip{margin-top:6px}
+.starter{border:1px solid #d9cdf2;background:#f6f1fe;border-radius:10px;padding:13px 15px;margin:12px 0}
+.starter h4{margin:0 0 4px;color:var(--brand-deep);font-size:13px}
+.starter ol{margin:8px 0 0 18px;padding:0}
+.starter li{margin:4px 0;font-size:12.5px}
+.starter .cfg{font-size:11.5px;color:var(--muted);margin-top:8px}
+.resgrp{margin:14px 0}
+.resgrp h3{margin:0 0 6px}
+.resrow{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;padding:8px 0;border-bottom:1px solid #f2eefb;font-size:12.5px}
+.resrow a.rl{color:var(--link);text-decoration:none;font-weight:600}
+.resrow a.rl:hover{text-decoration:underline}
+.resrow .rtags{display:flex;flex-wrap:wrap;gap:5px;margin-left:auto}
+@media(max-width:780px){.side{display:none}.main{padding:16px}}
+</style>
+</head>
+<body>
+<div class="disclaimer">Demonstration mockup. Not a production system, not affiliated with any registry or institution named. All participants and records shown are fictional.</div>
+<div class="top">
+  <div class="logo">&#9889;</div>
+  <h1>Rare Epilepsy Registry <span style="opacity:.7;font-weight:400">· patient-directed demo</span></h1>
+  <div class="sub">EpilepsyRegistryDemo</div>
+</div>
+<div class="wrap">
+  <nav class="side">
+    <div class="grp">
+      <div class="grphd">Participant View</div>
+      <a class="nav" data-view="participant"><span class="ic">&#128106;</span>What the Participant Sees</a>
+    </div>
+    <div class="grp">
+      <div class="grphd">Registry Home &amp; Design</div>
+      <a class="nav" data-view="home"><span class="ic">&#9632;</span>Registry Home</a>
+      <a class="nav" data-view="comprehensive"><span class="ic">&#11088;</span>Comprehensive Dictionary</a>
+      <a class="nav" data-view="sources"><span class="ic">&#128279;</span>Data Sources &amp; References</a>
+    </div>
+    <div class="grp">
+      <div class="grphd">Data Collection (surveys)</div>
+      <a class="nav" data-view="survey_genetic"><span class="ic">&#129516;</span>Genetic Testing</a>
+      <a class="nav" data-view="survey_seizure"><span class="ic">&#9889;</span>Seizure History</a>
+      <a class="nav" data-view="survey_dev"><span class="ic">&#129504;</span>Development &amp; Medical History</a>
+      <a class="nav" data-view="survey_qol"><span class="ic">&#128153;</span>Quality of Life</a>
+      <a class="nav" data-view="survey_diet"><span class="ic">&#129373;</span>Diet &amp; Supplements</a>
+    </div>
+    <div class="grp">
+      <div class="grphd">Health Records</div>
+      <a class="nav" data-view="connect"><span class="ic">&#9883;</span>Connect Health Records</a>
+      <a class="nav" data-view="ccda"><span class="ic">&#128193;</span>Download &amp; Upload (C-CDA)</a>
+    </div>
+    <div class="grp">
+      <div class="grphd">Applications</div>
+      <a class="nav" data-view="dashboard"><span class="ic">&#9707;</span>Record Status</a>
+      <a class="nav" data-view="reports"><span class="ic">&#9624;</span>Reports</a>
+    </div>
+    <div class="grp">
+      <div class="grphd">Planning tools</div>
+      <a class="nav" data-view="planner"><span class="ic">&#129517;</span>Data Strategy Self-Assessment</a>
+      <a class="nav" data-view="planlib"><span class="ic">&#128218;</span>Strategy Library</a>
+      <a class="nav" data-view="planres"><span class="ic">&#128279;</span>Resource Directory</a>
+    </div>
+    <div class="grp">
+      <div class="grphd">Help</div>
+      <a class="nav" data-view="about"><span class="ic">&#9432;</span>About this demo</a>
+    </div>
+  </nav>
+  <main class="main" id="main"></main>
+</div>
+<script>
+/* ============ helpers ============ */
+const $=s=>document.querySelector(s);
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+const main=$('#main');
+function toast(m){const d=document.createElement('div');d.textContent=m;d.style.cssText='position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#241c34;color:#fff;padding:9px 16px;border-radius:7px;font-size:12px;z-index:99';document.body.appendChild(d);setTimeout(()=>d.remove(),1800);}
+function wireViews(root){(root||main).querySelectorAll('[data-view]').forEach(a=>a.onclick=e=>{e.preventDefault();go(a.dataset.view);});}
+
+/* ============ sources ============ */
+const COMP_FILE='EpilepsyRegistry_Comprehensive_Dictionary.csv';
+const COMP_GZ='EpilepsyRegistry_Comprehensive_Dictionary.csv.gz';
+const COMP_TOTAL=9413;
+const SOURCES=[
+  {n:'GenomeConnect',u:'https://www.genomeconnect.org/',d:'Patient genetic health survey (Savatt et al. 2018) and the GenomeConnect Seizure Survey (v1.3, 2025)'},
+  {n:'Simons / SFARI',u:'https://www.sfari.org/resource/sfari-base/',d:'Simons Foundation neurodevelopmental dataset dictionary (SFARI Base DS0000032 v14)'},
+  {n:'CoRDS',u:'https://research.sanfordhealth.org/rare-disease-registry',d:'CoRDS rare-disease registry questionnaire (Coordination of Rare Diseases at Sanford)'},
+  {n:'HPO',u:'https://hpo.jax.org/',d:'Human Phenotype Ontology terms and codes mapped to phenotype items'},
+  {n:'Harmonized core',u:'https://www.researchallofus.org/data-tools/survey-explorer/',d:'Derived from the onco-site standards: All of Us, FHIR, ClinVar, I-CAM-Q, NHANES DSQ, QOLIE'}
+];
+const PLAT_COLOR={'GenomeConnect':'#6d28d9','Simons / SFARI dataset':'#0f766e','CoRDS':'#b45309','NORD IAMRARE':'#be185d','NORD IAMRARE (as described)':'#be185d','Citizen registry (hypothetical)':'#2563eb','Patient-led registry (publication)':'#0891b2','Unknown (data dictionary)':'#6b7280','Epilepsy registry core (harmonized)':'#7c3aed'};
+function platColor(p){return PLAT_COLOR[p]||'#6b7280';}
+function srcBadge(p){return `<span class="pill" style="background:${platColor(p)}">${esc(p)}</span>`;}
+function sourcesStrip(){
+  return '<div class="src-strip"><b>Sources &amp; references:</b> '
+    + SOURCES.map(s=>`<a href="${s.u}" target="_blank" rel="noopener">${esc(s.n)}</a>`).join(' &middot; ')
+    + ' &nbsp;|&nbsp; <a data-view="comprehensive">Full dictionary &amp; sources &rarr;</a></div>';
+}
+
+/* ============ curated survey instruments ============ */
+const GENES=['SCN1A','KCNT1','STXBP1','CDKL5','SCN2A','SYNGAP1','PCDH19','KCNQ2','MECP2','TSC1','GRIN2B','KCNMA1','GABRB3','SLC6A1'];
+const SYNDROMES=['Dravet syndrome','Lennox-Gastaut syndrome','KCNT1-related epilepsy','CDKL5 deficiency disorder','Infantile epileptic spasms syndrome','Ohtahara syndrome','SYNGAP1-related disorder','Focal epilepsy','Generalized epilepsy','Undetermined'];
+const INSTR=[
+  {key:'survey_genetic', name:'Genetic Testing', src:'GenomeConnect / CoRDS', icon:'&#129516;'},
+  {key:'survey_seizure', name:'Seizure History', src:'GenomeConnect Seizure Survey', icon:'&#9889;'},
+  {key:'survey_dev', name:'Development & Medical History', src:'Simons / SFARI + CoRDS', icon:'&#129504;'},
+  {key:'survey_qol', name:'Quality of Life', src:'QOLIE family (harmonized core)', icon:'&#128153;'},
+  {key:'survey_diet', name:'Diet & Supplements', src:'I-CAM-Q + NHANES DSQ', icon:'&#129373;'}
+];
+const DD={
+ survey_genetic:[
+  {s:'Genetic testing',t:'yesno',l:'Has the participant ever had genetic testing?'},
+  {s:'',t:'checkbox',l:'Which type(s) of genetic testing? Select all that apply.',c:['Chromosomal microarray (CMA)','Single gene test','Gene panel','Exome sequencing (WES)','Genome sequencing (WGS)','Direct-to-consumer test','Unsure']},
+  {s:'',t:'text',l:'Gene with the reported variant (HGNC symbol)',note:'e.g., SCN1A, KCNT1, STXBP1'},
+  {s:'',t:'text',l:'Variant (HGVS), if known'},
+  {s:'',t:'radio',l:'Clinical significance reported',c:['Pathogenic','Likely pathogenic','Uncertain significance','Likely benign','Benign','Not reported']},
+  {s:'',t:'yesno',l:'Willing to share your variant with GenomeConnect / ClinVar?',note:'Patient-driven variant sharing'}
+ ],
+ survey_seizure:[
+  {s:'Seizure types (GenomeConnect Seizure Survey)',t:'checkbox',l:'Which seizure types has the participant had? Select all that apply.',c:['Tonic (stiffening)','Atonic / drop attack','Myoclonic (brief jerks)','Absence / staring','Focal with awareness (aura)','Focal with impaired awareness','Epileptic / infantile spasms','Generalized tonic-clonic','Gelastic (laughing) or dacrystic (crying)','Status epilepticus','ESES (electrical status in sleep)']},
+  {s:'Onset & burden',t:'text',l:'Age at first seizure',note:'Years; enter 0 for infancy'},
+  {s:'',t:'radio',l:'Current seizure frequency',c:['Multiple per day','Daily','Weekly','Monthly','Less than monthly','Seizure-free']},
+  {s:'',t:'yesno',l:'Has the participant ever had status epilepticus?'},
+  {s:'Monitoring & rescue',t:'checkbox',l:'How are nighttime seizures monitored?',c:['Audio or video monitor','Seizure-detection device','Someone shares the room','Service dog','Not monitored']},
+  {s:'',t:'yesno',l:'Does the participant have a rescue medication plan?'},
+  {s:'Change over time',t:'checkbox',l:'In the past year, have seizures changed in any of these ways?',c:['More frequent','Longer episodes','New seizure type','Development regressed','Harder to control','Required emergency treatment','No change']}
+ ],
+ survey_dev:[
+  {s:'Development (Simons / CoRDS)',t:'radio',l:'Best description of current communication',c:['Typical for age','Single words','Phrases','Nonverbal, uses device','Nonverbal, no device']},
+  {s:'',t:'radio',l:'Best description of current mobility',c:['Walks independently','Walks with support','Uses a wheelchair','Not yet walking']},
+  {s:'',t:'checkbox',l:'Developmental or neurological diagnoses (select all)',c:['Global developmental delay','Intellectual disability','Autism spectrum','Speech or language disorder','Movement disorder','Hypotonia','None']},
+  {s:'',t:'yesno',l:'Has the participant ever lost skills they previously had (regression)?'},
+  {s:'Medical history',t:'checkbox',l:'Body systems with reported issues (select all)',c:['Vision','Hearing','Sleep','Gastrointestinal','Heart','Breathing','Endocrine','Immune / infections','Bone or joint','Skin','None']},
+  {s:'',t:'notes',l:'Anything else about the participant\u2019s medical history you would like the team to know'}
+ ],
+ survey_qol:[
+  {s:'Quality of life (QOLIE family; items not reproduced)',t:'radio',l:'Overall quality of life in the past 4 weeks',c:['Very poor','Poor','Fair','Good','Very good']},
+  {s:'',t:'radio',l:'How often did seizures limit daily activities in the past 4 weeks?',c:['Always','Often','Sometimes','Rarely','Never']},
+  {s:'',t:'radio',l:'Sleep quality in the past 4 weeks',c:['Very poor','Poor','Fair','Good','Very good']},
+  {s:'',t:'radio',l:'Mood in the past 4 weeks',c:['Very low','Low','Neutral','Good','Very good']},
+  {s:'Caregiver',t:'radio',l:'Impact of caregiving on the family in the past 4 weeks',c:['None','Mild','Moderate','Severe']}
+ ],
+ survey_diet:[
+  {s:'Diet (high relevance in epilepsy)',t:'yesno',l:'Currently following a ketogenic or modified Atkins diet?'},
+  {s:'',t:'yesno',l:'Is the diet managed by a clinical dietitian?'},
+  {s:'Cannabinoids & supplements (I-CAM-Q / NHANES DSQ)',t:'yesno',l:'Currently using CBD or another cannabinoid product?'},
+  {s:'',t:'yesno',l:'Used vitamins, minerals, or other dietary supplements in the past 30 days?'},
+  {s:'',t:'checkbox',l:'Which complementary or integrative therapies in the past 12 months?',c:['Acupuncture','Massage','Mind-body or meditation','Chiropractic','Herbal or botanical','Other','None']},
+  {s:'Safety',t:'yesno',l:'Have you told your neurology team about diet, CBD, and supplement use?',note:'Supports drug interaction review'}
+ ]
+};
+
+/* ============ demo records ============ */
+function rnd(a){return a[Math.floor(Math.random()*a.length)];}
+const RECORDS=(()=>{const r=[];for(let i=1;i<=14;i++){const g=rnd(GENES);r.push({id:String(i).padStart(3,'0'),gene:g,syndrome:rnd(SYNDROMES),freq:rnd(['Daily','Weekly','Monthly','Seizure-free']),ehr:Math.random()>.4?'g':'p',genetic:Math.random()>.3});}return r;})();
+
+/* ============ CSV parser ============ */
+function parseCSV(text){
+  const rows=[];let f='',row=[],q=false,i=0;
+  for(;i<text.length;i++){const c=text[i];
+    if(q){if(c==='"'){if(text[i+1]==='"'){f+='"';i++;}else q=false;}else f+=c;}
+    else{if(c==='"')q=true;else if(c===','){row.push(f);f='';}
+      else if(c==='\n'){row.push(f);rows.push(row);row=[];f='';}
+      else if(c==='\r'){}else f+=c;}}
+  if(f.length||row.length){row.push(f);rows.push(row);}
+  return rows;
+}
+
+/* ============ views ============ */
+const VIEWS={};
+
+VIEWS.home=()=>`
+  <div class="crumbs">Registry Home &amp; Design &rsaquo; <b>Registry Home</b></div>
+  <h2>Rare Epilepsy Registry</h2>
+  <p class="muted" style="max-width:780px">A working mockup of a patient-directed registry for rare and genetic epilepsies. Families enroll, complete surveys built from real rare-disease instruments, and bring their own electronic health records into the study, either by authorizing a connection or by uploading a file. The look mirrors a familiar registry platform so the workflow is recognizable to study teams.</p>
+
+  <div class="howto">
+    <div class="howto-hd">How to use this demo</div>
+    <div class="howto-sub">A clickable model of a rare-epilepsy registry. Three ways to use it:</div>
+    <div class="howto-grid">
+      <div><span class="step">1 &middot; Get inspiration</span><br>Click through the participant journey, enroll a child, complete the genetic and seizure surveys, and connect health records, to see a registry where the family brings their own data.<br><a data-view="participant">Open the participant view &rarr;</a></div>
+      <div><span class="step">2 &middot; Communicate with a vendor</span><br>Walk a platform or vendor team through the workflow to scope what you need built or configured. Records can arrive patient-directed or, once configured, through a vendor or health-information network.<br><a data-view="connect">Show the records flow &rarr;</a></div>
+      <div><span class="step">3 &middot; Use the data dictionary</span><br>Browse every harmonized field by source, then download the combined dictionary. Sources include GenomeConnect, Simons / SFARI, and CoRDS.<br><a data-view="comprehensive">Open the comprehensive dictionary &rarr;</a></div>
+    </div>
+  </div>
+
+  <div class="note"><b>The core idea.</b> Rare-epilepsy registries usually rebuild instruments and pull records one site at a time. This registry adds a second path: <b>the family authorizes access to their own records</b>. Under federal patient access rules, most people can connect a health system through a SMART on FHIR login or upload a C-CDA file, and a vendor or health information network can extend that reach. Structured data arrive first, then the documents. Coverage and completeness vary by system, so the patient-directed and automated paths work together.</div>
+
+  <h3>How the data flow works</h3>
+  <div class="flow">
+    <div class="stage s1"><div class="icon">&#9997;&#65039;</div><h4>1. Consent &amp; enroll</h4><p>Caregiver reviews and signs the e-consent. This happens once.</p></div>
+    <div class="stage s2"><div class="icon">&#128221;</div><h4>2. Surveys</h4><p>Caregiver completes the genetic, seizure, development, and quality-of-life surveys.</p></div>
+    <div class="stage s3"><div class="icon">&#128274;</div><h4>3. Authorizes records</h4><p>SMART on FHIR. The family logs in to the child\u2019s portal and grants read access.</p></div>
+    <div class="stage s4"><div class="icon">&#128202;</div><h4>4. Structured data</h4><p>Conditions, antiseizure meds, labs, and EEG/MRI reports arrive as FHIR resources.</p></div>
+    <div class="stage s5"><div class="icon">&#128196;</div><h4>5. Documents</h4><p>Neurology notes and EEG reports arrive; text processing extracts key fields for review.</p></div>
+    <div class="stage s6"><div class="icon">&#129504;</div><h4>6. Registry</h4><p>Everything maps into harmonized instruments, ready to analyze and share.</p></div>
+  </div>
+  <div class="survey-band">
+    <div class="loop-row"><span class="lic">&#8635;</span> <span><b>Longitudinal capture:</b> consent (step 1) happens once. Steps 2 to 5 repeat over time: families re-take surveys on a schedule and connected records refresh automatically, so the registry tracks change rather than a single baseline.</span></div>
+    <div class="survey-band-hd">&#9745; <b>Where the surveys come in:</b> collected at step 2, then mapped into the registry at step 6. Click any survey to preview it.</div>
+    <div class="schips">
+      <a class="schip" data-view="survey_genetic">&#129516; Genetic Testing</a>
+      <a class="schip" data-view="survey_seizure">&#9889; Seizure History</a>
+      <a class="schip" data-view="survey_dev">&#129504; Development &amp; Medical History</a>
+      <a class="schip" data-view="survey_qol">&#128153; Quality of Life</a>
+      <a class="schip" data-view="survey_diet">&#129373; Diet &amp; Supplements</a>
+    </div>
+  </div>
+
+  <div class="cards">
+    <div class="card"><h4>Participants</h4><div class="big">${RECORDS.length}</div><div class="sub">enrolled in this demo</div></div>
+    <div class="card"><h4>Surveys</h4><div class="big">${INSTR.length}</div><div class="sub">genetic, seizure, development, QoL, diet</div></div>
+    <div class="card" data-view="comprehensive" style="cursor:pointer"><h4>Dictionary fields</h4><div class="big">${COMP_TOTAL.toLocaleString()}</div><div class="sub">harmonized across all sources</div></div>
+    <div class="card" data-view="comprehensive" style="cursor:pointer"><h4>Sources</h4><div class="big">${SOURCES.length}</div><div class="sub">GenomeConnect, Simons, CoRDS &hellip;</div></div>
+  </div>
+
+  <h3>What you can demo from here</h3>
+  <ul style="max-width:780px">
+    <li><a data-view="participant">What the Participant Sees</a>: the caregiver journey from consent to surveys to a personal dashboard.</li>
+    <li><a data-view="comprehensive">Comprehensive Dictionary</a>: ${COMP_TOTAL.toLocaleString()} harmonized fields combining GenomeConnect, Simons / SFARI, CoRDS, and a harmonized core derived from the relevant oncology-site data dictionaries. Filter by source and download.</li>
+    <li>Surveys: <a data-view="survey_genetic">Genetic Testing</a>, <a data-view="survey_seizure">Seizure History</a>, <a data-view="survey_dev">Development</a>, <a data-view="survey_qol">Quality of Life</a>, and <a data-view="survey_diet">Diet &amp; Supplements</a>.</li>
+    <li><a data-view="connect">Connect Health Records</a> and <a data-view="ccda">Download &amp; Upload (C-CDA)</a>: the two patient-directed record paths.</li>
+    <li><a data-view="sources">Data Sources &amp; References</a>, <a data-view="dashboard">Record Status</a>, and <a data-view="reports">Reports</a>.</li>
+  </ul>
+`;
+
+/* ---- comprehensive dictionary (loads the combined CSV) ---- */
+let COMP=null, COMP_TEXT='';
+VIEWS.comprehensive=()=>`
+  <div class="crumbs">Registry Home &amp; Design &rsaquo; <b>Comprehensive Dictionary</b></div>
+  <h2>Comprehensive Data Dictionary</h2>
+  <p class="muted" style="max-width:900px">The full harmonized dictionary behind this registry: every question from every source in one place. It combines the GenomeConnect genetic and seizure surveys, the Simons / SFARI neurodevelopmental dataset, the CoRDS rare-disease registry questionnaire, and a harmonized core derived from the relevant oncology-site data dictionaries.</p>
+  <div class="starter">
+    <h4>Recommended starter set (configurable per group)</h4>
+    <p style="font-size:12px;margin:2px 0 0">For basic use, start with a small, well-understood core and add instruments as the purpose requires. A sensible default order:</p>
+    <ol>
+      <li><b>All of Us demographics</b> (the Basics): standardized, publicly reusable demographic items mapped to standard vocabularies.</li>
+      <li><b>GenomeConnect health survey</b>: a review-of-systems health survey with phenotype (HPO) mappings.</li>
+      <li><b>GenomeConnect seizure survey</b>: seizure types, syndromes, and history for epilepsy-specific detail. Note that the seizure terms here are patient-facing; an ILAE 2025 crosswalk can be layered on.</li>
+    </ol>
+    <div class="cfg">Everything here is configurable to your group. This order is a default, not a requirement; add, drop, or reorder instruments to fit your purpose and your community. The <a class="schip" data-view="planner">Data Strategy Self-Assessment</a> can help you decide.</div>
+  </div>
+  <div class="searchbar">
+    <a class="btn sm" id="cdownload">&#8681; Combined dictionary (CSV)</a>
+    <a class="btn sm sec" data-view="sources">Sources &amp; references</a>
+    <input type="file" id="cfile" accept=".csv" class="hide">
+    <a class="btn sm sec" id="cupload">&#8689; Load CSV from this device</a>
+  </div>
+  <div id="cstats" class="rescount">Loading the full dictionary&hellip;</div>
+  <h3>Sources</h3>
+  <div class="src-grid">${SOURCES.map(s=>`<a class="src-card" href="${s.u}" target="_blank" rel="noopener"><b>${esc(s.n)}</b><span>${esc(s.d)}</span></a>`).join('')}</div>
+  <h3>All questions</h3>
+  <div class="searchbar">
+    <input type="text" id="cq" placeholder="Search questions, variables, options, HPO terms...">
+    <select id="csrc"><option value="">All sources</option></select>
+    <select id="cdom"><option value="">All domains</option></select>
+  </div>
+  <div class="rescount" id="ccount"></div>
+  <div id="cstatus" class="muted" style="font-size:12px"></div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Source</th><th>Module / domain</th><th>Variable</th><th>Question</th><th>Type</th><th>Options</th><th>HPO</th></tr></thead>
+    <tbody id="crows"></tbody>
+  </table></div>
+`;
+const CAP=400;
+function compFill(){
+  if(!COMP)return;
+  const q=(($('#cq')||{}).value||'').toLowerCase();
+  const sf=(($('#csrc')||{}).value||''), dm=(($('#cdom')||{}).value||'');
+  const rows=COMP.filter(d=>{
+    if(sf&&d.plat!==sf)return false;
+    if(dm&&d.dom!==dm)return false;
+    if(q){const h=(d.var+' '+d.q+' '+d.opt+' '+d.dom+' '+d.mod+' '+d.hpo+' '+d.note).toLowerCase();if(!h.includes(q))return false;}
+    return true;
+  });
+  const body=$('#crows'); if(!body)return;
+  const show=rows.slice(0,CAP);
+  body.innerHTML=show.map(d=>`<tr>
+    <td>${srcBadge(d.plat)}</td>
+    <td>${esc(d.mod)}${d.dom?`<div class="muted" style="font-size:10px">${esc(d.dom)}</div>`:''}</td>
+    <td><code>${esc(d.var)}</code></td>
+    <td>${esc(d.q)}${d.note?`<div class="muted" style="font-size:10px">${esc(d.note)}</div>`:''}</td>
+    <td>${esc(d.type)}</td>
+    <td>${d.opt?`<span class="muted" style="font-size:10px">${esc(d.opt.slice(0,70))}${d.opt.length>70?'&hellip;':''}</span>`:''}</td>
+    <td>${d.hpo?`<span class="muted" style="font-size:10px">${esc(d.hpo)}</span>`:''}</td></tr>`).join('');
+  const cc=$('#ccount');
+  if(cc)cc.innerHTML=`${rows.length.toLocaleString()} of ${COMP.length.toLocaleString()} fields`+(rows.length>CAP?` &middot; showing first ${CAP}, refine your search to narrow`:'');
+}
+function compBuild(){
+  const plats=[...new Set(COMP.map(d=>d.plat))].sort();
+  const doms=[...new Set(COMP.map(d=>d.dom).filter(Boolean))].sort();
+  const cs=$('#csrc'); if(cs)cs.innerHTML='<option value="">All sources ('+plats.length+')</option>'+plats.map(p=>`<option>${esc(p)}</option>`).join('');
+  const cd=$('#cdom'); if(cd)cd.innerHTML='<option value="">All domains ('+doms.length+')</option>'+doms.map(d=>`<option>${esc(d)}</option>`).join('');
+  const st=$('#cstats'); if(st)st.innerHTML=`<b>${COMP.length.toLocaleString()}</b> fields &middot; <b>${plats.length}</b> sources &middot; <b>${doms.length}</b> domains`;
+  ['#cq','#csrc','#cdom'].forEach(id=>{const el=$(id); if(el){el.oninput=compFill;el.onchange=compFill;}});
+  compFill();
+}
+function loadFromText(txt){
+  const rows=parseCSV(txt).slice(1).filter(r=>r.length>6&&r[6]);
+  if(!rows.length){
+    const st=$('#cstats'); if(st)st.innerHTML='';
+    const head=txt.slice(0,200);
+    let why='it came back empty';
+    if(/git-lfs|oid sha256/i.test(head)) why='it is a Git LFS pointer, not the CSV itself. Stop tracking this file with LFS, or commit it as a normal file';
+    else if(/^\s*<(!doctype|html)/i.test(txt.slice(0,80))) why='the server returned an HTML page, usually a 404. Confirm the exact file name and case in the repo root';
+    else if(txt.trim().length) why='it did not parse into rows. Confirm this is the real combined CSV';
+    const cs=$('#cstatus');
+    if(cs)cs.innerHTML=`<div class="note" style="border-left-color:#b45309;background:#fdf6ec"><b>The dictionary file was reached, but ${why}.</b> It should sit in the repo root beside <code>index.html</code> as <code>${COMP_FILE}</code>. You can also use <b>Load CSV from this device</b> above to load it directly right now.</div>`;
+    return false;
+  }
+  COMP=rows.map(r=>({plat:r[2]||'',mod:r[4]||'',dom:r[5]||'',var:r[6]||'',q:r[7]||'',type:r[8]||'',opt:r[9]||'',hpo:(r[10]||'')+(r[11]?' ('+r[11]+')':''),note:r[12]||''}));
+  COMP_TEXT=txt;
+  const cs=$('#cstatus'); if(cs)cs.innerHTML='';
+  compBuild();
+  return true;
+}
+async function loadGz(url){
+  const resp=await fetch(url,{cache:'no-store'});
+  if(!resp.ok) throw new Error('HTTP '+resp.status);
+  const bytes=new Uint8Array(await resp.arrayBuffer());
+  if(bytes.length>1&&bytes[0]===0x1f&&bytes[1]===0x8b&&typeof DecompressionStream!=='undefined'){
+    const stream=new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));
+    return await new Response(stream).text();
+  }
+  return new TextDecoder('utf-8').decode(bytes);
+}
+async function compLoad(){
+  if(!$('#crows'))return;
+  const fi=$('#cfile'),ub=$('#cupload'),dl=$('#cdownload');
+  if(fi&&ub){ub.onclick=()=>fi.click();fi.onchange=()=>{const f=fi.files[0];if(!f)return;const rd=new FileReader();rd.onload=()=>{COMP=null;loadFromText(rd.result);};rd.readAsText(f);};}
+  if(dl){dl.onclick=()=>{if(!COMP_TEXT){toast('Dictionary still loading, try again in a moment');return;}const blob=new Blob([COMP_TEXT],{type:'text/csv'});const u=URL.createObjectURL(blob);const a=document.createElement('a');a.href=u;a.download=COMP_FILE;a.click();setTimeout(()=>URL.revokeObjectURL(u),1500);};}
+  if(COMP){compBuild();return;}
+  let txt=null;
+  try{ txt=await loadGz(COMP_GZ); }catch(e){}
+  if(txt==null){ try{ const r=await fetch(COMP_FILE,{cache:'no-store'}); if(r.ok) txt=await r.text(); }catch(e){} }
+  if(txt!=null){ loadFromText(txt); return; }
+  const st=$('#cstats'); if(st)st.innerHTML='';
+  const cs=$('#cstatus'); if(cs)cs.innerHTML=`<div class="note">Could not load the dictionary file. Confirm <code>${COMP_GZ}</code> (or <code>${COMP_FILE}</code>) sits in the repo root beside <code>index.html</code>, or use <b>Load CSV from this device</b> above to load it now.</div>`;
+}
+
+VIEWS.sources=()=>`
+  <div class="crumbs">Registry Home &amp; Design &rsaquo; <b>Data Sources &amp; References</b></div>
+  <h2>Data Sources &amp; References</h2>
+  <p class="muted" style="max-width:880px">Every source used to build the combined dictionary, with a link to its origin. Disease-specific instruments are harmonized alongside disease-agnostic surveys so the same registry can serve many rare epilepsies.</p>
+  <div class="src-grid">${SOURCES.map(s=>`<a class="src-card" href="${s.u}" target="_blank" rel="noopener"><b>${esc(s.n)}</b><span>${esc(s.d)}</span></a>`).join('')}</div>
+  <div class="note"><b>Citation note.</b> The CoRDS items come from the CoRDS rare-disease registry questionnaire (Coordination of Rare Diseases at Sanford). The Simons / SFARI items derive from the SFARI Base dataset dictionary (DS0000032 v14). GenomeConnect items derive from the Health Survey (Savatt et al. 2018) and the Seizure Survey (v1.3, 2025).</div>
+  <div class="mt"><a class="btn sm" data-view="comprehensive">Open the comprehensive dictionary &rarr;</a></div>
+`;
+
+/* ---- survey renderer ---- */
+function renderSurvey(key){
+  const inst=INSTR.find(i=>i.key===key)||{name:key};
+  const fields=DD[key]||[];
+  let cur='';
+  const qs=fields.map((f,idx)=>{
+    let sec='';
+    if(f.s&&f.s!==cur){cur=f.s;sec=`<div style="font-weight:700;color:var(--brand-deep);border-top:1px solid #eee;padding-top:12px;margin-top:6px">${esc(f.s)}</div>`;}
+    let input='';
+    if(f.t==='yesno') input=['Yes','No'].map(o=>`<label class="opt"><input type="radio" name="${key}_${idx}"> ${o}</label>`).join('');
+    else if(f.t==='radio') input=(f.c||[]).map(o=>`<label class="opt"><input type="radio" name="${key}_${idx}"> ${esc(o)}</label>`).join('');
+    else if(f.t==='checkbox') input=(f.c||[]).map(o=>`<label class="opt"><input type="checkbox"> ${esc(o)}</label>`).join('');
+    else if(f.t==='notes') input=`<textarea class="ftxt" rows="3" placeholder="Type your answer"></textarea>`;
+    else input=`<input class="ftxt" type="text" placeholder="Type your answer">`;
+    return `${sec}<div class="q"><div class="qlabel">${idx+1}. ${esc(f.l)}</div>${input}${f.note?`<div class="muted" style="font-size:11px;margin-top:3px">${esc(f.note)}</div>`:''}</div>`;
+  }).join('');
+  return `
+    <div class="crumbs">Data Collection &rsaquo; <b>Survey preview: ${esc(inst.name)}</b></div>
+    <p class="muted">Survey source: ${esc(inst.src||'')}. This is what a participant sees. Answers feed the matching fields in the dictionary.</p>
+    <div class="survey-shell">
+      <div class="survey-hd"><h3>${esc(inst.name)}</h3><div class="desc">Rare Epilepsy Registry &middot; please answer about the participant</div></div>
+      <div class="survey-body">
+        <div class="progress"><span id="prog"></span></div>
+        <div class="muted right" style="font-size:11px;margin:4px 0" id="progtxt">0% complete</div>
+        ${qs}
+        <div class="mt center"><a class="btn" id="submit-survey">Submit survey</a></div>
+      </div>
+    </div>`;
+}
+INSTR.forEach(i=>VIEWS[i.key]=()=>renderSurvey(i.key));
+
+/* ---- connect health records ---- */
+const SYSTEMS=["Children's Hospital of Philadelphia (Epic)","Boston Children's Hospital (Oracle Health)","Nationwide Children's Hospital","Cleveland Clinic","Apple Health","CommonHealth (Android)","1upHealth aggregator"];
+const FEED_STRUCT=[['FHIR Condition (SNOMED / ICD-10)','epilepsy diagnosis, syndrome','3 conditions'],['FHIR MedicationRequest (RxNorm)','antiseizure medications','5 medications'],['FHIR Observation (LOINC)','labs, drug levels','42 results'],['FHIR DiagnosticReport','EEG and brain MRI reports','6 reports']];
+const FEED_UNSTRUCT=[['DocumentReference: neurology note','seizure semiology, plan','stored'],['EEG report \u2192 NLP','seizure type, focality (pending review)','derived'],['Genetics report \u2192 NLP','gene, variant (pending review)','derived']];
+let cIdx=0;
+const cStages=[
+  ()=>`<div class="center" style="padding:22px"><div style="font-size:40px">&#128274;</div><h3>Bring in the medical records</h3><p class="muted" style="max-width:460px;margin:8px auto">You decide which records to share. The registry only receives what you approve, and you can disconnect at any time.</p><a class="btn" id="cnext2">Connect records</a></div>`,
+  ()=>`<h3>Find your health system</h3><p class="muted">Search the network of connected systems. Under the hood this uses a directory of FHIR endpoints (TEFCA and individual access services make this list nationwide).</p><select id="sys-pick" style="padding:8px;min-width:300px;border:1px solid #cdbff0;border-radius:5px;margin-top:8px"><option value="">-- choose a health system --</option>${SYSTEMS.map(s=>`<option>${s}</option>`).join('')}</select><div class="muted mt" style="font-size:11.5px">Most US families can use any of these because providers must support patient access through standard FHIR APIs.</div>`,
+  ()=>`<h3>Log in to your portal</h3><p class="muted">You log in to <b>your own</b> health system, not the registry. The registry never sees your password.</p><div class="fakeauth"><div class="ah">${(window._sys||'Your Health System')} &mdash; Sign In</div><div class="ab"><label>Username</label><input value="parent.caregiver"><label>Password</label><input type="password" value="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"><div class="mt"><a class="btn" id="cnext2" style="width:100%;text-align:center">Sign in</a></div></div></div>`,
+  ()=>`<h3>Authorize what to share</h3><p class="muted">Your portal asks whether to let the <b>Rare Epilepsy Registry</b> read these record types. These are SMART on FHIR scopes.</p><div class="fakeauth" style="max-width:480px"><div class="ah" style="background:var(--brand-deep)">Rare Epilepsy Registry is requesting access</div><div class="ab">${[['patient/Condition.read','Diagnoses and problem list'],['patient/MedicationRequest.read','Antiseizure and other medications'],['patient/Observation.read','Labs and drug levels'],['patient/DiagnosticReport.read','EEG and MRI reports'],['patient/DocumentReference.read','Neurology and genetics notes'],['offline_access','Keep records up to date over time']].map(s=>`<div class="scope"><input type="checkbox" checked><div><b>${s[1]}</b><br><code>${s[0]}</code></div></div>`).join('')}<div class="mt"><a class="btn" id="cnext2" style="width:100%;text-align:center">Allow</a></div></div></div>`,
+  ()=>`<h3>Structured data arriving</h3><p class="muted">Coded records come first, as FHIR resources. Each lands in the registry and maps to a field.</p><div id="feed-struct"></div>`,
+  ()=>`<h3>Documents arriving, then text extraction</h3><p class="muted">Next come the documents: neurology notes, EEG and genetics reports. They are stored as-is, and a text-processing step pulls out key fields and flags them for a human to confirm.</p><div id="feed-unstruct"></div>`,
+  ()=>`<div class="center" style="padding:20px"><div style="font-size:40px">&#9989;</div><h3>Records connected</h3><p class="muted" style="max-width:470px;margin:8px auto">Structured data and documents are in the registry and mapped to instrument fields. The participant\u2019s record status flips to complete. See the <a data-view="dashboard">record status</a> or the <a data-view="reports">reports</a>.</p></div>`
+];
+function playFeed(id,data){const host=$('#'+id);if(!host)return;host.innerHTML='';data.forEach((d,i)=>{setTimeout(()=>{const row=document.createElement('div');row.className='feedrow';row.innerHTML=`<span class="res">${esc(d[0])}</span><span class="arr">&#8594;</span><span class="tgt">${esc(d[1])}</span><span class="cnt">${esc(d[2])}</span>`;host.appendChild(row);},300*(i+1));});}
+function renderConnect(){
+  const steps=$('#cstep').children;[...steps].forEach((s,i)=>{s.className='st'+(i<cIdx?' done':i===cIdx?' active':'');});
+  $('#cstage').innerHTML=cStages[cIdx]();
+  const n2=$('#cnext2'); if(n2)n2.onclick=()=>advC(1);
+  wireViews($('#cstage'));
+  const bk=$('#cback'),nx=$('#cnext');
+  if(bk)bk.style.visibility=cIdx===0?'hidden':'visible';
+  if(nx){if(cIdx===cStages.length-1){nx.textContent='Go to record status \u2192';nx.onclick=()=>go('dashboard');}else{nx.textContent='Next \u2192';nx.onclick=()=>advC(1);}}
+  if(cIdx===4)playFeed('feed-struct',FEED_STRUCT);
+  if(cIdx===5)playFeed('feed-unstruct',FEED_UNSTRUCT);
+}
+function advC(d){if(cIdx===1){const v=$('#sys-pick');if(v&&v.value)window._sys=v.value;}cIdx=Math.max(0,Math.min(cStages.length-1,cIdx+d));renderConnect();}
+VIEWS.connect=()=>`
+  <div class="crumbs">Health Records &rsaquo; <b>Connect Health Records</b></div>
+  <h2>Connect the child\u2019s health records</h2>
+  <p class="muted" style="max-width:760px">The caregiver authorizes their own health system to release records to the registry using SMART on FHIR, the same secure standard behind patient apps. No data agreement between the registry and the health system is required.</p>
+  <p class="muted" style="max-width:760px;font-size:11.5px"><b>In practice:</b> coverage is broad but not universal. Whether a system appears, and how complete the returned records are, varies by health system and by how recently the data were refreshed.</p>
+  <div class="stepper" id="cstep">${['1. Start','2. Choose system','3. Log in','4. Authorize','5. Structured','6. Documents','7. Done'].map(s=>`<div class="st">${s}</div>`).join('')}</div>
+  <div class="stagebox" id="cstage"></div>
+  <div class="flexrow mt"><a class="btn gray" id="cback">&larr; Back</a><a class="btn" id="cnext">Next &rarr;</a></div>
+`;
+
+/* ---- C-CDA upload ---- */
+let cdIdx=0;
+const cdStages=[
+  ()=>`<h3>Step 1. Open your portal</h3><p class="muted">Log in to your child\u2019s patient portal and find the section to download health records.</p><div class="fakeauth"><div class="ah">MyChart &mdash; Sign In</div><div class="ab"><label>Username</label><input value="parent.caregiver"><label>Password</label><input type="password" value="&bull;&bull;&bull;&bull;&bull;&bull;"><div class="mt"><a class="btn" id="cdnext2" style="width:100%;text-align:center">Sign in</a></div></div></div>`,
+  ()=>`<h3>Step 2. Request the document</h3><p class="muted">In the portal, choose to download the full health record as a C-CDA file (a zip of standardized XML).</p><div class="mt"><a class="btn" id="cdnext2">Sharing Hub &rarr; Download My Record</a></div>`,
+  ()=>`<h3>Step 3. Save the file</h3><p class="muted">The portal generates a zip and saves it to your device. Nothing has reached the registry yet.</p><div class="mt"><a class="btn" id="cdnext2">&#8681; Download MyRecord_CCDA.zip</a></div>`,
+  ()=>`<h3>Step 4. Upload the zip</h3><p class="muted">Back in the registry survey, upload the file you just downloaded.</p><div class="uploadbox" id="cd-drop"><div style="font-size:30px">&#128193;</div><div style="font-weight:600;margin-top:6px">Drop your C-CDA zip here, or click to browse</div><div class="muted" style="font-size:11.5px;margin-top:4px">Accepts .zip or .xml from any patient portal</div><input type="file" id="cd-file" accept=".zip,.xml" class="hide"></div><div id="cd-filename" class="mt"></div>`,
+  ()=>`<h3>Step 5. Parsed and mapped</h3><p class="muted">The registry reads the C-CDA sections and maps them to fields, exactly like the live connection. Documents are kept; coded extractions are flagged for staff review.</p><div id="cd-feed"></div>`
+];
+const CD_FEED=[['C-CDA: Problems (SNOMED / ICD-10)','epilepsy dx, syndrome','3 problems'],['C-CDA: Medications (RxNorm)','antiseizure meds','5 medications'],['C-CDA: Results (LOINC)','labs, drug levels','42 results'],['C-CDA: Reports','EEG, MRI','6 reports'],['Embedded neurology note \u2192 NLP','seizure type (pending review)','derived']];
+function renderCd(){
+  const steps=$('#cdstep').children;[...steps].forEach((s,i)=>{s.className='st'+(i<cdIdx?' done':i===cdIdx?' active':'');});
+  $('#cdstage').innerHTML=cdStages[cdIdx]();
+  const n2=$('#cdnext2'); if(n2)n2.onclick=()=>advCd(1);
+  wireViews($('#cdstage'));
+  const bk=$('#cdback'),nx=$('#cdnext');
+  if(bk)bk.style.visibility=cdIdx===0?'hidden':'visible';
+  if(nx){if(cdIdx===cdStages.length-1){nx.textContent='Go to record status \u2192';nx.onclick=()=>go('dashboard');}else{nx.textContent='Next \u2192';nx.onclick=()=>advCd(1);}}
+  if(cdIdx===3){const drop=$('#cd-drop'),file=$('#cd-file');if(drop&&file){drop.onclick=()=>file.click();file.onchange=()=>{if(file.files[0]){$('#cd-filename').innerHTML=`<div class="note"><b>Received:</b> ${esc(file.files[0].name)}. Ready to parse.</div>`;setTimeout(()=>advCd(1),700);}};}}
+  if(cdIdx===4)playFeed('cd-feed',CD_FEED);
+}
+function advCd(d){cdIdx=Math.max(0,Math.min(cdStages.length-1,cdIdx+d));renderCd();}
+VIEWS.ccda=()=>`
+  <div class="crumbs">Health Records &rsaquo; <b>Download &amp; Upload (C-CDA)</b></div>
+  <h2>Bring records by file: download from the portal, upload here</h2>
+  <p class="muted" style="max-width:820px">A second patient-directed path that works even when a live connection is not set up. The family downloads the child\u2019s record from the portal as a C-CDA file, then uploads it into the registry. Same person, same data rights. This complements the <a data-view="connect">live SMART on FHIR connection</a>.</p>
+  <div class="stepper" id="cdstep">${['1. Open portal','2. Request','3. Save file','4. Upload','5. Mapped'].map(s=>`<div class="st">${s}</div>`).join('')}</div>
+  <div class="stagebox" id="cdstage"></div>
+  <div class="flexrow mt"><a class="btn gray" id="cdback">&larr; Back</a><a class="btn" id="cdnext">Next &rarr;</a></div>
+`;
+
+/* ---- participant journey ---- */
+let pIdx=0;
+const PSTEPS=[
+  {seg:'Welcome',cta:'Get started',render:()=>`<div class="center"><div style="font-size:36px">&#9889;</div><h3 style="color:var(--brand-deep)">Welcome to the Rare Epilepsy Registry</h3><p style="max-width:480px;margin:8px auto">You are enrolling on behalf of your child. Your answers and records help researchers understand rare and genetic epilepsies and work toward better treatments. You decide what to share, and you can withdraw at any time.</p></div>`},
+  {seg:'Consent',cta:'I agree',guard:()=>$('#pc1')&&$('#pc1').checked&&$('#pc2')&&$('#pc2').checked,
+   render:()=>`<h3>Consent</h3><p class="muted">Please review and confirm.</p><label class="opt"><input type="checkbox" id="pc1"> I have read how my child\u2019s data will be used and protected.</label><label class="opt"><input type="checkbox" id="pc2"> I agree to take part and understand I can withdraw at any time.</label>`,
+   after:()=>{['pc1','pc2'].forEach(id=>{const e=document.getElementById(id);if(e)e.onchange=()=>{const cta=$('#pp-cta');if(cta){if(PSTEPS[pIdx].guard())cta.removeAttribute('disabled');else cta.setAttribute('disabled','disabled');}};});}},
+  {seg:'Surveys',cta:'Continue',render:()=>`<h3>Tell us about your child</h3><p class="muted">A few short surveys, built from real rare-disease instruments. You can pause and return anytime.</p><div class="schips" style="margin-top:10px"><a class="schip" data-view="survey_genetic">&#129516; Genetic Testing</a><a class="schip" data-view="survey_seizure">&#9889; Seizure History</a><a class="schip" data-view="survey_dev">&#129504; Development</a><a class="schip" data-view="survey_qol">&#128153; Quality of Life</a><a class="schip" data-view="survey_diet">&#129373; Diet &amp; Supplements</a></div><p class="muted" style="font-size:11.5px;margin-top:10px">(In the demo these open the survey previews.)</p>`},
+  {seg:'Records',cta:'Continue',render:()=>`<h3>Bring in your child\u2019s health records</h3><p class="muted">Connect the portal to release records automatically, or upload a downloaded file. You choose.</p><div class="flexrow mt"><span class="btn" data-view="connect">&#9883; Connect automatically</span><span class="btn sec" data-view="ccda">&#128193; Upload a file</span></div>`},
+  {seg:'Dashboard',cta:'Continue',render:()=>`<h3>Your child\u2019s dashboard</h3><p class="muted">Everything you shared, in one place.</p><div class="cards"><div class="card"><h4>Surveys done</h4><div class="big">5</div></div><div class="card"><h4>Records linked</h4><div class="big">&#10003;</div><div class="sub">structured + documents</div></div><div class="card"><h4>Gene shared</h4><div class="big">KCNT1</div></div></div><div class="note">You are in control. You decide what to share and can withdraw at any time. Researchers only ever see combined, de-identified results.</div>`},
+  {seg:'Done',cta:null,hideFoot:true,render:()=>`<div class="center"><div style="font-size:34px">&#128153;</div><h3 style="color:var(--brand-deep)">Thank you for taking part</h3><p style="max-width:480px;margin:6px auto">Your child\u2019s experience and records help researchers work toward better care for rare epilepsies. You can return anytime to add records or complete the next survey.</p><div class="flexrow center" style="justify-content:center;margin-top:14px"><span class="btn" onclick="pShow(0)">Restart</span><span class="btn sec" onclick="go('home')">Back to study team view</span></div></div>`}
+];
+function pSegs(){return PSTEPS.map((s,i)=>`<span style="font-size:11px;padding:4px 9px;border-radius:12px;margin-right:5px;${i<pIdx?'background:#eef6ee;color:#2f7a47':i===pIdx?'background:var(--brand);color:#fff':'background:#f0ecf8;color:#9a93ad'}">${esc(s.seg)}</span>`).join('');}
+function pShow(i){
+  pIdx=Math.max(0,Math.min(PSTEPS.length-1,i));const s=PSTEPS[pIdx];
+  const prog=$('#pp-prog'); if(prog)prog.innerHTML=pSegs();
+  const stage=$('#pp-stage'); if(!stage)return; stage.innerHTML=s.render();
+  wireViews(stage);
+  const foot=$('#pp-foot'); if(foot)foot.style.display=s.hideFoot?'none':'flex';
+  const back=$('#pp-back'); if(back)back.style.visibility=pIdx===0?'hidden':'visible';
+  const cta=$('#pp-cta'); if(cta){cta.textContent=s.cta||'Continue';if(s.guard&&!s.guard())cta.setAttribute('disabled','disabled');else cta.removeAttribute('disabled');}
+  if(s.after)setTimeout(()=>{if($('#pp-stage'))s.after();},40);
+}
+function pNext(){const s=PSTEPS[pIdx];if(s.guard&&!s.guard())return;if(pIdx<PSTEPS.length-1)pShow(pIdx+1);}
+function pBack(){if(pIdx>0)pShow(pIdx-1);}
+VIEWS.participant=()=>`
+  <div class="crumbs">Participant View &rsaquo; <b>What the Participant Sees</b></div>
+  <h2>The caregiver experience</h2>
+  <p class="muted" style="max-width:760px">This is the participant-facing side: a caregiver enrolling a child, the same registry from the family\u2019s point of view.</p>
+  <div style="border:1px solid var(--line);border-radius:12px;padding:16px;background:#fff;max-width:640px;margin-top:8px">
+    <div class="pp-prog" id="pp-prog" style="margin-bottom:12px"></div>
+    <div id="pp-stage" style="min-height:160px"></div>
+    <div class="pp-foot" id="pp-foot" style="display:flex;justify-content:space-between;margin-top:14px">
+      <span class="btn gray" id="pp-back" onclick="pBack()">&larr; Back</span>
+      <button class="btn" id="pp-cta" onclick="pNext()">Continue</button>
+    </div>
+  </div>
+`;
+
+/* ---- dashboard & reports ---- */
+VIEWS.dashboard=()=>`
+  <div class="crumbs">Applications &rsaquo; <b>Record Status</b></div>
+  <h2>Record Status Dashboard</h2>
+  <p class="muted">Per-participant status across surveys, genetic results, and connected records (demo data).</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Record</th><th>Syndrome</th><th>Gene</th><th>Seizure freq</th><th>Genetic result</th><th>EHR records</th></tr></thead>
+    <tbody>${RECORDS.map(r=>`<tr><td><code>${r.id}</code></td><td>${esc(r.syndrome)}</td><td>${esc(r.gene)}</td><td>${esc(r.freq)}</td><td>${r.genetic?'<span style="color:#2f7a47">shared</span>':'<span class="muted">pending</span>'}</td><td>${r.ehr==='g'?'<span style="color:#2f7a47">received</span>':'<span class="muted">pending</span>'}</td></tr>`).join('')}</tbody>
+  </table></div>
+`;
+VIEWS.reports=()=>{
+  const freq={};RECORDS.forEach(r=>freq[r.freq]=(freq[r.freq]||0)+1);
+  const gene={};RECORDS.forEach(r=>gene[r.gene]=(gene[r.gene]||0)+1);
+  const bar=(obj,color)=>{const max=Math.max(...Object.values(obj));return Object.entries(obj).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<div style="display:flex;align-items:center;gap:8px;margin:5px 0;font-size:12px"><div style="width:160px">${esc(k)}</div><div class="bar" style="width:${Math.round(v/max*220)}px;background:${color}"></div><div class="muted">${v}</div></div>`).join('');};
+  return `
+  <div class="crumbs">Applications &rsaquo; <b>Reports</b></div>
+  <h2>Reports</h2>
+  <p class="muted">Simple summaries over the demo cohort. A real registry would chart longitudinal seizure burden, treatment response, and genotype-phenotype patterns.</p>
+  <h3>Seizure frequency</h3>${bar(freq,'#6d28d9')}
+  <h3>Reported gene</h3>${bar(gene,'#0f766e')}
+  `;
+};
+
+VIEWS.about=()=>`
+  <div class="crumbs">Help &rsaquo; <b>About this demo</b></div>
+  <h2>About this demo</h2>
+  <p class="muted" style="max-width:820px">A clickable mockup of a patient-directed registry for rare and genetic epilepsies, built to show study teams, families, and vendors how the pieces fit together.</p>
+  <div class="note"><b>What this demo does.</b> Shows the participant journey, the two patient-directed record paths (connect or upload), a set of surveys drawn from real rare-disease instruments, and a comprehensive harmonized dictionary combining GenomeConnect, Simons / SFARI, CoRDS, and other sources with a downloadable file.</div>
+  <div class="note" style="border-left-color:#b45309;background:#fdf6ec"><b>What this demo does not do.</b> It does not collect, store, or transmit any real data. The participants, records, and connections are fictional. The survey items are representative previews; the authoritative item text lives in the combined dictionary and its cited sources. It is not affiliated with any named registry or institution.</div>
+  <div class="mt"><a class="btn sm" data-view="sources">Data sources &amp; references</a> <a class="btn sm sec" data-view="comprehensive">Comprehensive dictionary</a></div>
+`;
+
+/* ============ data strategy self-assessment ============ */
+const KB={
+ purpose:{t:'Start from the purpose, not the instrument',tag:'Foundations',
+   blurb:'The question you want answered should drive every later choice: instrument, cadence, method, standards, and partners.',
+   detail:'Groups often pick a questionnaire first, then discover it cannot answer their real question. Reverse the order. Write the decision the data must support, for a family, a clinician, or a regulator, then derive the population, the exposures and outcomes, the temporal resolution, and the level of rigor needed. AHRQ&#8217;s registry User&#8217;s Guide frames this as defining goals and objectives before design, and deciding first whether a registry is even the right instrument.',
+   links:[{t:'AHRQ Registries User&#8217;s Guide (4th ed.)',u:'https://effectivehealthcare.ahrq.gov/products/registries-guide-4th-edition/users-guide'}]},
+ rwe:{t:'Regulatory-ready data and FDA&#8217;s relevance &amp; reliability',tag:'Regulatory',
+   blurb:'For regulatory use, data must be fit-for-purpose: relevant to the question and reliable in how they were generated.',
+   detail:'FDA assesses real-world data on two axes. Relevance asks whether the data capture the right population, exposures, outcomes, and covariates for your specific question. Reliability asks how the data were accrued, curated, and quality-checked, with provenance and traceability back to source. FDA expects the study protocol and analysis plan to be specified up front, and expects sponsors to document how problems like duplicate records for one person across sources are handled. Submission datasets are prepared to CDISC standards.',
+   links:[{t:'FDA Real-World Evidence program',u:'https://www.fda.gov/science-research/science-and-research-special-topics/real-world-evidence'},{t:'Framework for FDA&#8217;s RWE Program (PDF)',u:'https://www.fda.gov/media/120060/download'},{t:'CDISC standards',u:'https://www.cdisc.org/'}]},
+ pfdd:{t:'Patient-Focused Drug Development and COAs',tag:'Regulatory',
+   blurb:'FDA&#8217;s four-part PFDD series describes how patient and caregiver input becomes measures that can serve as trial endpoints.',
+   detail:'The series moves from who to ask and how (Guidance 1), to identifying what is important to patients (Guidance 2), to selecting, developing, or modifying fit-for-purpose clinical outcome assessments (Guidance 3, finalized 2025), to building those into endpoints (Guidance 4). COAs come in four types: patient-reported, observer-reported, clinician-reported, and performance outcomes. In developmental and epileptic encephalopathies, caregiver (observer-reported) measures are central, and seizure-diary endpoints are difficult to get right, so they must be designed deliberately.',
+   links:[{t:'FDA PFDD guidance series',u:'https://www.fda.gov/drugs/development-approval-process-drugs/fda-patient-focused-drug-development-guidance-series-enhancing-incorporation-patients-voice-medical'},{t:'PFDD trial readiness in rare DEEs (paper)',u:'https://pmc.ncbi.nlm.nih.gov/articles/PMC10834124/'},{t:'FDA Rare Disease Endpoint Advancement pilot',u:'https://www.fda.gov/drugs/development-resources/rare-disease-endpoint-advancement-pilot-program'}]},
+ cadence:{t:'Cadence and recall: matching temporal resolution',tag:'Methods',
+   blurb:'If you need week-level detail but ask every few months, recall error will swamp the signal.',
+   detail:'Memory for the count, timing, and clustering of brief events decays quickly. A quarterly survey cannot reconstruct how seizures cycled across a given week, or how behavior shifted around them. Match the collection cadence to the phenomenon: event-level or daily capture for episodic dynamics, less frequent capture for slow-changing status. Decide the resolution your question truly needs before choosing an instrument, because it determines the method.',
+   links:[{t:'PFDD guidance series',u:'https://www.fda.gov/drugs/development-approval-process-drugs/fda-patient-focused-drug-development-guidance-series-enhancing-incorporation-patients-voice-medical'}]},
+ methods:{t:'Prospective capture: diaries, momentary assessment, wearables',tag:'Methods',
+   blurb:'Collect close to the event instead of asking people to remember it later.',
+   detail:'Prospective methods reduce recall error. Daily caregiver seizure diaries, ecological momentary assessment (brief in-the-moment prompts), and event-level app logging capture fine structure that surveys miss. Wearable seizure-detection devices and video can corroborate self-report. PFDD Guidance 4 addresses the technologies and standards for capturing outcome-assessment data this way, including digital tools.',
+   links:[{t:'PFDD guidance series',u:'https://www.fda.gov/drugs/development-approval-process-drugs/fda-patient-focused-drug-development-guidance-series-enhancing-incorporation-patients-voice-medical'},{t:'Trial readiness in rare DEEs (paper)',u:'https://pmc.ncbi.nlm.nih.gov/articles/PMC10834124/'}]},
+ qual:{t:'Qualitative and mixed methods, used on purpose',tag:'Methods',
+   blurb:'Detailed narratives and unmet needs are captured through interviews and focus groups, then analyzed systematically.',
+   detail:'Qualitative research is established best practice for understanding lived experience, not a fallback for when surveys fail. Semi-structured interviews and focus groups, analyzed rigorously, are how PFDD Guidance 1 and 2 derive the meaningful aspects of health and the concepts of interest that later become measures. If you need stories and context, plan a qualitative component rather than relying on free-text boxes.',
+   links:[{t:'PFDD guidance series',u:'https://www.fda.gov/drugs/development-approval-process-drugs/fda-patient-focused-drug-development-guidance-series-enhancing-incorporation-patients-voice-medical'}]},
+ standards:{t:'Data standards and common data models',tag:'Informatics',
+   blurb:'To pool or compare data across instruments, sites, and partners, they must share structure.',
+   detail:'A common data model gives every dataset the same shape. OMOP CDM is widely used for analysis across observational data; HL7 FHIR is the standard for exchange. Adopt the model before scaling collection, because retrofitting structure later is expensive and loses fidelity. Make the data FAIR, findable, accessible, interoperable, and reusable, so partners can actually use them.',
+   links:[{t:'OHDSI / OMOP data standardization',u:'https://www.ohdsi.org/data-standardization/'},{t:'OMOP Common Data Model',u:'https://ohdsi.github.io/CommonDataModel/'},{t:'FAIR principles',u:'https://www.go-fair.org/fair-principles/'}]},
+ vocab:{t:'Controlled vocabularies and phenotype coding',tag:'Informatics',
+   blurb:'Coded vocabularies make the same clinical concept mean the same thing everywhere.',
+   detail:'Code phenotypes with the Human Phenotype Ontology (HPO) and diseases with Mondo, and use SNOMED CT, LOINC, and RxNorm for clinical findings, labs, and medications. For genomic and phenotypic exchange, GA4GH Phenopackets package a person&#8217;s features and variants in a portable standard. Coding at the source is far easier than harmonizing free text afterward.',
+   links:[{t:'Human Phenotype Ontology',u:'https://hpo.jax.org/'},{t:'Mondo Disease Ontology',u:'https://mondo.monarchinitiative.org/'},{t:'GA4GH',u:'https://www.ga4gh.org/'}]},
+ exchange:{t:'EHR data exchange: FHIR, C-CDA, TEFCA',tag:'Informatics',
+   blurb:'Patients can bring their own records in, and networks are widening that reach.',
+   detail:'Under federal patient-access rules, families can authorize a health system to release records through a SMART on FHIR connection, or download and upload a C-CDA document. TEFCA, the national trusted exchange framework, broadens the reach further. Structured resources (conditions, medications, labs, reports) arrive first; documents and notes follow and may need text processing. Coverage and completeness vary by system.',
+   links:[{t:'HL7 FHIR',u:'https://www.hl7.org/fhir/'},{t:'SMART on FHIR',u:'https://smarthealthit.org/'},{t:'TEFCA (ONC)',u:'https://www.healthit.gov/topic/interoperability/policy/trusted-exchange-framework-and-common-agreement-tefca'}]},
+ linkage:{t:'Linking overlapping cohorts',tag:'Informatics',
+   blurb:'When a registry and an EHR or claims set are run by different groups, the same person appears more than once, or nowhere.',
+   detail:'Without a way to recognize the same individual across sources, you double-count, fragment each person&#8217;s story, and cannot follow people across settings. Options include deterministic keys where you have them, probabilistic matching otherwise, and privacy-preserving record linkage (tokenization) with an honest broker when identifiers cannot be shared. FDA expects sponsors to document how duplicate records for one person across de-identified sources are handled. Wrap any linkage in data-use agreements and governance.',
+   links:[{t:'Framework for FDA&#8217;s RWE Program (PDF)',u:'https://www.fda.gov/media/120060/download'}]},
+ governance:{t:'Consent, governance, and data sharing',tag:'Governance',
+   blurb:'Narrow or unclear consent will block the sharing, combining, or submission your goals require.',
+   detail:'Decide up front whether participants permit future research, sharing, and recontact, because you cannot add that permission later. Broad or tiered consent, an IRB, clear data governance, data-use agreements, and a return-of-results policy let the data be reused responsibly. AHRQ&#8217;s User&#8217;s Guide devotes a chapter to governance and to reusing existing data sources.',
+   links:[{t:'AHRQ Registries User&#8217;s Guide (4th ed.)',u:'https://effectivehealthcare.ahrq.gov/products/registries-guide-4th-edition/users-guide'},{t:'GA4GH (standards &amp; policy)',u:'https://www.ga4gh.org/'}]},
+ registries:{t:'Registry design best practice',tag:'Foundations',
+   blurb:'Plan goals and outcomes first; design, cadence, and a minimal core dataset follow.',
+   detail:'A contact registry, a natural-history study, and a trial-readiness cohort are different instruments with different rigor. Start a community registry light and low-burden, but structure it so it can mature into research-grade collection rather than being rebuilt. Define a standardized core dataset, a consistent cadence, and a retention plan, and reuse EHR data where you can. AHRQ&#8217;s User&#8217;s Guide is the standard reference.',
+   links:[{t:'AHRQ Registries User&#8217;s Guide (4th ed.)',u:'https://effectivehealthcare.ahrq.gov/products/registries-guide-4th-edition/users-guide'},{t:'User&#8217;s Guide on NCBI Bookshelf',u:'https://www.ncbi.nlm.nih.gov/books/NBK562575/'}]},
+ org:{t:'Nonprofit formation and governance',tag:'Organization',
+   blurb:'Research-grade ambitions need a formal legal home, a board, and basic governance.',
+   detail:'A group that wants to run a registry, support drug development, or hold data needs more than enthusiasm. In the United States this usually means incorporating, applying for tax-exempt status (commonly 501(c)(3)), adopting bylaws and a conflict-of-interest policy, and seating a board. Rare disease umbrella organizations publish starter guides, and an attorney or a fiscal sponsor can help you begin without building everything at once.',
+   links:[{t:'NORD',u:'https://rarediseases.org/'},{t:'Global Genes',u:'https://globalgenes.org/'},{t:'IRS: charitable organizations',u:'https://www.irs.gov/charities-non-profits/charitable-organizations'}]},
+ community:{t:'Community building and social media',tag:'Community',
+   blurb:'Your data depend on a community that trusts you and stays engaged.',
+   detail:'Recruitment and retention are the quiet determinants of whether a registry succeeds. A visible presence, a clear website, a newsletter, active social channels, and partnerships with clinics and other groups bring families in and keep them. Treat communication as infrastructure, not an afterthought, and design enrollment to be low burden so people come back.',
+   links:[{t:'NORD',u:'https://rarediseases.org/'},{t:'Global Genes',u:'https://globalgenes.org/'}]},
+ regulatory:{t:'Regulatory engagement and the patient voice',tag:'Regulatory',
+   blurb:'You can bring the patient experience to FDA in structured, recognized ways.',
+   detail:'Patient-focused drug development is the systematic route for getting patient and caregiver experience into regulatory thinking. Beyond FDA-led meetings, FDA welcomes patient organizations to host an externally-led PFDD meeting, modeled on the FDA process, which produces a Voice of the Patient report submitted to FDA and posted publicly. Genetic epilepsy groups have done this, for example the STXBP1 Foundation in 2023. FDA program staff can be reached at patientfocused@fda.hhs.gov.',
+   links:[{t:'FDA externally-led PFDD meetings',u:'https://www.fda.gov/industry/prescription-drug-user-fee-amendments/externally-led-patient-focused-drug-development-meetings'},{t:'CDER Patient-Focused Drug Development',u:'https://www.fda.gov/drugs/development-approval-process-drugs/cder-patient-focused-drug-development'}]},
+ funding:{t:'Funding and sustainability',tag:'Sustainability',
+   blurb:'A research program needs a funding plan beyond donations.',
+   detail:'Sustained data collection costs money. Most groups blend sources over time: individual donations, foundation and government grants, industry sponsorships tied to clear governance, and shared costs through partnerships and consortia. Plan for sustainability early, and keep sponsorship arrangements transparent so they do not compromise the independence of your data.',
+   links:[{t:'Candid Learning: free grant-writing courses and sample proposals',u:'https://learning.candid.org/'},{t:'Pitt HSLS: Find Research Funding',u:'https://hsls.libguides.com/grants'},{t:'Grants.gov',u:'https://www.grants.gov/'}]},
+ partnerships:{t:'Research partnerships',tag:'Partnerships',
+   blurb:'Most groups cannot reach trial-grade data alone; partners supply rigor and reach.',
+   detail:'Academic centers, data coordinating centers, and industry partners bring expertise, infrastructure, and scale that a single group rarely has. Decide what you need, a coordinating center, an analytic partner, a sponsor, and put data use agreements, authorship, and governance in writing before sharing data. Consortia let small cohorts combine into something statistically useful, which is why common structure and vocabularies matter from the start.',
+   links:[{t:'AHRQ Registries User&#8217;s Guide (governance)',u:'https://effectivehealthcare.ahrq.gov/products/registries-guide-4th-edition/users-guide'},{t:'OHDSI',u:'https://www.ohdsi.org/'}]}
+};
+const QSET=[
+ {key:'purpose',type:'multi',sec:'Part 1. Your data strategy',title:'What do you want the data to do? (select all)',help:'Your purposes set the bar for quality, structure, and rigor.',
+   find:'If you are not sure, start from a decision someone wants to make, not from an instrument. Ask your board and your families what choices they hope the data will support: which treatments to push for, which trial to enable, what to tell newly diagnosed families. Ask any research or industry partners what evidence would actually change their decisions. The answer you write down is your purpose. <a class="schip" onclick="openTopic(&#39;purpose&#39;)">Open the purpose topic</a>',opts:[
+   {v:'community',l:'Build community / contact registry',d:'Find and engage patients and families'},
+   {v:'nathist',l:'Natural history',d:'Describe how the condition changes over time'},
+   {v:'drugdev',l:'Support drug development',d:'Trial readiness, recruitment, endpoints'},
+   {v:'regulatory',l:'Evidence for a regulatory submission',d:'FDA or EMA decision-making'},
+   {v:'care',l:'Improve clinical care',d:'Quality improvement, care guidelines'},
+   {v:'geno',l:'Genotype-phenotype / biomarkers',d:'Mechanisms and subtypes'},
+   {v:'burden',l:'Document burden &amp; priorities',d:'What families experience and most want changed'}]},
+ {key:'phenom',type:'multi',title:'What do you most need to measure? (select all)',help:'',
+   find:'If unsure, write one or two sentences describing the thing you most want to understand, then notice whether it is an event that comes and goes, a slowly changing status, a one-time fact, a lived experience, or a response to treatment. A clinician or researcher who knows the condition can help you name it. <a class="schip" onclick="openTopic(&#39;methods&#39;)">See methods</a>',opts:[
+   {v:'episodic',l:'Fine-grained episodic events',d:'e.g., seizure cycling, clustering within a week'},
+   {v:'status',l:'Slow-changing status',d:'Development, comorbidities over months to years'},
+   {v:'onetime',l:'One-time characterization',d:'Genetics, diagnosis, demographics'},
+   {v:'narrative',l:'Lived experience &amp; narratives',d:'Detailed stories, unmet needs'},
+   {v:'response',l:'Treatment response &amp; safety',d:'Effects of therapies over time'}]},
+ {key:'cad',type:'matrix',title:'For each kind of data, how often do you need it, and how often do you collect it now?',help:'Pacing differs by data type. Genetic findings may be needed once or ad hoc; seizures daily or per event; quality of life weekly or monthly. Fill a row for each kind you care about; leave the rest blank.',
+   find:'If unsure, for each kind of data ask two things: how fast the thing you care about changes, which sets what you need, and how often you actually ask for it today, which is what you collect now. If you run more than one study or registry with different pacing, use your most granular need and your main current collection. The tool flags any kind collected more coarsely than you need. <a class="schip" onclick="openTopic(&#39;cadence&#39;)">Open the cadence topic</a>',
+   rows:[{k:'seizure',l:'Seizures / events'},{k:'genetic',l:'Genetic / molecular'},{k:'dev',l:'Development &amp; cognition'},{k:'qol',l:'Quality of life / function'},{k:'treat',l:'Medications &amp; treatment response'},{k:'util',l:'Healthcare use'}],
+   cads:[{v:'event',l:'Per event'},{v:'daily',l:'Daily'},{v:'weekly',l:'Weekly'},{v:'monthly',l:'Monthly'},{v:'quarterly',l:'Quarterly+'},{v:'adhoc',l:'Ad hoc / on change'},{v:'once',l:'Once'},{v:'none',l:'Not collected'}]},
+ {key:'duration',type:'single',title:'Over what span will you follow people?',help:'',
+   find:'If unsure, match the span to how long the question takes to answer: weeks for a short pilot, years for natural history. Your research partners can advise.',opts:[
+   {v:'weeks',l:'Weeks'},{v:'months',l:'Months'},{v:'years',l:'Years'},{v:'ongoing',l:'Ongoing / indefinite'}]},
+ {key:'stake',type:'multi',title:'Who will use the data? (select all)',help:'Each audience brings its own requirements.',
+   find:'If you are not sure, list everyone whose decisions you hope to influence, then ask each whether and how they would use your data. Families, clinicians, researchers, companies, regulators, and other registries each need something different. <a class="schip" onclick="openTopic(&#39;rwe&#39;)">See what regulators need</a>',opts:[
+   {v:'families',l:'Your community / families'},{v:'academ',l:'Academic researchers'},{v:'clinic',l:'Clinicians / care teams'},{v:'pharma',l:'Pharma / biotech'},{v:'reg',l:'Regulators (FDA/EMA)'},{v:'consortia',l:'Other registries / consortia',d:'Data must combine with theirs'}]},
+ {key:'sources',type:'multi',title:'What data sources do you have or plan? (select all)',help:'',
+   find:'If unsure, inventory what already exists, surveys, any registry, records families can pull from patient portals, and what partners could share under agreement. <a class="schip" onclick="openTopic(&#39;exchange&#39;)">See health record exchange</a>',opts:[
+   {v:'survey',l:'Caregiver / patient surveys'},{v:'diaryema',l:'Diaries / apps / momentary assessment'},{v:'wearable',l:'Wearables / devices'},{v:'ehrpat',l:'EHR via patient access',d:'SMART on FHIR, C-CDA download'},{v:'ehrsite',l:'EHR via site extraction',d:'Data-use agreement with a health system'},{v:'claims',l:'Claims data'},{v:'genetic',l:'Genetic test reports'},{v:'clinician',l:'Clinician-entered data'}]},
+ {key:'combine',type:'single',title:'Will you need to combine these data with other datasets?',help:'',
+   find:'If you are not sure, ask whether anyone, a consortium, a second registry, a company, will ever need to analyze your data together with theirs. If that is even possible later, answer yes. <a class="schip" onclick="openTopic(&#39;standards&#39;)">Why this matters early</a>',opts:[
+   {v:'yes',l:'Yes'},{v:'maybe',l:'Maybe / later'},{v:'no',l:'No'}]},
+ {key:'overlap',type:'single',title:'Do the same patients appear in more than one dataset you will use?',help:'For example, a registry and an EHR dataset run by different groups, with partial overlap.',
+   find:'If unsure, check whether your registry participants are also in a partner&#8217;s EHR or claims dataset. If different organizations recruited overlapping families, the answer is likely yes or unsure. <a class="schip" onclick="openTopic(&#39;linkage&#39;)">Open the linkage topic</a>',opts:[
+   {v:'yes',l:'Yes'},{v:'unsure',l:'Unsure'},{v:'no',l:'No'}]},
+ {key:'standards',type:'single',title:'Have you adopted common data standards yet?',help:'A common data model and coded vocabularies.',
+   find:'If you are not sure what this means, that is itself the answer: choose &#8220;Not sure what that means.&#8221; A short informatics review will tell you where you stand. <a class="schip" onclick="openTopic(&#39;standards&#39;)">Data standards</a> <a class="schip" onclick="openTopic(&#39;vocab&#39;)">Vocabularies</a>',opts:[
+   {v:'adopted',l:'Yes, in place'},{v:'partial',l:'Partially'},{v:'none',l:'Not yet'},{v:'unknown',l:'Not sure what that means'}]},
+ {key:'consent',type:'single',title:'Does your consent allow sharing and future research?',help:'',
+   find:'If you are not sure, read your consent form for words about future research, data sharing, and recontact, and ask your IRB or whoever wrote it. If you have no consent yet, plan it before collecting. <a class="schip" onclick="openTopic(&#39;governance&#39;)">Open the governance topic</a>',opts:[
+   {v:'broad',l:'Broad / tiered consent'},{v:'limited',l:'Limited to this project'},{v:'unsure',l:'Unsure'}]},
+ {key:'orgstage',type:'single',sec:'Part 2. Your organization and program',title:'Where is your organization in its formation?',help:'A research program needs a formal home to hold data and partnerships.',
+   find:'If unsure of your status, check whether you have filed for tax-exempt status and have bylaws and a board. If none of that exists yet, choose &#8220;No formal organization.&#8221; <a class="schip" onclick="openTopic(&#39;org&#39;)">Open the formation topic</a>',opts:[
+   {v:'notformed',l:'No formal organization yet'},{v:'informal',l:'Informal group or project'},{v:'nonprofit',l:'Formed nonprofit',d:'e.g., 501(c)(3)'},{v:'staffed',l:'Established with staff and board'}]},
+ {key:'presence',type:'multi',title:'How does your community connect today? (select all)',help:'Recruitment and retention decide whether a registry succeeds.',
+   find:'If unsure, look at where your families already gather and how you reach them. If you do not have much yet, choose &#8220;Not much yet.&#8221; <a class="schip" onclick="openTopic(&#39;community&#39;)">Open the community topic</a>',opts:[
+   {v:'social',l:'Social media presence'},{v:'active',l:'Active patient community'},{v:'web',l:'Website or newsletter'},{v:'partners',l:'Partnerships with other organizations'},{v:'none',l:'Not much yet'}]},
+ {key:'regengage',type:'single',title:'Have you engaged regulators on the patient experience?',help:'There are structured, recognized ways to bring the patient voice to FDA.',
+   find:'If you are not sure how, the regulatory topic explains patient-focused drug development and the externally-led route. FDA program staff can be reached at patientfocused@fda.hhs.gov. <a class="schip" onclick="openTopic(&#39;regulatory&#39;)">Open the regulatory topic</a>',opts:[
+   {v:'done',l:'Held or planned a PFDD / EL-PFDD'},{v:'submitted',l:'Submitted patient experience input to FDA'},{v:'notyet',l:'Not yet'},{v:'unsure',l:'Unsure how'}]},
+ {key:'funding',type:'single',title:'What is your funding situation?',help:'Sustained data collection needs a plan beyond donations.',
+   find:'If unsure, list your current and possible income sources: donations, grants, sponsorships, shared costs with partners. Rare disease umbrella organizations can help you plan. <a class="schip" onclick="openTopic(&#39;funding&#39;)">Open the funding topic</a>',opts:[
+   {v:'none',l:'No funding strategy yet'},{v:'donations',l:'Donations only'},{v:'grants',l:'Pursuing grants'},{v:'diversified',l:'Diversified',d:'Grants, sponsorships, partnerships'}]}
+];
+const CADLABELS={event:'per event',daily:'daily',weekly:'weekly',monthly:'monthly',quarterly:'quarterly or less',adhoc:'ad hoc / on change',once:'once',none:'not collected'};
+function qRender(q){
+  const sec=q.sec?`<h3 class="psec">${esc(q.sec)}</h3>`:'';
+  const find=q.find?`<details class="pfind"><summary>Not sure how to answer? How to find out</summary><div>${q.find}</div></details>`:'';
+  if(q.type==='matrix'){
+    const opt=`<option value="">&mdash;</option>`+q.cads.map(c=>`<option value="${c.v}">${c.l}</option>`).join('');
+    const rows=q.rows.map(r=>`<tr><td>${r.l}</td><td><select name="pq_cadneed_${r.k}">${opt}</select></td><td><select name="pq_cadhave_${r.k}">${opt}</select></td></tr>`).join('');
+    return `${sec}<div class="pcard"><div class="pq">${q.title}</div>${q.help?`<div class="ph">${esc(q.help)}</div>`:''}<table class="cmat"><thead><tr><th>Data type</th><th>Need</th><th>Collect now</th></tr></thead><tbody>${rows}</tbody></table>${find}</div>`;
+  }
+  return `${sec}<div class="pcard"><div class="pq">${q.title}</div>${q.help?`<div class="ph">${esc(q.help)}</div>`:''}<div class="popts">${(q.opts||[]).map(o=>`<label class="popt"><input type="${q.type==='multi'?'checkbox':'radio'}" name="pq_${q.key}" value="${esc(o.v)}"><span>${o.l}${o.d?`<span class="od">${esc(o.d)}</span>`:''}</span></label>`).join('')}</div>${find}</div>`;
+}
+function readSel(n){const e=document.querySelector('[name="'+n+'"]');return e?e.value:'';}
+function readMulti(k){return [...document.querySelectorAll('[name="pq_'+k+'"]:checked')].map(x=>x.value);}
+function readSingle(k){const e=document.querySelector('[name="pq_'+k+'"]:checked');return e?e.value:'';}
+function qlabel(key,val){const q=QSET.find(q=>q.key===key);if(!q)return val;const o=(q.opts||[]).find(o=>o.v===val);return o?o.l.replace(/&amp;/g,'&'):val;}
+VIEWS.planner=()=>`
+  <div class="crumbs">Planning tools &rsaquo; <b>Data Strategy Self-Assessment</b></div>
+  <h2>Data Strategy Self-Assessment</h2>
+  <p class="muted" style="max-width:840px">Advocacy groups often choose questionnaires, data types, and a collection schedule, then learn too late that the data are not granular enough, not shareable, or not accepted for the purpose they cared about. This tool walks the choices in the right order, flags mismatches, and points to fit-for-purpose strategies.</p>
+  <div class="note">Answer what you can; items are skippable and nothing is stored. You will get tailored watch-outs, a recommended strategy, a next-steps checklist, links to learn more, and a downloadable summary to bring to partners.</div>
+  <form id="planform" onsubmit="return false">${QSET.map(qRender).join('')}</form>
+  <div class="flexrow"><a class="btn" id="plangen">Generate my plan &rarr;</a><a class="btn sec" data-view="planlib">Skip to the strategy library</a></div>
+  <div id="planout" style="margin-top:18px"></div>
+`;
+function generatePlan(){
+  const P={purpose:readMulti('purpose'),phenom:readMulti('phenom'),cadence:readSingle('cadence'),duration:readSingle('duration'),stake:readMulti('stake'),sources:readMulti('sources'),combine:readSingle('combine'),overlap:readSingle('overlap'),standards:readSingle('standards'),consent:readSingle('consent'),curcad:readSingle('curcad'),orgstage:readSingle('orgstage'),presence:readMulti('presence'),regengage:readSingle('regengage'),funding:readSingle('funding')};
+  const has=(a,v)=>a.indexOf(v)>=0;
+  const o=$('#planout');
+  if(!P.purpose.length&&!P.phenom.length){if(o){o.innerHTML='<div class="note">Pick at least your purpose and what you need to measure, then generate.</div>';o.scrollIntoView({behavior:'smooth'});}return;}
+  const needs=[],flags=[],recs=[],steps=[],topicSet={};
+  const addT=(...ids)=>ids.forEach(i=>topicSet[i]=1);
+  needs.push('Let the question drive every choice. Decide the decision your data must support before you pick instruments, cadence, method, standards, or partners.');addT('purpose');
+  const onlySurvey=P.sources.length&&P.sources.every(s=>s==='survey');
+  const CADO={event:1,daily:2,weekly:3,monthly:4,quarterly:5,adhoc:6,once:7,none:9,'':9};
+  const cadRows=QSET.find(q=>q.key==='cad').rows;
+  const mat={};cadRows.forEach(r=>{mat[r.k]={l:r.l.replace(/&amp;/g,'&'),need:readSel('pq_cadneed_'+r.k),have:readSel('pq_cadhave_'+r.k)};});
+  P.cad=mat;
+  const fineNeed=has(P.phenom,'episodic')||Object.values(mat).some(m=>['event','daily','weekly'].indexOf(m.need)>=0);
+  const mism=[];
+  Object.values(mat).forEach(m=>{
+    if(['event','daily','weekly','monthly'].indexOf(m.need)>=0 && ['monthly','quarterly','once','none',''].indexOf(m.have)>=0 && CADO[m.have]>CADO[m.need])
+      mism.push(m.l+' (need '+CADLABELS[m.need]+', '+(m.have?'collect '+CADLABELS[m.have]:'not collected yet')+')');
+  });
+  if(fineNeed)
+    needs.push('Fine-grained, episodic data like seizure cycling, clustering, and brief behavioral change must be captured at or near the moment they happen; slower-changing data can be collected less often, and one-time facts like genetics only once or when they change.');
+  if(mism.length||onlySurvey){
+    const list=mism.length?(' This shows up for: '+mism.join('; ')+'.'):'';
+    flags.push([true,'<b>Recall window vs. temporal resolution.</b> Some data are needed at a finer pace than you collect them.'+list+' Recall cannot reconstruct counts, clustering, or change at that resolution, so those data will not answer the question no matter how much you gather.']);
+  }
+  if(fineNeed){
+    recs.push(['Match each data type to its own pace, and add prospective capture where it is fast','Pace by data type rather than forcing one schedule on everything: per-event or daily capture for seizures, weekly or monthly for quality of life, ad hoc or once for genetics. For the fast-changing data, collect close to the event instead of asking people to remember it: caregiver diaries, ecological momentary assessment, event-level app logging, and where available wearable seizure-detection and video. PFDD Guidance 4 covers technologies and standards for this kind of capture.',['cadence','methods','pfdd']]);addT('cadence','methods','pfdd');
+  }
+  if(has(P.phenom,'narrative')||has(P.purpose,'burden')){
+    recs.push(['Use qualitative and mixed methods on purpose','Detailed narratives, lived experience, and what families most want changed are captured through semi-structured interviews and focus groups, analyzed systematically. This is established best practice, and it is how PFDD Guidance 1 and 2 derive the meaningful aspects of health and concepts of interest that later become measures.',['qual','pfdd']]);addT('qual','pfdd');
+    if(has(P.phenom,'narrative')&&onlySurvey)
+      flags.push([false,'<b>Narratives need a method built for them.</b> Closed-ended surveys cannot capture detailed stories. Plan a qualitative component rather than relying on free-text boxes.']);
+  }
+  const multiSource=P.sources.length>1;
+  if(['yes','maybe'].indexOf(P.combine)>=0||has(P.stake,'consortia')||multiSource){
+    needs.push('Data from different instruments, sites, and partners must share a common structure and vocabulary, or they cannot be pooled or compared.');
+    if(['none','partial','unknown'].indexOf(P.standards)>=0)
+      flags.push([true,'<b>No common data model yet, but you need to combine data.</b> Combining later without shared structure and coded vocabularies forces expensive remapping and loses fidelity. Decide the model before you scale collection.']);
+    recs.push(['Adopt common data models and vocabularies early','Use a common data model for analysis (OMOP CDM) and a standard for exchange (HL7 FHIR), and code content with established vocabularies: HPO for phenotypes, Mondo for diseases, plus SNOMED CT, LOINC, and RxNorm. Make the data FAIR so partners can actually use them.',['standards','vocab','exchange']]);addT('standards','vocab','exchange');
+  }
+  const recordsAndReported=(has(P.sources,'ehrpat')||has(P.sources,'ehrsite')||has(P.sources,'claims'))&&(has(P.sources,'survey')||has(P.sources,'diaryema'));
+  if(['yes','unsure'].indexOf(P.overlap)>=0||recordsAndReported){
+    flags.push([P.overlap==='yes','<b>Overlapping people across datasets must be linked.</b> When a registry and an EHR or claims dataset are run by different organizations with only partial overlap, the same person appears more than once and others appear nowhere. Without linkage you double-count, fragment each person&#8217;s story, and cannot follow individuals across settings.']);
+    recs.push(['Plan record linkage and a master-person strategy','Decide how you will recognize the same individual across sources: deterministic keys where you have them, probabilistic matching otherwise, or privacy-preserving record linkage (tokenization) with an honest broker when identifiers cannot be shared. Wrap it in data-use agreements and governance. FDA expects you to document how duplicate records for one person across sources are handled.',['linkage','governance']]);addT('linkage','governance');
+  }
+  const regPath=has(P.purpose,'regulatory')||has(P.purpose,'drugdev')||has(P.stake,'reg');
+  if(regPath){
+    needs.push('For regulatory use, the evidence must be relevant and reliable (fit-for-purpose) for the specific question, capturing the right population, exposures, and outcomes with documented quality and provenance.');
+    recs.push(['Build to FDA&#8217;s relevance and reliability standard from day one','Define the question and a prospective protocol and analysis plan up front. Ensure provenance and traceability back to source, data-quality checks, and an audit trail. Validate endpoints and outcome measures (PFDD), and prepare submission datasets to CDISC standards. Engage FDA early; for rare conditions, the Rare Disease Endpoint Advancement pilot is a route.',['rwe','pfdd']]);addT('rwe','pfdd');
+    if(onlySurvey)
+      flags.push([false,'<b>Self-report alone may not meet regulatory reliability.</b> Uncorroborated questionnaire data are often insufficient on their own. Plan to corroborate key outcomes with source records or validated measures.']);
+  }
+  if(has(P.purpose,'drugdev')){
+    needs.push('Drug-development support needs a recruitable, well-characterized cohort: genotype, recontact consent, and outcomes that can become trial endpoints.');
+    recs.push(['Develop fit-for-purpose clinical outcome assessments','Work through the COA categories (patient-reported, observer-reported, clinician-reported, performance), moving from disease understanding to the concepts families prioritize to a chosen measure. In developmental and epileptic encephalopathies, observer-reported caregiver measures are central and seizure-diary endpoints are hard, so design them deliberately. Capture genotype and recontact consent, and build natural-history data that could support external controls.',['pfdd','registries']]);addT('pfdd','registries');
+  }
+  if(has(P.purpose,'nathist')){
+    recs.push(['Design a prospective longitudinal natural history','Define a standardized core dataset, a consistent cadence, and a retention plan so you measure change rather than a single snapshot. Link to EHR where you can for objective measures and to reduce burden.',['registries','standards']]);addT('registries','standards');
+  }
+  if(has(P.purpose,'community')){
+    recs.push(['Keep the contact registry light, but design it to mature','Start with a minimal, low-burden dataset and consent for recontact, and structure it now so it can grow into research-grade collection rather than being rebuilt. Treat this as the first stage of a maturity path.',['registries','governance']]);addT('registries','governance');
+  }
+  if((['yes','maybe'].indexOf(P.combine)>=0||regPath||has(P.stake,'consortia'))&&['limited','unsure'].indexOf(P.consent)>=0){
+    flags.push([true,'<b>Consent may not permit the sharing or secondary use your goals require.</b> If you intend to combine, share, or submit data, narrow or unclear consent will block you later. Fix this at enrollment, not afterward.']);
+    recs.push(['Strengthen consent and governance','Use broad or tiered consent for future research and sharing, with clear data governance, IRB oversight, data-use agreements, and a return-of-results policy. Align to FAIR sharing so the data are reusable by design.',['governance']]);addT('governance');
+  }
+  const research=has(P.purpose,'nathist')||has(P.purpose,'drugdev')||has(P.purpose,'regulatory')||has(P.purpose,'geno');
+  if(research&&['notformed','informal'].indexOf(P.orgstage)>=0){
+    flags.push([false,'<b>Research-grade goals need a formal home.</b> Holding data, signing agreements, and partnering on drug development are hard without a legal entity and basic governance. Put the structure in place before you scale.']);
+    recs.push(['Form and govern the organization','Incorporate, seek tax-exempt status (commonly 501(c)(3)), adopt bylaws and a conflict-of-interest policy, and seat a board. A fiscal sponsor or an attorney can help you start without building everything at once. Rare disease umbrella organizations publish starter guides.',['org','partnerships']]);addT('org','partnerships');
+  }
+  if((has(P.purpose,'drugdev')||has(P.purpose,'burden')||has(P.stake,'reg'))&&['notyet','unsure',''].indexOf(P.regengage)>=0){
+    recs.push(['Bring the patient experience to regulators','Patient-focused drug development is the recognized route for getting patient and caregiver experience into FDA thinking. You can host an externally-led PFDD meeting, modeled on FDA&#8217;s, which yields a Voice of the Patient report submitted to FDA and posted publicly. Genetic epilepsy groups have done this. Contact FDA program staff at patientfocused@fda.hhs.gov.',['regulatory','pfdd']]);addT('regulatory','pfdd');
+  }
+  if((has(P.purpose,'community')||has(P.purpose,'nathist')||has(P.purpose,'drugdev'))&&(has(P.presence,'none')||!P.presence.length)){
+    recs.push(['Build the community your data depend on','Recruitment and retention decide whether a registry succeeds. Invest in a clear presence and partnerships, a website, a newsletter, active channels, links with clinics and other groups, and keep enrollment low burden so families come back.',['community']]);addT('community');
+  }
+  if(research&&['none','donations'].indexOf(P.funding)>=0){
+    recs.push(['Plan funding and sustainability','Sustained collection costs money. Blend donations, foundation and government grants, transparent industry sponsorships, and shared costs through partnerships, and plan for it early rather than after the data stall.',['funding','partnerships']]);addT('funding','partnerships');
+  }
+  if(P.standards==='unknown')
+    steps.push('Commission a short informatics and data-architecture review before you scale collection.');
+  if(flags.some(f=>f[0])) steps.unshift('Resolve the high-priority watch-outs below before collecting more data.');
+  steps.push('Write the single decision your data must support, and the population, exposures, and outcomes it implies.');
+  if(fineNeed) steps.push('Pilot a prospective daily or event-level capture method with a few families before committing.');
+  if(['yes','maybe'].indexOf(P.combine)>=0||multiSource) steps.push('Choose your common data model and vocabularies now, and map every instrument to them.');
+  if(['yes','unsure'].indexOf(P.overlap)>=0||recordsAndReported) steps.push('Define how you will link the same person across datasets, and put agreements in place.');
+  if(regPath) steps.push('Draft a protocol and analysis plan, and request an early conversation with FDA.');
+  if(research&&['notformed','informal'].indexOf(P.orgstage)>=0) steps.push('Decide your legal and governance structure before you scale collection.');
+  if((has(P.purpose,'drugdev')||has(P.purpose,'burden'))&&['notyet','unsure',''].indexOf(P.regengage)>=0) steps.push('Plan a patient-focused or externally-led PFDD activity, and contact FDA program staff.');
+  steps.push('Open the Strategy Library for the topics flagged for you, and bring this summary to your partners.');
+  const sec=(title,inner)=>`<div class="repsec"><h3>${esc(title)}</h3>${inner}</div>`;
+  const chip=id=>`<a class="schip" onclick="openTopic('${id}')">${KB[id].t}</a>`;
+  let html='';
+  html+=sec('What your goals require','<ul>'+needs.map(n=>`<li>${esc(n)}</li>`).join('')+'</ul>');
+  if(flags.length) html+=sec('Watch-outs in your current plan', flags.sort((a,b)=>(b[0]?1:0)-(a[0]?1:0)).map(f=>`<div class="flag${f[0]?' hi':''}">${f[1]}</div>`).join(''));
+  html+=sec('Recommended strategy', recs.map(r=>`<div class="rec"><div class="rt">${r[0]}</div>${esc(r[1])}${r[2]&&r[2].length?('<div class="chips2">'+r[2].map(chip).join('')+'</div>'):''}</div>`).join(''));
+  html+=sec('Your prioritized next steps','<ul class="checklist">'+steps.map(s=>`<li>${esc(s)}</li>`).join('')+'</ul>');
+  const tlist=Object.keys(topicSet);
+  if(tlist.length) html+=sec('Learn more','<div class="chips2">'+tlist.map(chip).join('')+'</div>');
+  html+=`<div class="flexrow"><a class="btn sm" id="pldl">&#8681; Download this plan</a><a class="btn sm sec" data-view="planlib">Open the strategy library</a></div>`;
+  o.innerHTML='<h2 style="margin-top:6px">Your fit-for-purpose plan</h2>'+html;
+  wireViews(o);
+  const dl=$('#pldl'); if(dl)dl.onclick=()=>dlPlan(P,needs,flags,recs,steps);
+  o.scrollIntoView({behavior:'smooth'});
+}
+function dlPlan(P,needs,flags,recs,steps){
+  const L=['Rare Epilepsy Registry — Data Strategy Self-Assessment','Generated by the demonstration planning tool','',''];
+  L.push('YOUR INPUTS');
+  QSET.forEach(q=>{
+    if(q.type==='matrix'){const mat=P.cad||{};L.push('  - '+q.title.replace(/&amp;/g,'&')+':');q.rows.forEach(r=>{const m=mat[r.k]||{};if(m.need||m.have)L.push('      '+r.l.replace(/&amp;/g,'&')+': need '+(m.need?CADLABELS[m.need]:'-')+', collect '+(m.have?CADLABELS[m.have]:'-'));});return;}
+    const v=P[q.key];const txt=Array.isArray(v)?v.map(x=>qlabel(q.key,x)).join('; '):qlabel(q.key,v);L.push('  - '+q.title.replace(/&amp;/g,'&')+': '+(txt||'(not answered)'));});
+  L.push('','WHAT YOUR GOALS REQUIRE');needs.forEach(n=>L.push('  - '+n));
+  if(flags.length){L.push('','WATCH-OUTS');flags.forEach(f=>L.push('  ['+(f[0]?'HIGH':'note')+'] '+f[1].replace(/<[^>]+>/g,'').replace(/&#8217;/g,"'").replace(/&amp;/g,'&')));}
+  L.push('','RECOMMENDED STRATEGY');recs.forEach(r=>{L.push('  * '+r[0].replace(/&#8217;/g,"'"));L.push('    '+r[1].replace(/&#8217;/g,"'"));if(r[2])L.push('    Learn more: '+r[2].map(id=>KB[id].t.replace(/&[^;]+;/g,'')).join('; '));});
+  L.push('','PRIORITIZED NEXT STEPS');steps.forEach((s,i)=>L.push('  '+(i+1)+'. '+s.replace(/&#8217;/g,"'")));
+  L.push('','Planning guidance from a demonstration tool. Not regulatory advice.');
+  const blob=new Blob([L.join('\n')],{type:'text/plain'});const u=URL.createObjectURL(blob);const a=document.createElement('a');a.href=u;a.download='data-strategy-plan.txt';a.click();setTimeout(()=>URL.revokeObjectURL(u),1500);
+}
+VIEWS.planlib=()=>`
+  <div class="crumbs">Planning tools &rsaquo; <b>Strategy Library</b></div>
+  <h2>Data Strategy Library</h2>
+  <p class="muted" style="max-width:840px">Deeper detail on each topic in the self-assessment, with verified sources to go further. Tap a card to expand it.</p>
+  <div class="flexrow"><a class="btn sec sm" data-view="planner">&larr; Back to the self-assessment</a><a class="btn sec sm" data-view="planres">Resource directory</a></div>
+  <div id="kblist" style="margin-top:12px">${Object.entries(KB).map(([id,k])=>`
+    <div class="kbcard" id="kb_${id}">
+      <div class="kbhd" onclick="toggleKB('${id}')"><span class="kbtag">${esc(k.tag)}</span> <b>${k.t}</b><span class="kbtoggle" id="kbt_${id}">+</span></div>
+      <div class="kbblurb">${k.blurb}</div>
+      <div class="kbdetail hide" id="kbd_${id}"><p>${k.detail}</p>${k.links&&k.links.length?('<div class="kblinks">'+k.links.map(l=>`<a href="${l.u}" target="_blank" rel="noopener">${l.t} &#8599;</a>`).join('')+'</div>'):''}</div>
+    </div>`).join('')}</div>
+`;
+function toggleKB(id){const d=$('#kbd_'+id),t=$('#kbt_'+id);if(!d)return;const hidden=d.classList.toggle('hide');if(t)t.textContent=hidden?'+':'\u2212';}
+function openKB(id){const d=$('#kbd_'+id),t=$('#kbt_'+id),c=$('#kb_'+id);if(d)d.classList.remove('hide');if(t)t.textContent='\u2212';if(c)c.scrollIntoView({behavior:'smooth',block:'center'});}
+function openTopic(id){window._topic=id;go('planlib');}
+const RESCATS=['Regulatory and evidence','Standards and interoperability','Methods','Registry and governance','Organization, community and funding','Sources and ontologies behind this resource','Library guides: registries and rare disease','Library guides: methods and analysis','Library guides: grant writing and funding','Library guides: curated public collections'];
+const RES=[
+ {t:'FDA: Framework for the Real-World Evidence Program (PDF)',u:'https://www.fda.gov/media/120060/download',cat:'Regulatory and evidence',topics:['rwe']},
+ {t:'FDA: Real-World Evidence program',u:'https://www.fda.gov/science-research/science-and-research-special-topics/real-world-evidence',cat:'Regulatory and evidence',topics:['rwe']},
+ {t:'FDA: Patient-Focused Drug Development guidance series',u:'https://www.fda.gov/drugs/development-approval-process-drugs/fda-patient-focused-drug-development-guidance-series-enhancing-incorporation-patients-voice-medical',cat:'Regulatory and evidence',topics:['pfdd','regulatory']},
+ {t:'FDA: Externally-led PFDD meetings',u:'https://www.fda.gov/industry/prescription-drug-user-fee-amendments/externally-led-patient-focused-drug-development-meetings',cat:'Regulatory and evidence',topics:['regulatory']},
+ {t:'FDA: CDER Patient-Focused Drug Development',u:'https://www.fda.gov/drugs/development-approval-process-drugs/cder-patient-focused-drug-development',cat:'Regulatory and evidence',topics:['regulatory','pfdd']},
+ {t:'FDA: Rare Disease Endpoint Advancement pilot',u:'https://www.fda.gov/drugs/development-resources/rare-disease-endpoint-advancement-pilot-program',cat:'Regulatory and evidence',topics:['rwe','pfdd']},
+ {t:'CDISC standards',u:'https://www.cdisc.org/',cat:'Regulatory and evidence',topics:['rwe','standards']},
+ {t:'OHDSI: data standardization',u:'https://www.ohdsi.org/data-standardization/',cat:'Standards and interoperability',topics:['standards']},
+ {t:'OMOP Common Data Model documentation',u:'https://ohdsi.github.io/CommonDataModel/',cat:'Standards and interoperability',topics:['standards']},
+ {t:'HL7 FHIR',u:'https://www.hl7.org/fhir/',cat:'Standards and interoperability',topics:['exchange']},
+ {t:'SMART Health IT',u:'https://smarthealthit.org/',cat:'Standards and interoperability',topics:['exchange']},
+ {t:'TEFCA (ONC)',u:'https://www.healthit.gov/topic/interoperability/policy/trusted-exchange-framework-and-common-agreement-tefca',cat:'Standards and interoperability',topics:['exchange']},
+ {t:'FAIR principles',u:'https://www.go-fair.org/fair-principles/',cat:'Standards and interoperability',topics:['standards']},
+ {t:'GA4GH (Phenopackets)',u:'https://www.ga4gh.org/',cat:'Standards and interoperability',topics:['standards','vocab']},
+ {t:'PFDD trial readiness in rare DEEs (paper)',u:'https://pmc.ncbi.nlm.nih.gov/articles/PMC10834124/',cat:'Methods',topics:['methods','pfdd','cadence']},
+ {t:'AHRQ: Registries for Evaluating Patient Outcomes (4th ed.)',u:'https://effectivehealthcare.ahrq.gov/products/registries-guide-4th-edition/users-guide',cat:'Registry and governance',topics:['registries','governance']},
+ {t:'AHRQ User&#8217;s Guide on NCBI Bookshelf',u:'https://www.ncbi.nlm.nih.gov/books/NBK562575/',cat:'Registry and governance',topics:['registries']},
+ {t:'NORD (National Organization for Rare Disorders)',u:'https://rarediseases.org/',cat:'Organization, community and funding',topics:['org','community']},
+ {t:'Global Genes',u:'https://globalgenes.org/',cat:'Organization, community and funding',topics:['org','community','partnerships']},
+ {t:'IRS: charitable organizations (501(c)(3))',u:'https://www.irs.gov/charities-non-profits/charitable-organizations',cat:'Organization, community and funding',topics:['org']},
+ {t:'Human Phenotype Ontology',u:'https://hpo.jax.org/',cat:'Sources and ontologies behind this resource',topics:['vocab']},
+ {t:'Mondo Disease Ontology',u:'https://mondo.monarchinitiative.org/',cat:'Sources and ontologies behind this resource',topics:['vocab']},
+ {t:'GenomeConnect (ClinGen)',u:'https://www.genomeconnect.org/',cat:'Sources and ontologies behind this resource',topics:['exchange','partnerships']},
+ {t:'SFARI Base (Simons Searchlight)',u:'https://www.sfari.org/resource/sfari-base/',cat:'Sources and ontologies behind this resource',topics:[]},
+ {t:'CoRDS rare disease registry (Sanford)',u:'https://research.sanfordhealth.org/rare-disease-registry',cat:'Sources and ontologies behind this resource',topics:['registries']},
+ {t:'KCNMA1 Patient Survey (KCIAF / Meredith Lab)',u:'https://meredithlab.org/survey/',cat:'Sources and ontologies behind this resource',topics:[]},
+ {t:'All of Us survey explorer',u:'https://www.researchallofus.org/data-tools/survey-explorer/',cat:'Sources and ontologies behind this resource',topics:['standards']},
+ {t:'AHRQ Registries User&#8217;s Guide (full text, NCBI Bookshelf)',u:'https://www.ncbi.nlm.nih.gov/books/NBK562581/',cat:'Library guides: registries and rare disease',topics:['registries']},
+ {t:'VCU: Rare Diseases Information Toolkit (patients, families, advocates)',u:'https://guides.library.vcu.edu/rarediseases',cat:'Library guides: registries and rare disease',topics:['registries','community']},
+ {t:'NCATS: for rare disease patients and advocates',u:'https://ncats.nih.gov/resources/for-rare-disease-patients-and-advocates',cat:'Library guides: registries and rare disease',topics:['registries','community','partnerships']},
+ {t:'University of Illinois: Qualitative Data Analysis',u:'https://guides.library.illinois.edu/qualitative',cat:'Library guides: methods and analysis',topics:['qual','methods']},
+ {t:'UC Berkeley: Research Methods (quantitative, qualitative, mixed)',u:'https://guides.lib.berkeley.edu/c.php?g=1262657',cat:'Library guides: methods and analysis',topics:['methods','qual']},
+ {t:'Duke: Qualitative Research (sampling and mechanics)',u:'https://guides.library.duke.edu/qualitative-research',cat:'Library guides: methods and analysis',topics:['qual']},
+ {t:'Seton Hall: Research Methods (quantitative)',u:'https://library.shu.edu/data-services/ResearchMethods/quantitative',cat:'Library guides: methods and analysis',topics:['methods']},
+ {t:'Penn: Qualitative Data Analysis Tools (ATLAS.ti, NVivo, CAQDAS)',u:'https://guides.library.upenn.edu/QDA',cat:'Library guides: methods and analysis',topics:['qual','methods']},
+ {t:'Pitt HSLS: Find Research Funding (health sciences, NIH)',u:'https://hsls.libguides.com/grants',cat:'Library guides: grant writing and funding',topics:['funding']},
+ {t:'Harvard: Grants and Grant Makers',u:'https://guides.library.harvard.edu/c.php?g=576568',cat:'Library guides: grant writing and funding',topics:['funding']},
+ {t:'Michigan State: Grants and Related Resources',u:'https://libguides.lib.msu.edu/c.php?g=96743',cat:'Library guides: grant writing and funding',topics:['funding']},
+ {t:'Candid Learning (free courses, sample proposals)',u:'https://learning.candid.org/',cat:'Library guides: grant writing and funding',topics:['funding','org']},
+ {t:'Los Angeles Public Library: Grants',u:'https://www.lapl.org/collections-resources/research-guides/grants',cat:'Library guides: grant writing and funding',topics:['funding']},
+ {t:'South Carolina State Library: Grants research assistance',u:'https://guides.statelibrary.sc.gov/grants-research-assistance',cat:'Library guides: grant writing and funding',topics:['funding']},
+ {t:'UNLV: Consumer Health Resources (incl. NORD database)',u:'https://guides.library.unlv.edu/ConsumerHealthInfo',cat:'Library guides: curated public collections',topics:['community']},
+ {t:'RDCRN: Patient Advocacy Groups hub',u:'https://www.rarediseasesnetwork.org/patient-advocacy-groups',cat:'Library guides: curated public collections',topics:['community','org','partnerships']}
+];
+VIEWS.planres=()=>`
+  <div class="crumbs">Planning tools &rsaquo; <b>Resource Directory</b></div>
+  <h2>Resource Directory</h2>
+  <p class="muted" style="max-width:840px">Verified resources, cross-referenced to the topics in the self-assessment. Tap a topic tag to open its entry in the Strategy Library.</p>
+  <div class="flexrow"><a class="btn sec sm" data-view="planner">&larr; Self-assessment</a><a class="btn sec sm" data-view="planlib">Strategy library</a></div>
+  ${RESCATS.map(c=>{const rows=RES.filter(r=>r.cat===c);return rows.length?`<div class="resgrp"><h3>${esc(c)}</h3>${rows.map(r=>`<div class="resrow"><a class="rl" href="${r.u}" target="_blank" rel="noopener">${r.t} &#8599;</a><span class="rtags">${(r.topics||[]).filter(id=>KB[id]).map(id=>`<a class="schip" onclick="openTopic('${id}')">${KB[id].t}</a>`).join('')}</span></div>`).join('')}</div>`:'';}).join('')}
+  <div class="note" style="margin-top:14px">This directory is seeded with verified resources and is built to grow. Group-specific and community-contributed resources can be slotted under the same topics.</div>
+`;
+
+/* ============ router ============ */
+function go(view){
+  const fn=VIEWS[view]||VIEWS.home;
+  main.innerHTML=fn();
+  document.querySelectorAll('.side .nav').forEach(a=>a.classList.toggle('active',a.dataset.view===view));
+  window.scrollTo(0,0);
+  bind(view);
+}
+function bind(view){
+  wireViews(main);
+  if(view==='participant')pShow(0);
+  if(view==='connect'){cIdx=0;renderConnect();$('#cback').onclick=()=>advC(-1);$('#cnext').onclick=()=>advC(1);}
+  if(view==='ccda'){cdIdx=0;renderCd();$('#cdback').onclick=()=>advCd(-1);$('#cdnext').onclick=()=>advCd(1);}
+  if(view==='comprehensive')compLoad();
+  if(view==='planner'){const g=$('#plangen'); if(g)g.onclick=generatePlan;}
+  if(view==='planlib'){if(window._topic){openKB(window._topic);window._topic=null;}}
+  if(/^survey_/.test(view)){
+    const inputs=main.querySelectorAll('.q input, .q textarea, .q select');const groups=main.querySelectorAll('.q');
+    const upd=()=>{let done=0;groups.forEach(g=>{if(g.querySelector('input:checked')||[...g.querySelectorAll('input[type=text],textarea')].some(x=>x.value))done++;});const pct=groups.length?Math.round(done/groups.length*100):0;const p=$('#prog');if(p)p.style.width=pct+'%';const pt=$('#progtxt');if(pt)pt.textContent=pct+'% complete';};
+    inputs.forEach(i=>{i.addEventListener('change',upd);i.addEventListener('input',upd);});
+    const sb=$('#submit-survey');if(sb)sb.onclick=()=>toast('Demo: survey submitted');
+  }
+}
+document.querySelectorAll('.side .nav').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();go(a.dataset.view);}));
+go('home');
+</script>
+</body>
+</html>
