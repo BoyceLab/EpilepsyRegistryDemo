@@ -185,6 +185,14 @@ ul{font-size:12.5px}
 .article blockquote{margin:12px 0;padding:8px 14px;border-left:3px solid var(--brand);background:#f6f1fe;border-radius:0 7px 7px 0;color:#4c1d95;font-size:12.5px}
 .article blockquote p{margin:0;color:#4c1d95}
 .gd-nav{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 4px}
+.mm-track{margin:16px 0 4px}
+.mm-tname{font-size:14px;font-weight:800;color:var(--brand-deep);background:#f3eefc;border-left:4px solid var(--brand);padding:7px 11px;border-radius:6px;margin-bottom:8px}
+.mm-stage{border:1px solid var(--line);border-radius:8px;padding:9px 12px;margin:7px 0;background:#fff}
+.mm-shd{font-size:12.5px;color:var(--ink);margin-bottom:3px}
+.mm-snum{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#fff;background:var(--accent);padding:2px 7px;border-radius:10px;margin-right:6px}
+.mm-q{font-size:12px;color:#3a3350;margin-bottom:5px}
+.mm-sub{font-size:11.5px;color:var(--muted);margin:2px 0}
+.mm-sub span{font-weight:700;color:var(--brand-deep)}
 </style>
 </head>
 <body>
@@ -218,6 +226,9 @@ ul{font-size:12.5px}
       <div class="grphd">Health Records</div>
       <a class="nav" data-view="connect"><span class="ic">&#9883;</span>Connect Health Records</a>
       <a class="nav" data-view="ccda"><span class="ic">&#128193;</span>Download &amp; Upload (C-CDA)</a>
+      <a class="nav" data-view="pathways"><span class="ic">&#128506;&#65039;</span>Acquisition pathways</a>
+      <a class="nav" data-view="hipaa"><span class="ic">&#128220;</span>HIPAA authorization</a>
+      <a class="nav" data-view="tefca"><span class="ic">&#128225;</span>Network exchange (TEFCA/IAS)</a>
     </div>
     <div class="grp">
       <div class="grphd">Applications</div>
@@ -226,6 +237,8 @@ ul{font-size:12.5px}
     </div>
     <div class="grp">
       <div class="grphd">Planning tools</div>
+      <a class="nav" data-view="maturity"><span class="ic">&#128200;</span>Maturity model</a>
+      <a class="nav" data-view="maturity_sa"><span class="ic">&#128203;</span>Maturity self-assessment</a>
       <a class="nav" data-view="planner"><span class="ic">&#129517;</span>Data Strategy Self-Assessment</a>
       <a class="nav" data-view="planlib"><span class="ic">&#128218;</span>Strategy Library</a>
       <a class="nav" data-view="planres"><span class="ic">&#128279;</span>Resource Directory</a>
@@ -247,10 +260,10 @@ ul{font-size:12.5px}
 <div class="crumbs"><a data-view="home">Home</a> &rsaquo; Guides &rsaquo; <b>Meeting a Registry Vendor</b></div>
 <h2 id="how-to-meet-with-a-patient-registry-vendor">How to Meet with a
 Patient Registry Vendor</h2>
-<p><em>Part one of a series for patient advocacy groups on working with
-registry vendors. This post covers how to prepare for and run the
-meeting itself. Part two is an addendum on electronic health record
-data, which is the piece that trips groups up the most.</em></p>
+<p><em>Part one of a series for advocacy groups on working with registry
+vendors. This post covers how to prepare for and run the meeting itself.
+Part two is an addendum on electronic health record data, which is the
+piece that trips groups up the most.</em></p>
 <blockquote>
 <p>The information here is accurate as of July 2026. This is a rapidly
 evolving space, so when in doubt, confirm with your own experts.</p>
@@ -259,11 +272,11 @@ evolving space, so when in doubt, confirm with your own experts.</p>
 right</h3>
 <p>Choosing a registry platform is one of the most consequential
 infrastructure decisions your organization will make. It shapes how you
-collect data, how you engage your community, and how you serve your
-patients for years. And here is the uncomfortable part: the vendors you
-are meeting with are very good at what they do. Demos are their craft.
-That is exactly why you need to walk in prepared, so the meeting serves
-you rather than the sales process.</p>
+collect data, how you engage your community, and how you serve people
+with lived experience for years. And here is the uncomfortable part: the
+vendors you are meeting with are very good at what they do. Demos are
+their craft. That is exactly why you need to walk in prepared, so the
+meeting serves you rather than the sales process.</p>
 <p>I have sat through a lot of these meetings, on my own behalf and
 alongside groups I consult with. The more professional vendors handle
 them well. Even so, the difference between a productive meeting and a
@@ -280,13 +293,13 @@ evaluator of whoever is in front of you.</p>
 so the more specific you are, the more useful their demo will be. Vague
 inputs produce generic demos. Get these things squared away first.</p>
 <p><strong>Know your registry’s purpose.</strong> Is it natural history,
-clinical trial readiness, patient engagement, or a mix? The answer
+clinical trial readiness, community engagement, or a mix? The answer
 drives everything, including which features you actually need and which
 you can ignore.</p>
-<p><strong>Know your participants.</strong> Patients, caregivers, or
-both? What are your current and projected numbers? Vendors need this to
-show you examples that are relevant to you rather than to a large
-pharmaceutical customer.</p>
+<p><strong>Know your participants.</strong> People with lived
+experience, caregivers, or both? What are your current and projected
+numbers? Vendors need this to show you examples that are relevant to you
+rather than to a large pharmaceutical customer.</p>
 <p><strong>List your data needs.</strong> What are you collecting, or
 hoping to collect? Patient reported outcomes, clinical data, biospecimen
 links? Do you need longitudinal, repeated collection over time? Do you
@@ -359,8 +372,8 @@ missing data, duplicate records, someone withdrawing. That is where
 platforms differ. Confirm you can customize fields, survey instruments,
 and branching logic. Confirm support for longitudinal, repeated
 collection. Ask what export formats are available and how often. Ask
-what the patient facing portal actually lets participants see and do,
-and how it performs on mobile.</p>
+what the participant facing portal actually lets participants see and
+do, and how it performs on mobile.</p>
 <p><strong>Privacy, security, and compliance.</strong> HIPAA compliance
 is a baseline, not a differentiator, so go further. Ask about their
 Business Associate Agreement process specifically. Ask where data are
@@ -375,11 +388,11 @@ organization should retain full ownership of participant data. But this
 is not a blanket rule. If you are working with an academic collaborator,
 say a university hosting your registry on REDCap, it can be perfectly
 acceptable for the institution to act as data steward, as long as their
-governance protects your patients, your IRB agreement covers the
-arrangement, and you have clear rights to access and export your data.
-The real question is always whether the governance structure protects
-your patients and your mission. Get the answer in writing, whatever the
-arrangement.</p>
+governance protects people with lived experience, your IRB agreement
+covers the arrangement, and you have clear rights to access and export
+your data. The real question is always whether the governance structure
+protects people with lived experience and your mission. Get the answer
+in writing, whatever the arrangement.</p>
 <p><strong>Integrations and interoperability.</strong> Ask about
 electronic health record connectivity and HL7 FHIR support, which matter
 if you work with clinical partners. Ask about connections to biobanking
@@ -393,7 +406,7 @@ export in standard formats such as CSV or JSON without extra fees. Then
 ask the blunt question: can you, or any third party, access our
 participant data for any purpose? For a commercial platform, the answer
 should be no.</p>
-<p><strong>Patient engagement and recruitment.</strong> This is often
+<p><strong>Community engagement and recruitment.</strong> This is often
 underweighted and it should not be. Ask whether the platform actually
 helps you find and engage participants or is purely a data collection
 tool. Ask about multilingual and accessibility features, mobile
@@ -478,12 +491,13 @@ Open by setting context and the agenda. Ask targeted, specific questions
 during the demo, and watch what they do not show you. Close with clarity
 on pricing, support, and next steps. Do those, and you stay in the
 driver’s seat of a conversation that vendors run for a living.</p>
-<p>Bring the companion question guide to every meeting, and keep your
-patients at the center of every decision.</p>
+<p>Bring the companion question guide to every meeting, and keep people
+with lived experience at the center of every decision.</p>
 <p><em>This is part one of a series. Part two is an addendum on what
 advocacy groups need to know about <a
 data-view="guide_ehr">electronic health record data</a>.</em></p>
-<div class="gd-nav"><a class="btn sm sec" data-view="guide_ehr">Read part two: EHR data &rarr;</a><a class="btn sm sec" data-view="planner">Data strategy self-assessment</a><a class="btn sm sec" data-view="comprehensive">Comprehensive dictionary</a></div>
+
+<div class="gd-nav"><a class="btn sm sec" href="Vendor_Comparison_Worksheet.xlsx" download>&#8681; Vendor comparison worksheet (XLSX)</a><a class="btn sm sec" data-view="guide_ehr">Read part two: EHR data &rarr;</a><a class="btn sm sec" data-view="planner">Data strategy self-assessment</a></div>
 </div>
 </script>
 <script type="text/html" id="art-ehr">
@@ -493,11 +507,11 @@ data-view="guide_ehr">electronic health record data</a>.</em></p>
 id="electronic-health-record-data-for-patient-registries-what-advocacy-groups-need-to-know">Electronic
 Health Record Data for Patient Registries: What Advocacy Groups Need to
 Know</h2>
-<p><em>Part two of a series for patient advocacy groups on working with
-registry vendors. <a data-view="guide_vendor">Part one</a> covers
-how to prepare for and conduct a vendor review and interview. This
-addendum focuses on one specific and confusing piece of that work:
-electronic health record data.</em></p>
+<p><em>Part two of a series for advocacy groups on working with registry
+vendors. <a data-view="guide_vendor">Part one</a> covers how to
+prepare for and conduct a vendor review and interview. This addendum
+focuses on one specific and confusing piece of that work: electronic
+health record data.</em></p>
 <blockquote>
 <p>The information here is accurate as of July 2026. This is a rapidly
 evolving space, so when in doubt, confirm with your own experts.</p>
@@ -530,7 +544,7 @@ Oracle Health. Beyond those, there are many other electronic health
 record systems in use. Exact market share numbers move around and I
 would verify current figures before you cite any, but the practical
 takeaway is stable: Epic holds the largest share of the large hospital
-and health system market, and its behavior sets the pace for how patient
+and health system market, and its behavior sets the pace for how health
 data can be shared and retrieved.</p>
 <p>There are policies and rules that push the whole health care universe
 to be more connected, more responsive, and more standardized. That is
@@ -557,11 +571,12 @@ set. If you want to answer big questions at scale with people who know
 what they are doing with curated data, the first place I would go is the
 OHDSI community, which uses federated analytics so that no one shares
 raw data at all. I want to write about OHDSI separately, so I am setting
-it aside here. This post is about the ways a patient or a patient
-advocacy group can acquire data directly, and I am deliberately not
-going to name individual vendors. The space moves so fast that I cannot
-vouch for a feature I saw on a website or heard in a call this week,
-because who knows what the state of things will be next week.</p>
+it aside here. This post is about the ways a person with lived
+experience or an advocacy group can acquire data directly, and I am
+deliberately not going to name individual vendors. The space moves so
+fast that I cannot vouch for a feature I saw on a website or heard in a
+call this week, because who knows what the state of things will be next
+week.</p>
 <h3 id="do-not-skip-the-standalone-survey-vendors">Do not skip the
 standalone survey vendors</h3>
 <p>Before we get to electronic health records at all, I want to slow you
@@ -628,16 +643,17 @@ ALS can move faster than that.</p>
 least to most involved. There is a summary table at the end of this
 section.</p>
 <h4
-id="the-patient-or-caregiver-downloads-directly-from-the-portal-free">1.
-The patient or caregiver downloads directly from the portal (free)</h4>
-<p>The simplest way to get a decent amount of data is to have the
-patient or caregiver download it themselves from their patient portal.
-For many people this is MyChart. Everyone has a sharing center, and you
-can download the data in several formats. The biggest trick is
-understanding which button to click, because the portal often offers to
-share with a provider, share with another person, or download all of
-your documents. It is also important to understand what may or may not
-be in there.</p>
+id="the-person-with-lived-experience-or-caregiver-downloads-directly-from-the-portal-free">1.
+The person with lived experience or caregiver downloads directly from
+the portal (free)</h4>
+<p>The simplest way to get a decent amount of data is to have the person
+with lived experience or caregiver download it themselves from their
+patient portal. For many people this is MyChart. Everyone has a sharing
+center, and you can download the data in several formats. The biggest
+trick is understanding which button to click, because the portal often
+offers to share with a provider, share with another person, or download
+all of your documents. It is also important to understand what may or
+may not be in there.</p>
 <p>Here is a real example. I recently downloaded my son Charlie’s
 records and there were 784 individual files, which was exactly what I
 wanted. I ran them through a tool I built that parses them at home, and
@@ -656,14 +672,14 @@ absent.</p>
 <p><strong>What these data are good for.</strong> Looking at Charlie’s
 downloaded records through the lens of a data scientist and
 epidemiologist, the best things you get are confirmation of his
-conditions and a real sense of the overall burden and patient journey.
-You can see that he started with infantile spasms. The medications we
-tried are documented, and so are many of the dosing changes and the
-combinations. There are notes describing my worries about his behavior
-and sleep and the things we tried. You see mentions of therapies,
-referrals, inpatient rehabilitation, a surgical workup, an admission for
-rhabdomyolysis, referrals to durable medical equipment providers for
-wheelchairs, and multiple EEG admissions.</p>
+conditions and a real sense of the overall burden and the person’s
+journey. You can see that he started with infantile spasms. The
+medications we tried are documented, and so are many of the dosing
+changes and the combinations. There are notes describing my worries
+about his behavior and sleep and the things we tried. You see mentions
+of therapies, referrals, inpatient rehabilitation, a surgical workup, an
+admission for rhabdomyolysis, referrals to durable medical equipment
+providers for wheelchairs, and multiple EEG admissions.</p>
 <p>If you know the disease, many of these facts are proxies for
 something larger. Why would a teenager be on so many medications and
 need an inpatient EEG, after an initial 20 minute outpatient EEG showed
@@ -687,10 +703,10 @@ interview.</p>
 <p>I am a strong believer in supplementing these data. There are plenty
 of good observational studies you can do with electronic health records
 alone, but if you are hoping record retrieval will replace surveys and
-capture the true patient journey, my experience says it will not.</p>
+capture the person’s full journey, my experience says it will not.</p>
 <p>Even so, this is a genuinely valuable and very low risk way to start.
 It is free. I have a pipeline that can analyze these downloads for free,
-one patient at a time or across a group, and it is built on the same
+one person at a time or across a group, and it is built on the same
 logic as the pipeline I developed for vendor data, so it looks for the
 standardized, government defined structures that hospitals tend to
 follow. The dashboards in Registry Forge for Patients show you all the
@@ -762,8 +778,8 @@ were happening somewhere other than the second opinion hospital whose
 records they had connected. I was seeing a snapshot from one doctor,
 while the real ongoing management was being done by a primary care
 physician and a community neurologist. If you are trying to piece
-together a patient journey, make sure participants connect all of their
-portals. We describe what we found in patient directed portal data
+together the person’s journey, make sure participants connect all of
+their portals. We describe what we found in patient directed portal data
 collected through a vendor, including these kinds of gaps, in a
 preprint: <a
 href="https://www.medrxiv.org/content/10.64898/2026.06.02.26354637v1">Registry
@@ -926,10 +942,10 @@ the method to your use case</h4>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Patient or caregiver portal download</td>
+<td>Person or caregiver portal download</td>
 <td>Portal level notes and documents from each connected site</td>
-<td>Confirming conditions, sketching the burden and patient journey,
-learning the data types</td>
+<td>Confirming conditions, sketching the burden and the person’s
+journey, learning the data types</td>
 <td>Free; you or a free tool do the analysis</td>
 </tr>
 <tr class="even">
@@ -972,7 +988,7 @@ from sitting through many of these.</p>
 <ul>
 <li>What is the activation fee, and what is the per record fee if they
 are pulling records? Then operationalize “per record” carefully. Does
-one patient with ten different sites count as one record or ten? Does a
+one person with ten different sites count as one record or ten? Does a
 failed retrieval attempt count?</li>
 <li>Are there monthly fees, and is pricing tied to scale or volume? If
 you will pull no more than 70 records a year but their pricing assumes
@@ -1004,9 +1020,9 @@ not want to discover a governance problem after the fact.</p>
 <ul>
 <li>It is very reasonable to ask a vendor to walk you through a test
 patient. You do not need a real person. Ask them to show you what a pull
-looks like, what the output is, what the patient sees, and whether
-results can be returned to patients. Seeing it in action is fair. There
-are example test patient files we can share for this.</li>
+looks like, what the output is, what the person sees, and whether
+results can be returned to them. Seeing it in action is fair. There are
+example test patient files we can share for this.</li>
 <li>A pilot with a handful of real participants across vendors can work,
 but it is burdensome on families and requires IRB, so a test patient is
 often the better first step.</li>
@@ -1055,8 +1071,91 @@ data-view="guide_vendor">part one, How to Meet with a Patient
 Registry Vendor</a>, for how to prepare for and conduct a registry
 vendor review. A separate post on the OHDSI community and federated
 analytics is coming.</em></p>
+
 <div class="gd-nav"><a class="btn sm sec" data-view="guide_vendor">&larr; Part one: meeting a vendor</a><a class="btn sm sec" data-view="comprehensive">Comprehensive dictionary</a><a class="btn sm sec" data-view="planres">Resource directory</a></div>
 </div>
+</script>
+<script type="text/html" id="v-pathways">
+<div class="crumbs">Health Records &rsaquo; <b>Acquisition pathways</b></div>
+<h2>Record acquisition pathways</h2>
+<p class="muted" style="max-width:860px">This registry demonstrates the two patient-directed record paths in depth: a live <a data-view="connect">SMART on FHIR connection</a> and a <a data-view="ccda">C-CDA download and upload</a>. Those are the simplest and cheapest ways to bring in records. In practice, advocacy groups choose among several pathways depending on the use case. The table maps them, matching the companion guide, <a data-view="guide_ehr">Electronic Health Record Data for Patient Registries</a>.</p>
+<div class="tbl-wrap" style="max-height:none"><table><thead><tr><th>Method</th><th>What you typically get</th><th>Best used for</th><th>Cost and effort</th></tr></thead><tbody>
+<tr><td><b><a data-view="connect">Person or caregiver portal download</a></b></td><td>Portal level notes and documents from each connected site</td><td>Confirming conditions, sketching the burden and person's journey, learning the data types</td><td>Free; you or a free tool do the analysis</td></tr>
+<tr><td><b>Vendor mediated portal download</b></td><td>Essentially the same portal level data, combined across sites the person connects</td><td>Same as above, at more scale, with less manual effort per participant</td><td>Paid, often bundled with surveys; you usually still analyze</td></tr>
+<tr><td><b><a data-view="hipaa">HIPAA authorization, third party retrieval</a></b></td><td>Much more comprehensive, multi site records, often as PDFs</td><td>A fuller picture including records outside the portal, when you can handle the volume and noise</td><td>Expensive; comprehensive but harder to curate</td></tr>
+<tr><td><b>Clinician or therapeutic relationship access</b></td><td>Higher quality clinical data available to treating providers</td><td>Rich collaborations with clinicians and academic centers</td><td>Superior data, but you may not be allowed to co-own it</td></tr>
+<tr><td><b><a data-view="tefca">Network exchange (TEFCA / IAS)</a></b></td><td>Records matched across participating providers via identity verification</td><td>Broad reach in theory, as the networks mature</td><td>Integration or platform cost; identity verification and coverage gaps</td></tr>
+</tbody></table></div>
+<div class="note"><b>How this demo maps on.</b> The portal download row is what you can try live here through <a data-view="connect">Connect Health Records</a> or <a data-view="ccda">Download &amp; Upload</a>. Two further pathways, <a data-view="hipaa">HIPAA authorization</a> and <a data-view="tefca">network exchange through TEFCA and IAS</a>, are documented on their own pages so the demo lines up with the guide, even though they normally run through a vendor rather than a patient-directed login.</div>
+</script>
+<script type="text/html" id="v-hipaa">
+<div class="crumbs">Health Records &rsaquo; <b>HIPAA authorization</b></div>
+<h2>HIPAA authorization and third party retrieval</h2>
+<p class="muted" style="max-width:860px">A different pathway from the patient-directed portal paths. The participant signs a HIPAA authorization that lets a third party service track down their records across every place they have been seen, then return them. This is the most comprehensive option and the hardest to curate.</p>
+<div class="flow"><div class="stage s1"><div class="icon">&#9997;&#65039;</div><h4>1. Authorize</h4><p>Participant signs a HIPAA authorization naming a retrieval service.</p></div><div class="stage s2"><div class="icon">&#128269;</div><h4>2. Locate all sites</h4><p>The service uses claims and other networks to list every place the person has been seen, and the participant confirms it.</p></div><div class="stage s3"><div class="icon">&#128228;</div><h4>3. Retrieve</h4><p>Records are pulled from each site, including places a portal would miss.</p></div><div class="stage s4"><div class="icon">&#128196;</div><h4>4. Return</h4><p>Records come back, often as PDFs from a hodgepodge of sources, raw or abstracted.</p></div><div class="stage s5"><div class="icon">&#129504;</div><h4>5. Parse and curate</h4><p>You parse the documents, review, and map fields into the registry.</p></div></div>
+<div class="note"><b>What to expect.</b> These records are much more comprehensive than a portal download and often capture radiology, procedures, and second opinions that a patient-facing portal omits. The trade off is format and effort: material may start as faxes, a single person can run to thousands of pages, and curation is harder. Keep access to the raw documents rather than accepting a vendor’s extraction on trust, budget for the cost, and write any use of automated tooling on the records into your IRB approval and agreements.</div>
+<div class="src-strip"><b>In the guide:</b> see <a data-view="guide_ehr">Electronic Health Record Data for Patient Registries</a>, method 3, and the <a data-view="pathways">pathways overview</a>. This path typically runs through a vendor, so it is documented here rather than wired as a live patient login.</div>
+</script>
+<script type="text/html" id="v-tefca">
+<div class="crumbs">Health Records &rsaquo; <b>Network exchange (TEFCA / IAS)</b></div>
+<h2>Network exchange through TEFCA and IAS</h2>
+<p class="muted" style="max-width:860px">TEFCA, the Trusted Exchange Framework and Common Agreement, sets a nationwide floor for health data exchange. Its Individual Access Services (IAS) pathway lets a person use an app or service of their choice to request their own records from participating providers. Instead of logging into each portal, the network matches the person using identity-verified demographics.</p>
+<div class="flow"><div class="stage s1"><div class="icon">&#128100;</div><h4>1. Verify identity</h4><p>The person is identity verified to the IAL2 standard: demographics, often a government ID, sometimes a photo.</p></div><div class="stage s2"><div class="icon">&#128225;</div><h4>2. Locate records</h4><p>The network finds participating providers likely to hold the person’s records.</p></div><div class="stage s3"><div class="icon">&#9883;&#65039;</div><h4>3. Providers respond</h4><p>Participating providers return data over FHIR.</p></div><div class="stage s4"><div class="icon">&#129504;</div><h4>4. Into the registry</h4><p>Structured data map into the registry alongside surveys.</p></div></div>
+<div class="note"><b>Promising, but not yet ready for most rare disease work.</b> Coverage is incomplete, so not every provider or variable is reachable. Identity verification at IAL2 is a real barrier: it can turn off participants, and because it is tied to the person being verified, a parent acquiring on behalf of a child who has no government ID may not be able to complete it. Depending on the model, network obligations can shift onto the advocacy group. And the rules for identity and matching are still changing, with major deadlines in 2027. Go in with clear eyes about coverage, verification friction, and who ends up holding the obligations.</div>
+<div class="src-strip"><b>Learn more:</b> <a data-view="guide_ehr">the guide</a>, method 5, the <a data-view="pathways">pathways overview</a>, and <a href="https://www.healthit.gov/topic/interoperability/policy/trusted-exchange-framework-and-common-agreement-tefca" target="_blank" rel="noopener">TEFCA at ONC</a>.</div>
+</script>
+<script type="text/html" id="v-maturity">
+<div class="crumbs">Planning tools &rsaquo; <b>Maturity model</b></div>
+<h2>Research readiness maturity model</h2>
+<p class="muted" style="max-width:820px">Most landscapes describe what exists. This one also describes a path. Every rare epilepsy organization moves, at its own pace, from an informal community toward sharing standardized data that outlives any single group. This model names the stages on that path, so an organization can see where it stands, where it is ahead, and where it is behind. It is populated by self-assessment, not assigned from outside.</p>
+<div class="flexrow" style="margin:10px 0 4px"><a class="btn sm" data-view="maturity_sa">Take the self-assessment &rarr;</a><a class="btn sm sec" data-view="planres">Resource directory</a></div>
+<h3>The five stages</h3>
+<div class="cards">
+<div class="card"><h4>Stage 1</h4><div class="big" style="font-size:18px">Emerging</div><div class="sub">An informal community exists. No legal or research infrastructure.</div></div>
+<div class="card"><h4>Stage 2</h4><div class="big" style="font-size:18px">Organized</div><div class="sub">Incorporated and governed. Beginning to think about research.</div></div>
+<div class="card"><h4>Stage 3</h4><div class="big" style="font-size:18px">Connected</div><div class="sub">Plugged into the broader research ecosystem. Collecting structured information about patients.</div></div>
+<div class="card"><h4>Stage 4</h4><div class="big" style="font-size:18px">Data Generating</div><div class="sub">Operating registries or natural history infrastructure. Producing data with intent.</div></div>
+<div class="card"><h4>Stage 5</h4><div class="big" style="font-size:18px">Data Sharing</div><div class="sub">Contributing standardized, documented data or metadata to shared or open resources for use beyond the organization.</div></div>
+</div>
+<div class="note"><b>How the composite level works.</b> An organization’s composite level is roughly the lowest stage it has reliably reached across the core tracks. You cannot be Data Sharing overall if you have no governance. The tracks below show exactly where an organization is ahead or behind.</div>
+<h3>The five tracks</h3>
+<p class="muted" style="max-width:820px">Each track runs through the same five stages. Reading across a track shows what good looks like one step ahead, and the kind of support that tends to help at each step.</p>
+<div class="mm-track"><div class="mm-tname">Organizational Foundation</div>
+<div class="mm-stage"><div class="mm-shd"><span class="mm-snum">Stage 1</span> <b>Informal community</b></div><div class="mm-q">Do we have a space where patients and families find each other? Does someone informally keep things going?</div><div class="mm-sub"><span>Needs support with:</span> Turning a loose group into something durable; understanding what becoming an organization involves.</div><div class="mm-sub"><span>How the network helps:</span> Plain language orientation on nonprofit formation; Connect founders to peer organizations who have made the leap</div></div>
+<div class="mm-stage"><div class="mm-shd"><span class="mm-snum">Stage 2</span> <b>Unincorporated association</b></div><div class="mm-q">Do we have identified leaders, even without legal status? Do we have a shared mission written down?</div><div class="mm-sub"><span>Needs support with:</span> The legal and administrative mechanics of incorporation; drafting governing documents.</div><div class="mm-sub"><span>How the network helps:</span> Pro bono legal services for incorporation and bylaws; Governance templates; Board recruitment guidance</div></div>
+<div class="mm-stage"><div class="mm-shd"><span class="mm-snum">Stage 3</span> <b>Incorporated nonprofit</b></div><div class="mm-q">Are we a registered nonprofit with bylaws and a functioning board? Can we legally accept donations and enter agreements?</div><div class="mm-sub"><span>Needs support with:</span> Moving from legally exists to actually operating; first strategic plan; early fundraising.</div><div class="mm-sub"><span>How the network helps:</span> Strategic planning facilitation; Grant writing support; Nonprofit financial and accounting services</div></div>
+<div class="mm-stage"><div class="mm-shd"><span class="mm-snum">Stage 4</span> <b>Staffed and resourced</b></div><div class="mm-q">Do we have paid staff or a dedicated contractor? Do we have a strategic plan and a research budget line?</div><div class="mm-sub"><span>Needs support with:</span> Building research capacity; hiring the right roles; sustainable funding.</div><div class="mm-sub"><span>How the network helps:</span> Research operations consulting; Advice on hiring a research lead; Introductions to research funders</div></div>
+<div class="mm-stage"><div class="mm-shd"><span class="mm-snum">Stage 5</span> <b>Sustainable</b></div><div class="mm-q">Do we have diversified funding and someone leading research? Could the org survive its founder's departure?</div><div class="mm-sub"><span>Needs support with:</span> Succession, long term sustainability, scaling impact.</div><div class="mm-sub"><span>How the network helps:</span> Executive coaching and succession planning; Endowment or reserve building strategy; Governance maturity review</div></div>
+</div>
+<div class="mm-track"><div class="mm-tname">Scientific and Community Engagement</div>
+<div class="mm-stage"><div class="mm-shd"><span class="mm-snum">Stage 1</span> <b>Peer support</b></div><div class="mm-q">Do members share experiences and information?</div><div class="mm-sub"><span>Needs support with:</span> Recognizing the community's value as a research asset.</div><div class="mm-sub"><span>How the network helps:</span> Educate the community on how patient experience informs research; Introduce the concept of patient reported data</div></div>
+<div class="mm-stage"><div class="mm-shd"><span class="mm-snum">Stage 2</span> <b>Awareness and connecting</b></div><div class="mm-q">Do we help families find clinicians or trials? Do we do awareness raising beyond our members?</div><div class="mm-sub"><span>Needs support with:</span> Identifying which clinicians and researchers work on their condition.</div><div class="mm-sub"><span>How the network helps:</span> Clinician and researcher landscape mapping; Trial finder navigation support</div></div>
+<div class="mm-stage"><div class="mm-shd"><span class="mm-snum">Stage 3</span> <b>Priorities from community</b></div><div class="mm-q">Have we asked our community what research is important to them? Do we have a group that channels patient input into priorities?</div><div class="mm-sub"><span>Needs support with:</span> Running a credible priority setting process.</div><div class="mm-sub"><span>How the network helps:</span> Facilitate a research priority setting exercise (James Lind Alliance style); Survey design</div></div>
+<div class="mm-stage"><div class="mm-shd"><span class="mm-snum">Stage 4</span> <b>Advisory board</b></div><div class="mm-q">Do we have a scientific or medical advisory board that meets and influences decisions?</div><div class="mm-sub"><span>Needs support with:</span> Recruiting credible experts; running an effective board.</div><div class="mm-sub"><span>How the network helps:</span> Serve on or help recruit the advisory board; Advise on charters and conflict of interest policy</div></div>
+<div class="mm-stage"><div class="mm-shd"><span class="mm-snum">Stage 5</span> <b>Agenda setting</b></div><div class="mm-q">Do we help define the research agenda for our condition? Have researchers co-designed studies with us?</div><div class="mm-sub"><span>Needs support with:</span> Sustaining genuine co-design as the org scales.</div><div class="mm-sub"><span>How the network helps:</span> Partner as a co-investigator; Build community engagement into grant proposals as a named partner</div></div>
+</div>
+<div class="mm-track"><div class="mm-tname">Ecosystem Integration</div>
+<div class="mm-stage"><div class="mm-shd"><span class="mm-snum">Stage 1</span> <b>Isolated</b></div><div class="mm-q">Are we essentially working on our own?</div><div class="mm-sub"><span>Needs support with:</span> Knowing the ecosystem exists and how to enter it.</div><div class="mm-sub"><span>How the network helps:</span> Introductions to consortia and umbrella organizations; An ecosystem map</div></div>
+<div class="mm-stage"><div class="mm-shd"><span class="mm-snum">Stage 2</span> <b>Informal ties</b></div><div class="mm-q">Do we have a relationship with at least one researcher or clinician?</div><div class="mm-sub"><span>Needs support with:</span> Converting a single relationship into broader engagement.</div><div class="mm-sub"><span>How the network helps:</span> Warm introductions to relevant consortia (REN, CombinedBrain, NORD)</div></div>
+<div class="mm-stage"><div class="mm-shd"><span class="mm-snum">Stage 3</span> <b>Consortium member</b></div><div class="mm-q">Are we an active member of a consortium or umbrella?</div><div class="mm-sub"><span>Needs support with:</span> Getting real value from membership, not just belonging.</div><div class="mm-sub"><span>How the network helps:</span> Advise on how to participate actively; Identify collaboration opportunities within the consortium</div></div>
+<div class="mm-stage"><div class="mm-shd"><span class="mm-snum">Stage 4</span> <b>Active collaborations</b></div><div class="mm-q">Are we in shared projects with other organizations?</div><div class="mm-sub"><span>Needs support with:</span> Managing multi party projects and data sharing across orgs.</div><div class="mm-sub"><span>How the network helps:</span> Project management support; Multi site agreement and data governance templates</div></div>
+<div class="mm-stage"><div class="mm-shd"><span class="mm-snum">Stage 5</span> <b>Recognized node</b></div><div class="mm-q">Do others come to us as a partner or convener?</div><div class="mm-sub"><span>Needs support with:</span> The load of convening; staying strategic.</div><div class="mm-sub"><span>How the network helps:</span> Infrastructure or staffing to support a convening role; Co-host workshops</div></div>
+</div>
+<div class="mm-track"><div class="mm-tname">Data Infrastructure</div>
+<div class="mm-stage"><div class="mm-shd"><span class="mm-snum">Stage 1</span> <b>No structured data</b></div><div class="mm-q">Is most of what we know anecdotal or scattered?</div><div class="mm-sub"><span>Needs support with:</span> Understanding what structured data is and its importance.</div><div class="mm-sub"><span>How the network helps:</span> A plain language primer on registries; Help define what data would be worth collecting</div></div>
+<div class="mm-stage"><div class="mm-shd"><span class="mm-snum">Stage 2</span> <b>Contact registry</b></div><div class="mm-q">Do we have a maintained list of who our patients are and how to reach them?</div><div class="mm-sub"><span>Needs support with:</span> Moving from a contact list to research data; privacy basics.</div><div class="mm-sub"><span>How the network helps:</span> Advise on consent for re-contact; Help select a registry platform if they decide they want that</div></div>
+<div class="mm-stage"><div class="mm-shd"><span class="mm-snum">Stage 3</span> <b>Patient reported registry</b></div><div class="mm-q">Do we collect structured patient reported data on a real platform, with meaningful enrollment?</div><div class="mm-sub"><span>Needs support with:</span> Survey and instrument quality; boosting enrollment and retention.</div><div class="mm-sub"><span>How the network helps:</span> Instrument design and validation; Recruitment strategy; Biostatistics consultation</div></div>
+<div class="mm-stage"><div class="mm-shd"><span class="mm-snum">Stage 4</span> <b>Natural history and longitudinal</b></div><div class="mm-q">Are we collecting data over time with a defined data model?</div><div class="mm-sub"><span>Needs support with:</span> Clinical data collection, longitudinal follow up, data quality.</div><div class="mm-sub"><span>How the network helps:</span> Natural history study design; Clinical data management; REDCap or equivalent setup</div></div>
+<div class="mm-stage"><div class="mm-shd"><span class="mm-snum">Stage 5</span> <b>Harmonized to standards</b></div><div class="mm-q">Is our data mapped to common standards and combinable with other datasets?</div><div class="mm-sub"><span>Needs support with:</span> Mapping to common data elements; interoperability.</div><div class="mm-sub"><span>How the network helps:</span> Data harmonization services; Ontology and common data element mapping; Informatics support</div></div>
+</div>
+<div class="mm-track"><div class="mm-tname">Data Governance and Sharing : the north star</div>
+<div class="mm-stage"><div class="mm-shd"><span class="mm-snum">Stage 1</span> <b>No governance</b></div><div class="mm-q">Are we holding data without a clear consent or privacy framework?</div><div class="mm-sub"><span>Needs support with:</span> Basic consent, privacy, and ethics; understanding obligations.</div><div class="mm-sub"><span>How the network helps:</span> Draft research consent and privacy policies; IRB and ethics navigation</div></div>
+<div class="mm-stage"><div class="mm-shd"><span class="mm-snum">Stage 2</span> <b>Internal governance</b></div><div class="mm-q">Do we have consent and privacy policies, with data held internally?</div><div class="mm-sub"><span>Needs support with:</span> Preparing data to be intelligible and shareable beyond the org.</div><div class="mm-sub"><span>How the network helps:</span> Review consent for whether it permits future sharing; Introduce data sharing concepts</div></div>
+<div class="mm-stage"><div class="mm-shd"><span class="mm-snum">Stage 3</span> <b>Documented and standardized</b></div><div class="mm-q">Do we have a published data dictionary and standardized variables? Could an outsider understand our dataset from the documentation alone?</div><div class="mm-sub"><span>Needs support with:</span> Writing and publishing a data dictionary; standardizing variables.</div><div class="mm-sub"><span>How the network helps:</span> Build the data dictionary; Map variables to common data elements; Documentation support</div></div>
+<div class="mm-stage"><div class="mm-shd"><span class="mm-snum">Stage 4</span> <b>Shared with a partner</b></div><div class="mm-q">Have we shared data with a vetted partner under a formal agreement (Data for the Common Good, RDCA-DAP)? Do we have a governance policy for how sharing decisions get made?</div><div class="mm-sub"><span>Needs support with:</span> Data sharing agreements; a governance process for access requests.</div><div class="mm-sub"><span>How the network helps:</span> Draft data sharing and use agreements; Set up a data access committee; Broker partner relationships</div></div>
+<div class="mm-stage"><div class="mm-shd"><span class="mm-snum">Stage 5</span> <b>Open and broadly accessible</b></div><div class="mm-q">Is our data or metadata findable by researchers beyond named partners, meeting FAIR principles? Can qualified researchers discover and request it through a defined process?</div><div class="mm-sub"><span>Needs support with:</span> Making data FAIR; sustaining open access responsibly.</div><div class="mm-sub"><span>How the network helps:</span> FAIR-ification services; Deposit into recognized repositories; Publish discoverable metadata even when raw data stays controlled</div></div>
+</div>
+<div class="note" style="margin-top:14px">This model unifies the planning tools on this site: use the <a data-view="maturity_sa">self-assessment</a> to place your group, the <a data-view="planlib">strategy library</a> for what to do next, and the <a data-view="planres">resource directory</a> for who can help. It mirrors the maturity model in the Boyce Lab Genetic Epilepsy Landscape.</div>
 </script>
 <script>
 /* ============ helpers ============ */
@@ -1072,10 +1171,10 @@ const COMP_GZ='EpilepsyRegistry_Comprehensive_Dictionary.csv.gz';
 const COMP_TOTAL=9413;
 const SOURCES=[
   {n:'GenomeConnect',u:'https://www.genomeconnect.org/',d:'Patient genetic health survey (Savatt et al. 2018) and the GenomeConnect Seizure Survey (v1.3, 2025)'},
-  {n:'Simons / SFARI',u:'https://www.sfari.org/resource/sfari-base/',d:'Simons Foundation neurodevelopmental dataset dictionary (SFARI Base DS0000032 v14)'},
-  {n:'CoRDS',u:'https://research.sanfordhealth.org/rare-disease-registry',d:'CoRDS rare-disease registry questionnaire (Coordination of Rare Diseases at Sanford)'},
+  {n:'Simons / SFARI',u:'https://www.sfari.org/resource/sfari-base/',d:'Simons Foundation neurodevelopmental data set dictionary (SFARI Base DS0000032 v14)'},
+  {n:'CoRDS',u:'https://research.sanfordhealth.org/rare-disease-registry',d:'CoRDS-hosted registry (Coordination of Rare Diseases at Sanford). Items here are abstracted from the published KCIAF (KCNMA1) questionnaire vB3.0, December 2022. Contact CoRDS directly to discuss questionnaires specific to your disease.'},
   {n:'HPO',u:'https://hpo.jax.org/',d:'Human Phenotype Ontology terms and codes mapped to phenotype items'},
-  {n:'Harmonized core',u:'https://www.researchallofus.org/data-tools/survey-explorer/',d:'Derived from the onco-site standards: All of Us, FHIR, ClinVar, I-CAM-Q, NHANES DSQ, QOLIE'}
+  {n:'Harmonized core',u:'https://www.researchallofus.org/data-tools/survey-explorer/',d:'Derived from established public standards and instruments: All of Us, FHIR, ClinVar, I-CAM-Q, NHANES DSQ, QOLIE'}
 ];
 const PLAT_COLOR={'GenomeConnect':'#6d28d9','Simons / SFARI dataset':'#0f766e','CoRDS':'#b45309','NORD IAMRARE':'#be185d','NORD IAMRARE (as described)':'#be185d','Citizen registry (hypothetical)':'#2563eb','Patient-led registry (publication)':'#0891b2','Unknown (data dictionary)':'#6b7280','Epilepsy registry core (harmonized)':'#7c3aed'};
 function platColor(p){return PLAT_COLOR[p]||'#6b7280';}
@@ -1206,11 +1305,11 @@ VIEWS.home=()=>`
   <h3>What you can demo from here</h3>
   <ul style="max-width:780px">
     <li><a data-view="participant">What the Participant Sees</a>: the caregiver journey from consent to surveys to a personal dashboard.</li>
-    <li><a data-view="comprehensive">Comprehensive Dictionary</a>: ${COMP_TOTAL.toLocaleString()} harmonized fields combining GenomeConnect, Simons / SFARI, CoRDS, and a harmonized core derived from the relevant oncology-site data dictionaries. Filter by source and download.</li>
+    <li><a data-view="comprehensive">Comprehensive Dictionary</a>: ${COMP_TOTAL.toLocaleString()} harmonized fields combining GenomeConnect, Simons / SFARI, CoRDS, and a harmonized core derived from established public standards and instruments. Filter by source and download.</li>
     <li>Surveys: <a data-view="survey_genetic">Genetic Testing</a>, <a data-view="survey_seizure">Seizure History</a>, <a data-view="survey_dev">Development</a>, <a data-view="survey_qol">Quality of Life</a>, and <a data-view="survey_diet">Diet &amp; Supplements</a>.</li>
     <li><a data-view="connect">Connect Health Records</a> and <a data-view="ccda">Download &amp; Upload (C-CDA)</a>: the two patient-directed record paths.</li>
     <li><a data-view="sources">Data Sources &amp; References</a>, <a data-view="dashboard">Record Status</a>, and <a data-view="reports">Reports</a>.</li>
-    <li><b>Guides:</b> <a data-view="guide_vendor">How to Meet with a Patient Registry Vendor</a> and <a data-view="guide_ehr">Electronic Health Record Data for Patient Registries</a>, two written guides for advocacy groups evaluating vendors.</li>
+    <li><b>Guides:</b> <a data-view="guide_vendor">How to Meet with a Patient Registry Vendor</a> and <a data-view="guide_ehr">Electronic Health Record Data for Patient Registries</a>, two written guides for advocacy groups evaluating vendors, plus a downloadable vendor comparison worksheet.</li>
   </ul>
 `;
 
@@ -1219,7 +1318,7 @@ let COMP=null, COMP_TEXT='';
 VIEWS.comprehensive=()=>`
   <div class="crumbs">Registry Home &amp; Design &rsaquo; <b>Comprehensive Dictionary</b></div>
   <h2>Comprehensive Data Dictionary</h2>
-  <p class="muted" style="max-width:900px">The full harmonized dictionary behind this registry: every question from every source in one place. It combines the GenomeConnect genetic and seizure surveys, the Simons / SFARI neurodevelopmental dataset, the CoRDS rare-disease registry questionnaire, and a harmonized core derived from the relevant oncology-site data dictionaries.</p>
+  <p class="muted" style="max-width:900px">The full harmonized dictionary behind this registry: every question from every source in one place. It combines the GenomeConnect genetic and seizure surveys, the Simons / SFARI neurodevelopmental data set, the CoRDS rare-disease registry questionnaire, and a harmonized core derived from established public standards and instruments.</p>
   <div class="starter">
     <h4>Recommended starter set (configurable per group)</h4>
     <p style="font-size:12px;margin:2px 0 0">For basic use, start with a small, well-understood core and add instruments as the purpose requires. A sensible default order:</p>
@@ -1333,7 +1432,7 @@ VIEWS.sources=()=>`
   <h2>Data Sources &amp; References</h2>
   <p class="muted" style="max-width:880px">Every source used to build the combined dictionary, with a link to its origin. Disease-specific instruments are harmonized alongside disease-agnostic surveys so the same registry can serve many rare epilepsies.</p>
   <div class="src-grid">${SOURCES.map(s=>`<a class="src-card" href="${s.u}" target="_blank" rel="noopener"><b>${esc(s.n)}</b><span>${esc(s.d)}</span></a>`).join('')}</div>
-  <div class="note"><b>Citation note.</b> The CoRDS items come from the CoRDS rare-disease registry questionnaire (Coordination of Rare Diseases at Sanford). The Simons / SFARI items derive from the SFARI Base dataset dictionary (DS0000032 v14). GenomeConnect items derive from the Health Survey (Savatt et al. 2018) and the Seizure Survey (v1.3, 2025).</div>
+  <div class="note"><b>Citation note.</b> The CoRDS-attributed items are abstracted from the published KCIAF (KCNMA1) questionnaire, version B3.0, approved December 2022 (<a href="https://meredithlab.org/wp-content/uploads/2023/07/KCIAF-vB3.0_approved-Dec-2022.pdf" target="_blank" rel="noopener">PDF</a>). Contact CoRDS directly to discuss questionnaires specific to your disease. The Simons / SFARI items derive from the SFARI Base data set dictionary (DS0000032 v14). GenomeConnect items derive from the Health Survey (Savatt et al. 2018) and the Seizure Survey (v1.3, 2025).</div>
   <div class="mt"><a class="btn sm" data-view="comprehensive">Open the comprehensive dictionary &rarr;</a></div>
 `;
 
@@ -1515,7 +1614,7 @@ const KB={
    links:[{t:'AHRQ Registries User&#8217;s Guide (4th ed.)',u:'https://effectivehealthcare.ahrq.gov/products/registries-guide-4th-edition/users-guide'}]},
  rwe:{t:'Regulatory-ready data and FDA&#8217;s relevance &amp; reliability',tag:'Regulatory',
    blurb:'For regulatory use, data must be fit-for-purpose: relevant to the question and reliable in how they were generated.',
-   detail:'FDA assesses real-world data on two axes. Relevance asks whether the data capture the right population, exposures, outcomes, and covariates for your specific question. Reliability asks how the data were accrued, curated, and quality-checked, with provenance and traceability back to source. FDA expects the study protocol and analysis plan to be specified up front, and expects sponsors to document how problems like duplicate records for one person across sources are handled. Submission datasets are prepared to CDISC standards.',
+   detail:'FDA assesses real-world data on two axes. Relevance asks whether the data capture the right population, exposures, outcomes, and covariates for your specific question. Reliability asks how the data were accrued, curated, and quality-checked, with provenance and traceability back to source. FDA expects the study protocol and analysis plan to be specified up front, and expects sponsors to document how problems like duplicate records for one person across sources are handled. Submission data sets are prepared to CDISC standards.',
    links:[{t:'FDA Real-World Evidence program',u:'https://www.fda.gov/science-research/science-and-research-special-topics/real-world-evidence'},{t:'Framework for FDA&#8217;s RWE Program (PDF)',u:'https://www.fda.gov/media/120060/download'},{t:'CDISC standards',u:'https://www.cdisc.org/'}]},
  pfdd:{t:'Patient-Focused Drug Development and COAs',tag:'Regulatory',
    blurb:'FDA&#8217;s four-part PFDD series describes how patient and caregiver input becomes measures that can serve as trial endpoints.',
@@ -1535,7 +1634,7 @@ const KB={
    links:[{t:'PFDD guidance series',u:'https://www.fda.gov/drugs/development-approval-process-drugs/fda-patient-focused-drug-development-guidance-series-enhancing-incorporation-patients-voice-medical'}]},
  standards:{t:'Data standards and common data models',tag:'Informatics',
    blurb:'To pool or compare data across instruments, sites, and partners, they must share structure.',
-   detail:'A common data model gives every dataset the same shape. OMOP CDM is widely used for analysis across observational data; HL7 FHIR is the standard for exchange. Adopt the model before scaling collection, because retrofitting structure later is expensive and loses fidelity. Make the data FAIR, findable, accessible, interoperable, and reusable, so partners can actually use them.',
+   detail:'A common data model gives every data set the same shape. OMOP CDM is widely used for analysis across observational data; HL7 FHIR is the standard for exchange. Adopt the model before scaling collection, because retrofitting structure later is expensive and loses fidelity. Make the data FAIR, findable, accessible, interoperable, and reusable, so partners can actually use them.',
    links:[{t:'OHDSI / OMOP data standardization',u:'https://www.ohdsi.org/data-standardization/'},{t:'OMOP Common Data Model',u:'https://ohdsi.github.io/CommonDataModel/'},{t:'FAIR principles',u:'https://www.go-fair.org/fair-principles/'}]},
  vocab:{t:'Controlled vocabularies and phenotype coding',tag:'Informatics',
    blurb:'Coded vocabularies make the same clinical concept mean the same thing everywhere.',
@@ -1554,8 +1653,8 @@ const KB={
    detail:'Decide up front whether participants permit future research, sharing, and recontact, because you cannot add that permission later. Broad or tiered consent, an IRB, clear data governance, data-use agreements, and a return-of-results policy let the data be reused responsibly. AHRQ&#8217;s User&#8217;s Guide devotes a chapter to governance and to reusing existing data sources.',
    links:[{t:'AHRQ Registries User&#8217;s Guide (4th ed.)',u:'https://effectivehealthcare.ahrq.gov/products/registries-guide-4th-edition/users-guide'},{t:'GA4GH (standards &amp; policy)',u:'https://www.ga4gh.org/'}]},
  registries:{t:'Registry design best practice',tag:'Foundations',
-   blurb:'Plan goals and outcomes first; design, cadence, and a minimal core dataset follow.',
-   detail:'A contact registry, a natural-history study, and a trial-readiness cohort are different instruments with different rigor. Start a community registry light and low-burden, but structure it so it can mature into research-grade collection rather than being rebuilt. Define a standardized core dataset, a consistent cadence, and a retention plan, and reuse EHR data where you can. AHRQ&#8217;s User&#8217;s Guide is the standard reference.',
+   blurb:'Plan goals and outcomes first; design, cadence, and a minimal core data set follow.',
+   detail:'A contact registry, a natural-history study, and a trial-readiness cohort are different instruments with different rigor. Start a community registry light and low-burden, but structure it so it can mature into research-grade collection rather than being rebuilt. Define a standardized core data set, a consistent cadence, and a retention plan, and reuse EHR data where you can. AHRQ&#8217;s User&#8217;s Guide is the standard reference.',
    links:[{t:'AHRQ Registries User&#8217;s Guide (4th ed.)',u:'https://effectivehealthcare.ahrq.gov/products/registries-guide-4th-edition/users-guide'},{t:'User&#8217;s Guide on NCBI Bookshelf',u:'https://www.ncbi.nlm.nih.gov/books/NBK562575/'}]},
  org:{t:'Nonprofit formation and governance',tag:'Organization',
    blurb:'Research-grade ambitions need a formal legal home, a board, and basic governance.',
@@ -1608,11 +1707,11 @@ const QSET=[
  {key:'sources',type:'multi',title:'What data sources do you have or plan? (select all)',help:'',
    find:'If unsure, inventory what already exists, surveys, any registry, records families can pull from patient portals, and what partners could share under agreement. <a class="schip" onclick="openTopic(&#39;exchange&#39;)">See health record exchange</a>',opts:[
    {v:'survey',l:'Caregiver / patient surveys'},{v:'diaryema',l:'Diaries / apps / momentary assessment'},{v:'wearable',l:'Wearables / devices'},{v:'ehrpat',l:'EHR via patient access',d:'SMART on FHIR, C-CDA download'},{v:'ehrsite',l:'EHR via site extraction',d:'Data-use agreement with a health system'},{v:'claims',l:'Claims data'},{v:'genetic',l:'Genetic test reports'},{v:'clinician',l:'Clinician-entered data'}]},
- {key:'combine',type:'single',title:'Will you need to combine these data with other datasets?',help:'',
+ {key:'combine',type:'single',title:'Will you need to combine these data with other data sets?',help:'',
    find:'If you are not sure, ask whether anyone, a consortium, a second registry, a company, will ever need to analyze your data together with theirs. If that is even possible later, answer yes. <a class="schip" onclick="openTopic(&#39;standards&#39;)">Why this matters early</a>',opts:[
    {v:'yes',l:'Yes'},{v:'maybe',l:'Maybe / later'},{v:'no',l:'No'}]},
- {key:'overlap',type:'single',title:'Do the same patients appear in more than one dataset you will use?',help:'For example, a registry and an EHR dataset run by different groups, with partial overlap.',
-   find:'If unsure, check whether your registry participants are also in a partner&#8217;s EHR or claims dataset. If different organizations recruited overlapping families, the answer is likely yes or unsure. <a class="schip" onclick="openTopic(&#39;linkage&#39;)">Open the linkage topic</a>',opts:[
+ {key:'overlap',type:'single',title:'Do the same patients appear in more than one data set you will use?',help:'For example, a registry and an EHR data set run by different groups, with partial overlap.',
+   find:'If unsure, check whether your registry participants are also in a partner&#8217;s EHR or claims data set. If different organizations recruited overlapping families, the answer is likely yes or unsure. <a class="schip" onclick="openTopic(&#39;linkage&#39;)">Open the linkage topic</a>',opts:[
    {v:'yes',l:'Yes'},{v:'unsure',l:'Unsure'},{v:'no',l:'No'}]},
  {key:'standards',type:'single',title:'Have you adopted common data standards yet?',help:'A common data model and coded vocabularies.',
    find:'If you are not sure what this means, that is itself the answer: choose &#8220;Not sure what that means.&#8221; A short informatics review will tell you where you stand. <a class="schip" onclick="openTopic(&#39;standards&#39;)">Data standards</a> <a class="schip" onclick="openTopic(&#39;vocab&#39;)">Vocabularies</a>',opts:[
@@ -1699,13 +1798,13 @@ function generatePlan(){
   }
   const recordsAndReported=(has(P.sources,'ehrpat')||has(P.sources,'ehrsite')||has(P.sources,'claims'))&&(has(P.sources,'survey')||has(P.sources,'diaryema'));
   if(['yes','unsure'].indexOf(P.overlap)>=0||recordsAndReported){
-    flags.push([P.overlap==='yes','<b>Overlapping people across datasets must be linked.</b> When a registry and an EHR or claims dataset are run by different organizations with only partial overlap, the same person appears more than once and others appear nowhere. Without linkage you double-count, fragment each person&#8217;s story, and cannot follow individuals across settings.']);
+    flags.push([P.overlap==='yes','<b>Overlapping people across data sets must be linked.</b> When a registry and an EHR or claims data set are run by different organizations with only partial overlap, the same person appears more than once and others appear nowhere. Without linkage you double-count, fragment each person&#8217;s story, and cannot follow individuals across settings.']);
     recs.push(['Plan record linkage and a master-person strategy','Decide how you will recognize the same individual across sources: deterministic keys where you have them, probabilistic matching otherwise, or privacy-preserving record linkage (tokenization) with an honest broker when identifiers cannot be shared. Wrap it in data-use agreements and governance. FDA expects you to document how duplicate records for one person across sources are handled.',['linkage','governance']]);addT('linkage','governance');
   }
   const regPath=has(P.purpose,'regulatory')||has(P.purpose,'drugdev')||has(P.stake,'reg');
   if(regPath){
     needs.push('For regulatory use, the evidence must be relevant and reliable (fit-for-purpose) for the specific question, capturing the right population, exposures, and outcomes with documented quality and provenance.');
-    recs.push(['Build to FDA&#8217;s relevance and reliability standard from day one','Define the question and a prospective protocol and analysis plan up front. Ensure provenance and traceability back to source, data-quality checks, and an audit trail. Validate endpoints and outcome measures (PFDD), and prepare submission datasets to CDISC standards. Engage FDA early; for rare conditions, the Rare Disease Endpoint Advancement pilot is a route.',['rwe','pfdd']]);addT('rwe','pfdd');
+    recs.push(['Build to FDA&#8217;s relevance and reliability standard from day one','Define the question and a prospective protocol and analysis plan up front. Ensure provenance and traceability back to source, data-quality checks, and an audit trail. Validate endpoints and outcome measures (PFDD), and prepare submission data sets to CDISC standards. Engage FDA early; for rare conditions, the Rare Disease Endpoint Advancement pilot is a route.',['rwe','pfdd']]);addT('rwe','pfdd');
     if(onlySurvey)
       flags.push([false,'<b>Self-report alone may not meet regulatory reliability.</b> Uncorroborated questionnaire data are often insufficient on their own. Plan to corroborate key outcomes with source records or validated measures.']);
   }
@@ -1714,10 +1813,10 @@ function generatePlan(){
     recs.push(['Develop fit-for-purpose clinical outcome assessments','Work through the COA categories (patient-reported, observer-reported, clinician-reported, performance), moving from disease understanding to the concepts families prioritize to a chosen measure. In developmental and epileptic encephalopathies, observer-reported caregiver measures are central and seizure-diary endpoints are hard, so design them deliberately. Capture genotype and recontact consent, and build natural-history data that could support external controls.',['pfdd','registries']]);addT('pfdd','registries');
   }
   if(has(P.purpose,'nathist')){
-    recs.push(['Design a prospective longitudinal natural history','Define a standardized core dataset, a consistent cadence, and a retention plan so you measure change rather than a single snapshot. Link to EHR where you can for objective measures and to reduce burden.',['registries','standards']]);addT('registries','standards');
+    recs.push(['Design a prospective longitudinal natural history','Define a standardized core data set, a consistent cadence, and a retention plan so you measure change rather than a single snapshot. Link to EHR where you can for objective measures and to reduce burden.',['registries','standards']]);addT('registries','standards');
   }
   if(has(P.purpose,'community')){
-    recs.push(['Keep the contact registry light, but design it to mature','Start with a minimal, low-burden dataset and consent for recontact, and structure it now so it can grow into research-grade collection rather than being rebuilt. Treat this as the first stage of a maturity path.',['registries','governance']]);addT('registries','governance');
+    recs.push(['Keep the contact registry light, but design it to mature','Start with a minimal, low-burden data set and consent for recontact, and structure it now so it can grow into research-grade collection rather than being rebuilt. Treat this as the first stage of a maturity path.',['registries','governance']]);addT('registries','governance');
   }
   if((['yes','maybe'].indexOf(P.combine)>=0||regPath||has(P.stake,'consortia'))&&['limited','unsure'].indexOf(P.consent)>=0){
     flags.push([true,'<b>Consent may not permit the sharing or secondary use your goals require.</b> If you intend to combine, share, or submit data, narrow or unclear consent will block you later. Fix this at enrollment, not afterward.']);
@@ -1743,7 +1842,7 @@ function generatePlan(){
   steps.push('Write the single decision your data must support, and the population, exposures, and outcomes it implies.');
   if(fineNeed) steps.push('Pilot a prospective daily or event-level capture method with a few families before committing.');
   if(['yes','maybe'].indexOf(P.combine)>=0||multiSource) steps.push('Choose your common data model and vocabularies now, and map every instrument to them.');
-  if(['yes','unsure'].indexOf(P.overlap)>=0||recordsAndReported) steps.push('Define how you will link the same person across datasets, and put agreements in place.');
+  if(['yes','unsure'].indexOf(P.overlap)>=0||recordsAndReported) steps.push('Define how you will link the same person across data sets, and put agreements in place.');
   if(regPath) steps.push('Draft a protocol and analysis plan, and request an early conversation with FDA.');
   if(research&&['notformed','informal'].indexOf(P.orgstage)>=0) steps.push('Decide your legal and governance structure before you scale collection.');
   if((has(P.purpose,'drugdev')||has(P.purpose,'burden'))&&['notyet','unsure',''].indexOf(P.regengage)>=0) steps.push('Plan a patient-focused or externally-led PFDD activity, and contact FDA program staff.');
@@ -1791,7 +1890,7 @@ VIEWS.planlib=()=>`
 function toggleKB(id){const d=$('#kbd_'+id),t=$('#kbt_'+id);if(!d)return;const hidden=d.classList.toggle('hide');if(t)t.textContent=hidden?'+':'\u2212';}
 function openKB(id){const d=$('#kbd_'+id),t=$('#kbt_'+id),c=$('#kb_'+id);if(d)d.classList.remove('hide');if(t)t.textContent='\u2212';if(c)c.scrollIntoView({behavior:'smooth',block:'center'});}
 function openTopic(id){window._topic=id;go('planlib');}
-const RESCATS=['Regulatory and evidence','Standards and interoperability','Methods','Registry and governance','Organization, community and funding','Sources and ontologies behind this resource','Library guides: registries and rare disease','Library guides: methods and analysis','Library guides: grant writing and funding','Library guides: curated public collections'];
+const RESCATS=['Regulatory and evidence','Standards and interoperability','Platforms and data networks','Templates and tools','Methods','Registry and governance','Organization, community and funding','Sources and ontologies behind this resource','Library guides: registries and rare disease','Library guides: methods and analysis','Library guides: grant writing and funding','Library guides: curated public collections'];
 const RES=[
  {t:'FDA: Framework for the Real-World Evidence Program (PDF)',u:'https://www.fda.gov/media/120060/download',cat:'Regulatory and evidence',topics:['rwe']},
  {t:'FDA: Real-World Evidence program',u:'https://www.fda.gov/science-research/science-and-research-special-topics/real-world-evidence',cat:'Regulatory and evidence',topics:['rwe']},
@@ -1806,6 +1905,10 @@ const RES=[
  {t:'SMART Health IT',u:'https://smarthealthit.org/',cat:'Standards and interoperability',topics:['exchange']},
  {t:'TEFCA (ONC)',u:'https://www.healthit.gov/topic/interoperability/policy/trusted-exchange-framework-and-common-agreement-tefca',cat:'Standards and interoperability',topics:['exchange']},
   {t:'ONC: Health IT Curriculum Resources for Educators',u:'https://healthit.gov/health-it-basics/health-it-curriculum-resources-educators/',cat:'Standards and interoperability',topics:['standards','exchange']},
+  {t:'RARE-X Data Collection Program (Global Genes)',u:'https://globalgenes.org/rare-x-data-overview/',cat:'Platforms and data networks',topics:['registries','community']},
+  {t:'Datavant (health data connectivity and record retrieval)',u:'https://www.datavant.com/',cat:'Platforms and data networks',topics:['exchange','standards']},
+  {t:'MyDataHelps (CareEvolution)',u:'https://careevolution.com/mydatahelps/',cat:'Platforms and data networks',topics:['registries','exchange']},
+  {t:'Matrix (Across Healthcare)',u:'https://www.acrossmatrix.com/',cat:'Platforms and data networks',topics:['registries','community']},
  {t:'FAIR principles',u:'https://www.go-fair.org/fair-principles/',cat:'Standards and interoperability',topics:['standards']},
  {t:'GA4GH (Phenopackets)',u:'https://www.ga4gh.org/',cat:'Standards and interoperability',topics:['standards','vocab']},
  {t:'PFDD trial readiness in rare DEEs (paper)',u:'https://pmc.ncbi.nlm.nih.gov/articles/PMC10834124/',cat:'Methods',topics:['methods','pfdd','cadence']},
@@ -1820,6 +1923,8 @@ const RES=[
  {t:'SFARI Base (Simons Searchlight)',u:'https://www.sfari.org/resource/sfari-base/',cat:'Sources and ontologies behind this resource',topics:[]},
  {t:'CoRDS rare disease registry (Sanford)',u:'https://research.sanfordhealth.org/rare-disease-registry',cat:'Sources and ontologies behind this resource',topics:['registries']},
  {t:'KCNMA1 Patient Survey (KCIAF / Meredith Lab)',u:'https://meredithlab.org/survey/',cat:'Sources and ontologies behind this resource',topics:[]},
+  {t:'KCIAF (KCNMA1) questionnaire vB3.0, approved Dec 2022 (PDF)',u:'https://meredithlab.org/wp-content/uploads/2023/07/KCIAF-vB3.0_approved-Dec-2022.pdf',cat:'Sources and ontologies behind this resource',topics:['registries']},
+  {t:'Vendor comparison worksheet (XLSX)',u:'Vendor_Comparison_Worksheet.xlsx',cat:'Templates and tools',topics:['governance']},
  {t:'All of Us survey explorer',u:'https://www.researchallofus.org/data-tools/survey-explorer/',cat:'Sources and ontologies behind this resource',topics:['standards']},
  {t:'AHRQ Registries User&#8217;s Guide (full text, NCBI Bookshelf)',u:'https://www.ncbi.nlm.nih.gov/books/NBK562581/',cat:'Library guides: registries and rare disease',topics:['registries']},
  {t:'VCU: Rare Diseases Information Toolkit (patients, families, advocates)',u:'https://guides.library.vcu.edu/rarediseases',cat:'Library guides: registries and rare disease',topics:['registries','community']},
@@ -1844,11 +1949,40 @@ VIEWS.planres=()=>`
   <p class="muted" style="max-width:840px">Verified resources, cross-referenced to the topics in the self-assessment. Tap a topic tag to open its entry in the Strategy Library.</p>
   <div class="flexrow"><a class="btn sec sm" data-view="planner">&larr; Self-assessment</a><a class="btn sec sm" data-view="planlib">Strategy library</a></div>
   ${RESCATS.map(c=>{const rows=RES.filter(r=>r.cat===c);return rows.length?`<div class="resgrp"><h3>${esc(c)}</h3>${rows.map(r=>`<div class="resrow"><a class="rl" href="${r.u}" target="_blank" rel="noopener">${r.t} &#8599;</a><span class="rtags">${(r.topics||[]).filter(id=>KB[id]).map(id=>`<a class="schip" onclick="openTopic('${id}')">${KB[id].t}</a>`).join('')}</span></div>`).join('')}</div>`:'';}).join('')}
-  <div class="note" style="margin-top:14px">This directory is seeded with verified resources and is built to grow. Group-specific and community-contributed resources can be slotted under the same topics.</div>
+  <div class="note" style="margin-top:14px">This directory is seeded with verified resources and is built to grow. Group-specific and community-contributed resources can be slotted under the same topics. Platform and vendor listings are examples for orientation, not endorsements.</div>
 `;
 
 VIEWS.guide_vendor=()=>document.getElementById('art-vendor').innerHTML;
 VIEWS.guide_ehr=()=>document.getElementById('art-ehr').innerHTML;
+
+VIEWS.pathways=()=>document.getElementById('v-pathways').innerHTML;
+VIEWS.hipaa=()=>document.getElementById('v-hipaa').innerHTML;
+VIEWS.tefca=()=>document.getElementById('v-tefca').innerHTML;
+VIEWS.maturity=()=>document.getElementById('v-maturity').innerHTML;
+
+const MM_STAGES=[{"n": 1, "name": "Emerging"}, {"n": 2, "name": "Organized"}, {"n": 3, "name": "Connected"}, {"n": 4, "name": "Data Generating"}, {"n": 5, "name": "Data Sharing"}];
+const MM=[{"track": "Organizational Foundation", "stages": [{"n": 1, "name": "Informal community", "q": "Do we have a space where patients and families find each other? Does someone informally keep things going?", "needs": "Turning a loose group into something durable; understanding what becoming an organization involves.", "helps": "Plain language orientation on nonprofit formation; Connect founders to peer organizations who have made the leap"}, {"n": 2, "name": "Unincorporated association", "q": "Do we have identified leaders, even without legal status? Do we have a shared mission written down?", "needs": "The legal and administrative mechanics of incorporation; drafting governing documents.", "helps": "Pro bono legal services for incorporation and bylaws; Governance templates; Board recruitment guidance"}, {"n": 3, "name": "Incorporated nonprofit", "q": "Are we a registered nonprofit with bylaws and a functioning board? Can we legally accept donations and enter agreements?", "needs": "Moving from legally exists to actually operating; first strategic plan; early fundraising.", "helps": "Strategic planning facilitation; Grant writing support; Nonprofit financial and accounting services"}, {"n": 4, "name": "Staffed and resourced", "q": "Do we have paid staff or a dedicated contractor? Do we have a strategic plan and a research budget line?", "needs": "Building research capacity; hiring the right roles; sustainable funding.", "helps": "Research operations consulting; Advice on hiring a research lead; Introductions to research funders"}, {"n": 5, "name": "Sustainable", "q": "Do we have diversified funding and someone leading research? Could the org survive its founder's departure?", "needs": "Succession, long term sustainability, scaling impact.", "helps": "Executive coaching and succession planning; Endowment or reserve building strategy; Governance maturity review"}]}, {"track": "Scientific and Community Engagement", "stages": [{"n": 1, "name": "Peer support", "q": "Do members share experiences and information?", "needs": "Recognizing the community's value as a research asset.", "helps": "Educate the community on how patient experience informs research; Introduce the concept of patient reported data"}, {"n": 2, "name": "Awareness and connecting", "q": "Do we help families find clinicians or trials? Do we do awareness raising beyond our members?", "needs": "Identifying which clinicians and researchers work on their condition.", "helps": "Clinician and researcher landscape mapping; Trial finder navigation support"}, {"n": 3, "name": "Priorities from community", "q": "Have we asked our community what research is important to them? Do we have a group that channels patient input into priorities?", "needs": "Running a credible priority setting process.", "helps": "Facilitate a research priority setting exercise (James Lind Alliance style); Survey design"}, {"n": 4, "name": "Advisory board", "q": "Do we have a scientific or medical advisory board that meets and influences decisions?", "needs": "Recruiting credible experts; running an effective board.", "helps": "Serve on or help recruit the advisory board; Advise on charters and conflict of interest policy"}, {"n": 5, "name": "Agenda setting", "q": "Do we help define the research agenda for our condition? Have researchers co-designed studies with us?", "needs": "Sustaining genuine co-design as the org scales.", "helps": "Partner as a co-investigator; Build community engagement into grant proposals as a named partner"}]}, {"track": "Ecosystem Integration", "stages": [{"n": 1, "name": "Isolated", "q": "Are we essentially working on our own?", "needs": "Knowing the ecosystem exists and how to enter it.", "helps": "Introductions to consortia and umbrella organizations; An ecosystem map"}, {"n": 2, "name": "Informal ties", "q": "Do we have a relationship with at least one researcher or clinician?", "needs": "Converting a single relationship into broader engagement.", "helps": "Warm introductions to relevant consortia (REN, CombinedBrain, NORD)"}, {"n": 3, "name": "Consortium member", "q": "Are we an active member of a consortium or umbrella?", "needs": "Getting real value from membership, not just belonging.", "helps": "Advise on how to participate actively; Identify collaboration opportunities within the consortium"}, {"n": 4, "name": "Active collaborations", "q": "Are we in shared projects with other organizations?", "needs": "Managing multi party projects and data sharing across orgs.", "helps": "Project management support; Multi site agreement and data governance templates"}, {"n": 5, "name": "Recognized node", "q": "Do others come to us as a partner or convener?", "needs": "The load of convening; staying strategic.", "helps": "Infrastructure or staffing to support a convening role; Co-host workshops"}]}, {"track": "Data Infrastructure", "stages": [{"n": 1, "name": "No structured data", "q": "Is most of what we know anecdotal or scattered?", "needs": "Understanding what structured data is and its importance.", "helps": "A plain language primer on registries; Help define what data would be worth collecting"}, {"n": 2, "name": "Contact registry", "q": "Do we have a maintained list of who our patients are and how to reach them?", "needs": "Moving from a contact list to research data; privacy basics.", "helps": "Advise on consent for re-contact; Help select a registry platform if they decide they want that"}, {"n": 3, "name": "Patient reported registry", "q": "Do we collect structured patient reported data on a real platform, with meaningful enrollment?", "needs": "Survey and instrument quality; boosting enrollment and retention.", "helps": "Instrument design and validation; Recruitment strategy; Biostatistics consultation"}, {"n": 4, "name": "Natural history and longitudinal", "q": "Are we collecting data over time with a defined data model?", "needs": "Clinical data collection, longitudinal follow up, data quality.", "helps": "Natural history study design; Clinical data management; REDCap or equivalent setup"}, {"n": 5, "name": "Harmonized to standards", "q": "Is our data mapped to common standards and combinable with other datasets?", "needs": "Mapping to common data elements; interoperability.", "helps": "Data harmonization services; Ontology and common data element mapping; Informatics support"}]}, {"track": "Data Governance and Sharing : the north star", "stages": [{"n": 1, "name": "No governance", "q": "Are we holding data without a clear consent or privacy framework?", "needs": "Basic consent, privacy, and ethics; understanding obligations.", "helps": "Draft research consent and privacy policies; IRB and ethics navigation"}, {"n": 2, "name": "Internal governance", "q": "Do we have consent and privacy policies, with data held internally?", "needs": "Preparing data to be intelligible and shareable beyond the org.", "helps": "Review consent for whether it permits future sharing; Introduce data sharing concepts"}, {"n": 3, "name": "Documented and standardized", "q": "Do we have a published data dictionary and standardized variables? Could an outsider understand our dataset from the documentation alone?", "needs": "Writing and publishing a data dictionary; standardizing variables.", "helps": "Build the data dictionary; Map variables to common data elements; Documentation support"}, {"n": 4, "name": "Shared with a partner", "q": "Have we shared data with a vetted partner under a formal agreement (Data for the Common Good, RDCA-DAP)? Do we have a governance policy for how sharing decisions get made?", "needs": "Data sharing agreements; a governance process for access requests.", "helps": "Draft data sharing and use agreements; Set up a data access committee; Broker partner relationships"}, {"n": 5, "name": "Open and broadly accessible", "q": "Is our data or metadata findable by researchers beyond named partners, meeting FAIR principles? Can qualified researchers discover and request it through a defined process?", "needs": "Making data FAIR; sustaining open access responsibly.", "helps": "FAIR-ification services; Deposit into recognized repositories; Publish discoverable metadata even when raw data stays controlled"}]}];
+function renderMaturitySA(){
+ let h='<div class="crumbs">Planning tools &rsaquo; <b>Maturity self-assessment</b></div>';
+ h+='<h2>Maturity self-assessment</h2>';
+ h+='<p class="muted" style="max-width:820px">Place your organization on each of the five tracks of the <a data-view="maturity">maturity model</a>. This is a different tool from the <a data-view="planner">Data Strategy Self-Assessment</a>, which is about matching a study design to your purpose. This one shows your composite level and where you are ahead or behind.</p>';
+ MM.forEach((t,ti)=>{h+='<div class="q"><div class="qlabel">'+esc(t.track)+'</div>';t.stages.forEach(s=>{h+='<label class="opt"><input type="radio" name="msa_'+ti+'" value="'+s.n+'"> <b>Stage '+s.n+':</b> '+esc(s.name)+'. <span class="muted">'+esc(s.q)+'</span></label>';});h+='</div>';});
+ h+='<div class="flexrow" style="margin-top:10px"><a class="btn" id="msa-gen">See where we stand &rarr;</a><a class="btn sec" data-view="maturity">Open the maturity model</a></div>';
+ h+='<div id="msa-out"></div>';return h;}
+function computeMaturity(){
+ const sel=MM.map((t,ti)=>{const c=document.querySelector('input[name="msa_'+ti+'"]:checked');return c?parseInt(c.value):null;});
+ const out=$('#msa-out');
+ if(sel.some(v=>v===null)){out.innerHTML='<div class="note">Pick a stage for each track, then see where you stand.</div>';out.scrollIntoView({behavior:'smooth'});return;}
+ const comp=Math.min.apply(null,sel);const compName=MM_STAGES[comp-1].name;
+ let h='<h3 style="margin-top:16px">Where you stand</h3>';
+ h+='<div class="note"><b>Composite level: Stage '+comp+', '+esc(compName)+'.</b> Your composite level is roughly the lowest stage you have reliably reached across the tracks. You cannot be Data Sharing overall if a core track lags. The breakdown below shows where you are ahead and where you are behind.</div>';
+ h+='<div class="tbl-wrap" style="max-height:none"><table><thead><tr><th>Track</th><th>Your stage</th><th></th></tr></thead><tbody>';
+ MM.forEach((t,ti)=>{const s=sel[ti];const st=t.stages[s-1];const flag=(s===comp)?'<span class="pill" style="background:#b45309">focus here</span>':(s>comp?'<span class="muted">ahead</span>':'');h+='<tr><td>'+esc(t.track)+'</td><td>Stage '+s+': '+esc(st.name)+'</td><td>'+flag+'</td></tr>';});
+ h+='</tbody></table></div><h3>Where to focus next</h3>';
+ MM.forEach((t,ti)=>{if(sel[ti]!==comp)return;const s=sel[ti];if(s>=5){h+='<div class="note"><b>'+esc(t.track)+'</b>: you are at the top stage. Sustain it and help peer organizations get there.</div>';return;}const nxt=t.stages[s];h+='<div class="howto"><div class="howto-hd">'+esc(t.track)+': move toward Stage '+(s+1)+', '+esc(nxt.name)+'</div><div class="howto-sub">'+esc(nxt.q)+'</div><div style="font-size:12px;line-height:1.6"><b>Needs support with:</b> '+esc(nxt.needs)+'<br><b>How the network helps:</b> '+esc(nxt.helps)+'</div></div>';});
+ h+='<div class="flexrow" style="margin-top:10px"><a class="btn sm" data-view="planres">Resource directory</a><a class="btn sm sec" data-view="maturity">Back to the maturity model</a></div>';
+ out.innerHTML=h;wireViews(out);out.scrollIntoView({behavior:'smooth'});}
+VIEWS.maturity_sa=()=>renderMaturitySA();
 
 /* ============ router ============ */
 function go(view){
@@ -1865,6 +1999,7 @@ function bind(view){
   if(view==='ccda'){cdIdx=0;renderCd();$('#cdback').onclick=()=>advCd(-1);$('#cdnext').onclick=()=>advCd(1);}
   if(view==='comprehensive')compLoad();
   if(view==='planner'){const g=$('#plangen'); if(g)g.onclick=generatePlan;}
+  if(view==='maturity_sa'){const b=$('#msa-gen'); if(b)b.onclick=computeMaturity;}
   if(view==='planlib'){if(window._topic){openKB(window._topic);window._topic=null;}}
   if(/^survey_/.test(view)){
     const inputs=main.querySelectorAll('.q input, .q textarea, .q select');const groups=main.querySelectorAll('.q');
