@@ -168,6 +168,23 @@ ul{font-size:12.5px}
 .resrow a.rl:hover{text-decoration:underline}
 .resrow .rtags{display:flex;flex-wrap:wrap;gap:5px;margin-left:auto}
 @media(max-width:780px){.side{display:none}.main{padding:16px}}
+.article{max-width:772px}
+.article .crumbs{margin-bottom:10px}
+.article h2{font-size:24px;color:var(--brand-deep);margin:2px 0 8px;line-height:1.25}
+.article h2+p{font-size:13.5px;color:var(--muted);margin-top:0}
+.article h3{font-size:16.5px;color:var(--brand-deep);margin:24px 0 7px}
+.article h4{font-size:14px;color:var(--brand-deep);margin:18px 0 5px;font-weight:700}
+.article p{font-size:13.5px;line-height:1.72;margin:0 0 13px;color:#2b2340}
+.article ul,.article ol{font-size:13.5px;line-height:1.7;margin:4px 0 14px;padding-left:22px}
+.article li{margin:5px 0}
+.article a{color:var(--link);text-decoration:none}
+.article a:hover{text-decoration:underline}
+.article em{color:#5a5470}
+.article table{margin:14px 0}
+.article hr{border:none;border-top:1px solid var(--line);margin:20px 0}
+.article blockquote{margin:12px 0;padding:8px 14px;border-left:3px solid var(--brand);background:#f6f1fe;border-radius:0 7px 7px 0;color:#4c1d95;font-size:12.5px}
+.article blockquote p{margin:0;color:#4c1d95}
+.gd-nav{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 4px}
 </style>
 </head>
 <body>
@@ -214,12 +231,833 @@ ul{font-size:12.5px}
       <a class="nav" data-view="planres"><span class="ic">&#128279;</span>Resource Directory</a>
     </div>
     <div class="grp">
+      <div class="grphd">Guides</div>
+      <a class="nav" data-view="guide_vendor"><span class="ic">&#128221;</span>Meeting a Registry Vendor</a>
+      <a class="nav" data-view="guide_ehr"><span class="ic">&#127973;</span>EHR Data for Registries</a>
+    </div>
+    <div class="grp">
       <div class="grphd">Help</div>
       <a class="nav" data-view="about"><span class="ic">&#9432;</span>About this demo</a>
     </div>
   </nav>
   <main class="main" id="main"></main>
 </div>
+<script type="text/html" id="art-vendor">
+<div class="article">
+<div class="crumbs"><a data-view="home">Home</a> &rsaquo; Guides &rsaquo; <b>Meeting a Registry Vendor</b></div>
+<h2 id="how-to-meet-with-a-patient-registry-vendor">How to Meet with a
+Patient Registry Vendor</h2>
+<p><em>Part one of a series for patient advocacy groups on working with
+registry vendors. This post covers how to prepare for and run the
+meeting itself. Part two is an addendum on electronic health record
+data, which is the piece that trips groups up the most.</em></p>
+<blockquote>
+<p>The information here is accurate as of July 2026. This is a rapidly
+evolving space, so when in doubt, confirm with your own experts.</p>
+</blockquote>
+<h3 id="why-this-is-worth-getting-right">Why this is worth getting
+right</h3>
+<p>Choosing a registry platform is one of the most consequential
+infrastructure decisions your organization will make. It shapes how you
+collect data, how you engage your community, and how you serve your
+patients for years. And here is the uncomfortable part: the vendors you
+are meeting with are very good at what they do. Demos are their craft.
+That is exactly why you need to walk in prepared, so the meeting serves
+you rather than the sales process.</p>
+<p>I have sat through a lot of these meetings, on my own behalf and
+alongside groups I consult with. The more professional vendors handle
+them well. Even so, the difference between a productive meeting and a
+wasted hour is almost always what you did before you logged on and
+whether you stayed in the driver’s seat once you did. This post is the
+framework I use. Bring the companion question guide to every meeting so
+you can compare vendors on the same terms.</p>
+<p>A note before we start: I do not name specific vendors, here or
+anywhere. The space moves too fast for me to vouch for a feature I saw
+this week, and the point of this guide is to make you a sharper
+evaluator of whoever is in front of you.</p>
+<h3 id="before-you-log-on">Before you log on</h3>
+<p>Vendors will tailor their pitch once they understand your situation,
+so the more specific you are, the more useful their demo will be. Vague
+inputs produce generic demos. Get these things squared away first.</p>
+<p><strong>Know your registry’s purpose.</strong> Is it natural history,
+clinical trial readiness, patient engagement, or a mix? The answer
+drives everything, including which features you actually need and which
+you can ignore.</p>
+<p><strong>Know your participants.</strong> Patients, caregivers, or
+both? What are your current and projected numbers? Vendors need this to
+show you examples that are relevant to you rather than to a large
+pharmaceutical customer.</p>
+<p><strong>List your data needs.</strong> What are you collecting, or
+hoping to collect? Patient reported outcomes, clinical data, biospecimen
+links? Do you need longitudinal, repeated collection over time? Do you
+need to connect to other systems such as electronic health records or
+biobanks?</p>
+<p><strong>Know your constraints.</strong> You do not have to share your
+budget with the vendor, but you should know it. Think honestly about
+your team’s technical capacity. Do you have a data manager or IT
+support, or is this volunteer led? Note any IRB or regulatory
+requirements, and your timeline for launch or transition.</p>
+<p><strong>Research the vendor.</strong> Review their website, case
+studies, and any published work or conference presentations. Look for
+other rare disease or advocacy organizations on their platform. Pay
+attention to what they do not highlight, which is often as informative
+as what they do.</p>
+<p>One honest gut check while you do all of this. Deciding how much of a
+research program to take on yourself is a lot like deciding what to do
+at the hair salon. There are things you can safely do at home. You might
+cut your own bangs, and if it goes sideways, nothing is ruined. Building
+a simple survey registry is like cutting your own bangs. Trying to stand
+up a full research program without the right staff is like going from
+brown to platinum blonde at home. A little gray coverage, most groups
+can manage. Anything radical, you want a consultation with people who do
+it for a living. Know which kind of project you are actually running
+before you start shopping, because it changes what you need from a
+vendor and how much of the work you should expect to keep in house.</p>
+<p>My single biggest tip: draft a one page brief for yourself before any
+vendor call, listing your must haves against your nice to haves. When
+the demo gets exciting, that page keeps you anchored so you are not
+swayed by features you do not need.</p>
+<h3 id="opening-the-meeting">Opening the meeting</h3>
+<p>When the meeting starts, do not let the vendor go straight into a
+demo. That is their default, because the demo is where they shine. Take
+a moment to set the agenda together. It signals that this is a two way
+conversation, not a pitch.</p>
+<p>A structure that works well, roughly sixty minutes:</p>
+<ul>
+<li>Introductions and context setting, about 5 minutes</li>
+<li>Your overview of your organization’s needs, about 5 minutes</li>
+<li>Vendor platform overview and demo, 20 to 25 minutes</li>
+<li>Focused questions on specific features, about 15 minutes</li>
+<li>Pricing, support, and implementation, about 10 minutes</li>
+<li>Next steps, about 5 minutes</li>
+</ul>
+<p>At the very start, try something like: “Before we get into the demo,
+I’d love to spend a few minutes giving you context on our organization
+and what we’re looking for, so you can tailor what you show us to what’s
+most relevant. Does that work?” That one move saves a lot of time.</p>
+<p>Then actually give them the context: your mission and disease area,
+your current state (an existing registry, a spreadsheet, or nothing
+yet), your participant numbers, the data types you collect, who manages
+the registry, and your key use cases. You are not just buying software.
+You are entering a partnership, and they need to understand your mission
+and your constraints to be a good partner.</p>
+<h3 id="the-core-of-the-meeting-questions-and-demo">The core of the
+meeting: questions and demo</h3>
+<p>This is where most of your time should go, and a good meeting is
+driven by your questions, not just their talking points. When the demo
+starts, resist the urge to watch passively. Keep your question list in
+front of you, interrupt respectfully, and ask to see specific things
+rather than the highlight reel. And pay attention to what they do not
+show you. If you care about data export and they spend twenty minutes on
+the participant portal without mentioning it, that is information
+too.</p>
+<p>Here are the questions I make sure get answered.</p>
+<p><strong>Platform and features.</strong> Ask them to walk through the
+actual participant enrollment and first survey flow, start to finish.
+Ask specifically how the platform handles messy real world situations:
+missing data, duplicate records, someone withdrawing. That is where
+platforms differ. Confirm you can customize fields, survey instruments,
+and branching logic. Confirm support for longitudinal, repeated
+collection. Ask what export formats are available and how often. Ask
+what the patient facing portal actually lets participants see and do,
+and how it performs on mobile.</p>
+<p><strong>Privacy, security, and compliance.</strong> HIPAA compliance
+is a baseline, not a differentiator, so go further. Ask about their
+Business Associate Agreement process specifically. Ask where data are
+stored and in what jurisdiction. Ask for their security certifications,
+such as SOC 2 Type II or ISO 27001. Ask how consent and re-consent are
+managed. And ask directly: if we end this relationship, how do we get
+our data back, and in what format?</p>
+<p><strong>A more careful word on data ownership.</strong> You will
+often hear that data ownership is non-negotiable, and for most
+commercial vendor relationships that is the right instinct: your
+organization should retain full ownership of participant data. But this
+is not a blanket rule. If you are working with an academic collaborator,
+say a university hosting your registry on REDCap, it can be perfectly
+acceptable for the institution to act as data steward, as long as their
+governance protects your patients, your IRB agreement covers the
+arrangement, and you have clear rights to access and export your data.
+The real question is always whether the governance structure protects
+your patients and your mission. Get the answer in writing, whatever the
+arrangement.</p>
+<p><strong>Integrations and interoperability.</strong> Ask about
+electronic health record connectivity and HL7 FHIR support, which matter
+if you work with clinical partners. Ask about connections to biobanking
+and trial management systems. Ask whether there is an API and whether it
+is well documented, because your team may need it later even if you do
+not today.</p>
+<p><strong>Data access and research use.</strong> Ask whether you can
+analyze data inside the platform or have to export everything first. Ask
+how you share data with research collaborators, and whether you can
+export in standard formats such as CSV or JSON without extra fees. Then
+ask the blunt question: can you, or any third party, access our
+participant data for any purpose? For a commercial platform, the answer
+should be no.</p>
+<p><strong>Patient engagement and recruitment.</strong> This is often
+underweighted and it should not be. Ask whether the platform actually
+helps you find and engage participants or is purely a data collection
+tool. Ask about multilingual and accessibility features, mobile
+performance, and real completion rate data for registries similar to
+yours.</p>
+<p><strong>References.</strong> Do not skip these. Any reputable vendor
+will connect you with existing customers. Be specific about who you
+want: an advocacy or rare disease organization rather than only a
+pharmaceutical company, a long term user of at least three years, and
+ideally someone who went through an implementation like the one you are
+planning. When you talk to those references, ask the things vendors will
+not tell you. What surprised you about implementation? What is customer
+support actually like when something breaks? What would you negotiate
+differently? Has the platform kept pace as your needs changed? Knowing
+what you know now, would you choose them again? Those conversations are
+often the most valuable part of your entire evaluation.</p>
+<h3 id="a-few-terms-you-will-hear">A few terms you will hear</h3>
+<p>If you are newer to this, a handful of terms come up constantly, and
+knowing them makes the whole meeting feel less intimidating.</p>
+<p><strong>API</strong> stands for application programming interface.
+Think of it as a digital handshake between two systems, so tools can
+pull or push data automatically without anyone exporting a spreadsheet
+by hand. Good to have, rarely essential on day one.</p>
+<p><strong>Branching logic</strong> is smart survey routing. Instead of
+showing everyone every question, the survey adapts to what a participant
+has already told you, which keeps surveys shorter and less
+burdensome.</p>
+<p><strong>HIPAA</strong> is the US federal law protecting health
+information. A <strong>BAA</strong>, or Business Associate Agreement, is
+the contract you sign with any vendor that handles that protected data.
+No BAA means do not move forward.</p>
+<p><strong>HL7 FHIR</strong> is a health data standard that helps
+different systems speak the same language. If your registry might ever
+connect to a hospital or an electronic health record, ask whether the
+vendor supports it.</p>
+<p><strong>SLA</strong>, or Service Level Agreement, is the vendor’s
+contractual promise about how fast they will respond when something
+breaks. Ask for it in writing.</p>
+<p><strong>Data governance</strong> is the set of policies defining who
+can access your data, how they can use it, and what happens if the
+relationship ends. It is especially important with academic or
+institutional partners.</p>
+<h3 id="closing-pricing-support-and-next-steps">Closing: pricing,
+support, and next steps</h3>
+<p>Do not leave without covering the practical realities. These
+conversations can feel awkward, and they are essential.</p>
+<p><strong>Pricing.</strong> You need the full cost of ownership, not
+just the headline licensing fee. Ask about the pricing model itself: per
+participant, per user seat, flat annual fee, or tiered, because the
+model shapes your costs as you grow. Ask what is not included in the
+base price, since the common surprises are storage overages, API limits,
+export fees, and extra seats. Ask about one time implementation and
+onboarding fees. Ask what higher support tiers cost. Ask about nonprofit
+or advocacy specific pricing. And this is a big one: ask for Year 2
+pricing, because introductory rates often jump at renewal. Get multi
+year pricing, and a fully itemized quote, in writing. Surprises in Year
+2 are almost always avoidable.</p>
+<p><strong>Implementation and support.</strong> A great platform with
+poor implementation support can sink your launch. Ask for a realistic
+timeline for an organization like yours, not a best case. Ask what your
+team has to contribute during setup, because groups routinely
+underestimate this. Confirm whether you get a dedicated implementation
+manager and what training is included for your staff and administrators.
+For ongoing support, ask about the SLA, the support channels and hours,
+how updates are rolled out and whether they cause disruption, and
+whether there is a user community or advisory board. Confirm you will
+have a named account manager after launch.</p>
+<p><strong>Next steps.</strong> Do not let the meeting trail off into a
+vague “we’ll be in touch.” Summarize what stood out, name your open
+questions, and ask what their evaluation process looks like from here.
+Set your decision timeline. Then request the concrete follow up
+materials: an itemized pricing quote, the BAA template for legal review,
+and two to three references of the specific types above. Ask for any
+security whitepaper, compliance certifications, and a sample contract
+while you are at it.</p>
+<p>One last habit: write a short summary of the meeting within 24 hours,
+for the vendor and for your own team. Memory fades fast, especially when
+you are meeting several vendors in a stretch.</p>
+<h3 id="to-summarize">To summarize</h3>
+<p>Four moves carry the whole thing. Prepare thoroughly before the call.
+Open by setting context and the agenda. Ask targeted, specific questions
+during the demo, and watch what they do not show you. Close with clarity
+on pricing, support, and next steps. Do those, and you stay in the
+driver’s seat of a conversation that vendors run for a living.</p>
+<p>Bring the companion question guide to every meeting, and keep your
+patients at the center of every decision.</p>
+<p><em>This is part one of a series. Part two is an addendum on what
+advocacy groups need to know about <a
+data-view="guide_ehr">electronic health record data</a>.</em></p>
+<div class="gd-nav"><a class="btn sm sec" data-view="guide_ehr">Read part two: EHR data &rarr;</a><a class="btn sm sec" data-view="planner">Data strategy self-assessment</a><a class="btn sm sec" data-view="comprehensive">Comprehensive dictionary</a></div>
+</div>
+</script>
+<script type="text/html" id="art-ehr">
+<div class="article">
+<div class="crumbs"><a data-view="home">Home</a> &rsaquo; Guides &rsaquo; <b>EHR Data for Registries</b></div>
+<h2
+id="electronic-health-record-data-for-patient-registries-what-advocacy-groups-need-to-know">Electronic
+Health Record Data for Patient Registries: What Advocacy Groups Need to
+Know</h2>
+<p><em>Part two of a series for patient advocacy groups on working with
+registry vendors. <a data-view="guide_vendor">Part one</a> covers
+how to prepare for and conduct a vendor review and interview. This
+addendum focuses on one specific and confusing piece of that work:
+electronic health record data.</em></p>
+<blockquote>
+<p>The information here is accurate as of July 2026. This is a rapidly
+evolving space, so when in doubt, confirm with your own experts.</p>
+</blockquote>
+<h3 id="why-i-am-writing-this">Why I am writing this</h3>
+<p>I do a lot of work with groups who are reviewing registry vendors,
+and I have sat through a lot of vendor demonstrations. For the most part
+the more professional vendors handle these meetings well, and part one
+of this series gives you a framework for running that conversation. What
+I want to add here is the piece that trips people up the most: what you
+need to understand about electronic health record data before you walk
+into that room, so you know what to expect and so you can communicate
+clearly with your scientific team.</p>
+<p>I have spent more than 30 years in this field and about 20 of them
+working with electronic health records in one way or another. I worked
+with some of the older, more antiquated systems before so many groups
+moved to Epic. That history shapes how I think about all of this, so let
+me establish a few ground truths first.</p>
+<h3 id="a-few-things-that-are-true-about-us-electronic-health-records">A
+few things that are true about US electronic health records</h3>
+<p>Most of the people in your community are going to be seen in an Epic
+system, though some will come from other sources. This is worth
+understanding because so much of how we retrieve and access data is
+driven by how Epic behaves. As Epic goes, in many ways, so goes the rest
+of the field.</p>
+<p>The two large vendors you will hear about are Epic and Oracle Health,
+which was Cerner before Oracle acquired it. The Department of Veterans
+Affairs runs its own system and has been on a long transition toward
+Oracle Health. Beyond those, there are many other electronic health
+record systems in use. Exact market share numbers move around and I
+would verify current figures before you cite any, but the practical
+takeaway is stable: Epic holds the largest share of the large hospital
+and health system market, and its behavior sets the pace for how patient
+data can be shared and retrieved.</p>
+<p>There are policies and rules that push the whole health care universe
+to be more connected, more responsive, and more standardized. That is
+real. But implementation varies enormously, and this is a rapidly moving
+space. A network that is immature today can be rich tomorrow. A lawsuit
+can force an organization to freeze a way of doing things overnight.
+Laws change and move, and vendors have to be responsive to that. So do
+you.</p>
+<p>Here is the single most important thing to hold in your mind.
+Electronic health records in the United States, no matter where you find
+them or how you obtain them, are collected for the purpose of health
+care and not for research. Some institutions do conduct research and
+have special research modules, but for the most part these data are a
+byproduct of care. When you go to the emergency room and they document
+everything about you, nobody in that room is worrying about how a
+researcher is going to analyze the data in ten years. They are simply
+not worried about that. So all of the messiness that comes with data
+that no one was paid to enter cleanly for research, you are going to see
+that difference, and no vendor can manage it away.</p>
+<p>My general view, after all of this, is simple. Your cleanest data are
+going to come from well staffed engineers working the back end of a
+single institution’s electronic health record, producing a curated data
+set. If you want to answer big questions at scale with people who know
+what they are doing with curated data, the first place I would go is the
+OHDSI community, which uses federated analytics so that no one shares
+raw data at all. I want to write about OHDSI separately, so I am setting
+it aside here. This post is about the ways a patient or a patient
+advocacy group can acquire data directly, and I am deliberately not
+going to name individual vendors. The space moves so fast that I cannot
+vouch for a feature I saw on a website or heard in a call this week,
+because who knows what the state of things will be next week.</p>
+<h3 id="do-not-skip-the-standalone-survey-vendors">Do not skip the
+standalone survey vendors</h3>
+<p>Before we get to electronic health records at all, I want to slow you
+down on something.</p>
+<p>The first real fork between vendors is between those that offer
+surveys only, with limited or no electronic health record connectivity,
+and those that bundle surveys with record retrieval. There are excellent
+standalone survey platforms. They are compliant with what your
+institutional review board asks for, they have secure storage, they are
+easy to use, and they are easy to extract data from. My worry is that
+because everyone is excited about electronic health records right now,
+groups skip past those standalone survey vendors in favor of bundled
+products that may not be free, may be complicated, and come with record
+retrieval you do not yet understand.</p>
+<p>I say this as someone with a long lens on this work. Our most
+valuable data are usually a well collected, head to toe natural history
+of a person’s disease with a good characterization of their phenotype.
+Unless you have a specific use case that needs clinician reported
+verification, and especially early in a rare disease effort when you do
+not have much time, money, or staff, I hate the idea of throwing away
+the chance to implement standardized instruments in favor of a bundled
+product you do not fully understand.</p>
+<p>Think about it the way you would think about anything else you buy.
+As I have gotten older I would rather have a very high quality item
+without a designer label. I once found a black blazer in a thrift store,
+made years ago, and the quality and the fit were better than most new
+things. I want you to think about your registry in those common sense
+terms.</p>
+<p>Or think about it the way you would think about your hair. There are
+things you can safely do at home. You might cut your own bangs and it
+will not ruin anything. Making a simple survey registry is like cutting
+your bangs at home. Trying to launch a full research program without the
+right staff is like going from brown to platinum blonde at home. If you
+are doing a little gray coverage, most groups can probably handle that.
+If you are doing anything radical, you need a consultation with the
+experts. Research is no different.</p>
+<p><em>(You can see a sample data dictionary, documentation standards,
+and educational materials in the <a
+data-view="comprehensive">comprehensive dictionary</a> and resource
+directory on this site.)</em></p>
+<h3
+id="the-ways-to-acquire-electronic-health-record-data-from-simplest-to-most-involved">The
+ways to acquire electronic health record data, from simplest to most
+involved</h3>
+<p>Which approach is right depends entirely on your use case, so let me
+name mine. For one of my main studies we collect multimodal data and we
+are primarily interested in the electronic health record data to
+corroborate what participants self report. There are many reasons you
+might want this. If you are developing a new patient reported outcome or
+a biomarker and working with regulators, your self reported evidence is
+often considered stronger if you can also show what the clinician
+documented at the same time, or prove that the person actually had the
+condition. If you are assembling a cohort of people who carry a specific
+genetic variant, it is far less risky for a collaborator to use those
+data if they can see that a genetic report was actually uploaded or
+referenced in the record.</p>
+<p>What you can do with these data depends heavily on how, and how
+often, they were generated. In my ALS work we usually receive notes from
+the treating neurologist, which is enough to corroborate the diagnosis
+and treatment path, but we could not use those records to document
+granular progression, because people are seen only every few months and
+ALS can move faster than that.</p>
+<p>Below are the main ways you will be offered access, roughly from
+least to most involved. There is a summary table at the end of this
+section.</p>
+<h4
+id="the-patient-or-caregiver-downloads-directly-from-the-portal-free">1.
+The patient or caregiver downloads directly from the portal (free)</h4>
+<p>The simplest way to get a decent amount of data is to have the
+patient or caregiver download it themselves from their patient portal.
+For many people this is MyChart. Everyone has a sharing center, and you
+can download the data in several formats. The biggest trick is
+understanding which button to click, because the portal often offers to
+share with a provider, share with another person, or download all of
+your documents. It is also important to understand what may or may not
+be in there.</p>
+<p>Here is a real example. I recently downloaded my son Charlie’s
+records and there were 784 individual files, which was exactly what I
+wanted. I ran them through a tool I built that parses them at home, and
+I found a couple of major medical errors that had been carried forward
+since 2013 and were able to get them corrected. But I did not know until
+later that the detailed EEG readings were not in there. Those you have
+to get from a different part of the hospital, and that includes the
+disc. A few of the physician’s impression letters were there, but the
+detailed reports and some of the surgical reports were not.</p>
+<p>The lesson is that when you are downloading someone else’s records,
+you will not know what is missing, because you are not them. This is
+exactly why I recommend doing head to toe phenotyping with something
+simple, like a version of the GenomeConnect health survey, so you know
+what you should expect to see in the record and can notice what is
+absent.</p>
+<p><strong>What these data are good for.</strong> Looking at Charlie’s
+downloaded records through the lens of a data scientist and
+epidemiologist, the best things you get are confirmation of his
+conditions and a real sense of the overall burden and patient journey.
+You can see that he started with infantile spasms. The medications we
+tried are documented, and so are many of the dosing changes and the
+combinations. There are notes describing my worries about his behavior
+and sleep and the things we tried. You see mentions of therapies,
+referrals, inpatient rehabilitation, a surgical workup, an admission for
+rhabdomyolysis, referrals to durable medical equipment providers for
+wheelchairs, and multiple EEG admissions.</p>
+<p>If you know the disease, many of these facts are proxies for
+something larger. Why would a teenager be on so many medications and
+need an inpatient EEG, after an initial 20 minute outpatient EEG showed
+frequent spikes and slowing? That points to intractable epilepsy of
+unknown cause, and the two brain surgeries in the chart, plus the
+ongoing surgical workup, are a proxy for the severity of the phenotype.
+But nowhere is that severity written in plain terms. You assemble it
+yourself from adjacent facts.</p>
+<p><strong>What these data will not give you.</strong> They will not
+give you an intuitive sense of how things actually progressed. If
+someone discovered Charlie’s genetic cause tomorrow, his records would
+not show the granular up and down of his behaviors and seizures over the
+years, why we tried the things we tried, or how his cognition,
+development, and seizures responded to each medication. His neurologist
+documented everything correctly, but we met every six months, and “sleep
+is a little better” followed six months later by “sleep is down” does
+not add up to a progression curve. That is not what the record was
+collected for. To get the real picture you would have to ask me, through
+surveys, and ideally through a combination of surveys and a qualitative
+interview.</p>
+<p>I am a strong believer in supplementing these data. There are plenty
+of good observational studies you can do with electronic health records
+alone, but if you are hoping record retrieval will replace surveys and
+capture the true patient journey, my experience says it will not.</p>
+<p>Even so, this is a genuinely valuable and very low risk way to start.
+It is free. I have a pipeline that can analyze these downloads for free,
+one patient at a time or across a group, and it is built on the same
+logic as the pipeline I developed for vendor data, so it looks for the
+standardized, government defined structures that hospitals tend to
+follow. The dashboards in Registry Forge for Patients show you all the
+different codes you might find and what to look for. Even if record
+retrieval will not replace your research strategy, getting your feet wet
+this way teaches you the data types you will encounter, and that
+knowledge makes you a far better collaborator later, including if you
+eventually work with the OHDSI network. <em>(See <a
+href="https://boycelab.github.io/RegistryForge4Patients/">Registry Forge
+for Patients</a> and its dashboards, and the enterprise pipeline they
+are built on, <a
+href="https://alstdi.github.io/RegistryForgeALS/">Registry
+Forge</a>.)</em></p>
+<h5
+id="a-specific-and-important-caveat-seizures-and-other-condition-specific-detail">A
+specific and important caveat: seizures and other condition specific
+detail</h5>
+<p>This one is important enough to call out on its own. If your
+condition has an ICD code, you may find it coded, and you may find a
+reference to epilepsy type. But in my experience you will rarely find
+consistently coded seizure types, meaning a standardized billing code
+you can search for and pull out cleanly. You are almost never going to
+find that. You may find something adjacent, like “intractable epilepsy,”
+but you will not reliably find the ups and downs of seizure activity in
+a form that a data engineer without deep phenotype knowledge can
+extract.</p>
+<p>The detail is usually in the notes. So if you are collecting all the
+notes, information about seizures is there, and oftentimes you can even
+get seizure frequency. The doctor may document the different types of
+seizures and what they are seeing at each visit, and I would generally
+trust that. What you probably will not capture is the granularity of
+what happened between visits. All the messages you sent the neurologist,
+the counts and observations you reported by portal message or email in
+the weeks between appointments, that material rarely makes it into what
+you can download for free, and in fact it rarely makes it into other
+forms either.</p>
+<p>So if you are trying to build a very specific picture of the types
+and frequency of seizures, or of other exacerbations over time, unless
+there is a specifically coded visit type that each clinic is required to
+document between visits, you probably will not get it. This is exactly
+why it is worth paying attention to the national and international
+efforts in your disease area, where researchers work out the best ways
+to document in electronic health records and what to put in notes so the
+data can be extracted for research. In real world evidence you will
+often hear it framed that way. Right now these things are unreliable.
+You can sometimes find them, and when you find them they are very
+valuable. But for a study that needs more than a couple of people with
+reliable, comparable data, this is going to be a problem if you are
+trying to do it with the portal alone. This same pattern holds for any
+condition specific detail that lives in narrative rather than in
+codes.</p>
+<h4 id="a-vendor-mediates-the-portal-download">2. A vendor mediates the
+portal download</h4>
+<p>The next level is a vendor that obtains the participant’s permission
+to mediate the download from their patient portal. Typically, after the
+person consents to your study and perhaps completes some surveys, they
+go to a vendor page or grant permission for the vendor to temporarily
+use their portal credentials, and they indicate which pieces they are
+willing to share.</p>
+<p>For me, what comes out this way is essentially the same as what I
+would get from my own portal download. Two things are worth
+understanding.</p>
+<p>First, if a person is seen by multiple providers, they will have to
+log in to each portal, and the vendor combines the results on the back
+end. This is not a small detail. In my ALS work I compared what
+participants reported in surveys to what I saw in their records, and I
+saw large gaps for some people. It turned out their medication changes
+were happening somewhere other than the second opinion hospital whose
+records they had connected. I was seeing a snapshot from one doctor,
+while the real ongoing management was being done by a primary care
+physician and a community neurologist. If you are trying to piece
+together a patient journey, make sure participants connect all of their
+portals. We describe what we found in patient directed portal data
+collected through a vendor, including these kinds of gaps, in a
+preprint: <a
+href="https://www.medrxiv.org/content/10.64898/2026.06.02.26354637v1">Registry
+Forge: an open source end to end pipeline for patient directed SMART on
+FHIR registries</a>.</p>
+<p>Second, understand what you are paying for. In scenario one, you
+could pair a free, IRB approved survey platform with consent language
+for people to download and share their own records, and analyze them
+yourself, at essentially no cost beyond IRB fees and staff. Here you are
+paying a vendor. Sometimes the record service is standalone, but often
+it is bundled with the vendor’s own survey instruments, platform, and
+dashboard, and even when it is standalone there is integration work to
+fit it into your survey workflow. That may be exactly what you want.
+Just know you have gone from free to a real investment, and you will
+still probably have to analyze the data yourself or pay for curation,
+because most of these vendors do not analyze data for you. They may
+curate it and pull references to, say, seizures out of the notes, but
+relying on others to do that takes away a lot of the control you need as
+the experts.</p>
+<p>And here is the part people miss: if a vendor is only offering portal
+level data, you are not going to get better quality than you would get
+by downloading it yourself. Working with a vendor does not change what
+the doctor wrote in the note. If you look in your own portal and see how
+the notes are documented, that is what the vendor is working with
+too.</p>
+<h4 id="hipaa-authorization-and-third-party-record-retrieval">3. HIPAA
+authorization and third party record retrieval</h4>
+<p>The next approach uses a HIPAA authorization. You give a vendor
+permission to track down your records as a third party service, and they
+return them to you, often as PDFs, either raw or abstracted.</p>
+<p>In my experience these records are much more comprehensive, and much
+harder to curate. Many of these services can also find where you have
+been seen, by drawing on claims networks and other sources, present you
+a list, and let you confirm it. So instead of just pulling Charlie’s
+records from one children’s hospital portal, I can receive the second
+opinions, the original care at another hospital, the visits at other
+institutions when he was a baby. Suddenly I am seeing the big picture,
+and I barely had to do anything to get it. Radiology notes, tests, and
+procedures are often documented more thoroughly here than in the patient
+facing portal.</p>
+<p>The trade off is the format. These records often come as a hodgepodge
+of sources, including material that started as a fax, and a single
+person’s record can run to many thousands of pages. A year ago I would
+have cringed at the thought of working with a 20,000 page PDF. Modern
+tools change that. You have to be careful and deliberate about how you
+use AI on medical records, and that use can and should be written into
+your IRB approval and covered by the appropriate agreements, but it is
+now feasible to query records at that scale.</p>
+<p>Many of these brokers also offer to curate the records for you. As a
+researcher, I do not like accepting curation without access to the
+underlying PDFs. If a vendor tells me they extracted everything about
+seizures, but I cannot search the source myself, I am placing a great
+deal of trust in a data analyst to truly understand the phenotype. If
+the record is full of references to infantile spasms, do they know that
+is a seizure? Those are conversations you have to have. It is not that
+curation is impossible, it is that you lose transparency and,
+downstream, you may lose the evidence trail you need for regulatory
+purposes. This approach is also expensive. If you have the PDFs
+themselves, you can often find a skilled analyst or a strong student to
+help with the work while keeping the raw material in your hands.</p>
+<h4 id="clinician-and-therapeutic-relationship-access">4. Clinician and
+therapeutic relationship access</h4>
+<p>It is worth naming a completely separate pathway. People who have an
+actual therapeutic relationship with the participant, treating
+clinicians, can often see and access data that are not released through
+a patient portal or a patient facing exchange. This is why
+collaborations with clinicians and academic centers can be so rich. If
+you work with a physician who runs a registry or study involving
+electronic health records, at their center or across centers, there is a
+good chance they can access superior data automatically.</p>
+<p>The downside is ownership. Because they acquired the data through
+their clinical role, they may not be permitted to let you co-own it. And
+the data quality caveats above do not disappear. Unless seizures are
+documented with granularity in a coded format, you will still struggle
+to extract them, and the same goes for quality of life and similar
+constructs, without a lot of extra natural language processing. You
+would generally get better quality data from these interactions, but the
+fundamentals still apply.</p>
+<h4 id="health-information-exchanges-tefca-and-ias">5. Health
+information exchanges, TEFCA, and IAS</h4>
+<p>Finally, there is exchange through networks. Here you are still
+usually working with a vendor, but instead of, or in addition to, having
+people log in to a portal, the vendor connects to national networks to
+reach a large number of providers at once. The relevant framework is
+TEFCA, the Trusted Exchange Framework and Common Agreement, and
+specifically its Individual Access Services, or IAS.</p>
+<p>A little background so the terms are not a mystery. TEFCA was created
+by the federal health IT office (the ONC, now organized as ASTP/ONC) to
+set a common floor for nationwide data exchange. It runs through
+Qualified Health Information Networks, or QHINs, which connect to each
+other and to their participants. The first QHINs were designated at the
+end of 2023, and the network has since grown to exchange hundreds of
+millions of records. Individual Access Services is the specific pathway
+that lets a person use an app or service of their choice to request
+their own records from participants across the network, somewhat like
+connecting a bank account to a budgeting app. To respond to your
+request, the network matches you using verified demographic data rather
+than a portal login.</p>
+<p>That verification is the friction point. To use IAS, the individual
+is identity verified to a federal standard called IAL2 (identity
+assurance level 2) through a credential service provider. In practice
+that means confirming your demographics, often uploading a government
+issued ID, and sometimes taking a photo of yourself. This is the same
+kind of process you may have hit with services like ID.me. Plenty of
+people do it, but it is a real turn off for many potential participants.
+I find it telling that I would be less bothered by sharing my portal
+access than by being asked to photograph myself and send my ID into a
+verification system.</p>
+<p>Here is why I do not think this is ready for prime time for most of
+the rare epilepsy and rare disease work I do.</p>
+<ul>
+<li><strong>Coverage is incomplete.</strong> Not every provider
+participates, so you cannot assume a given hospital, or a given variable
+of interest, will be reachable. Even data you know you could get from a
+portal are not guaranteed here.</li>
+<li><strong>It is still actively changing.</strong> The rules for
+identity verification and patient matching are under revision right now,
+with major implementation deadlines pushed into 2027, and hospital
+associations are actively contesting parts of the current proposals over
+privacy and liability. This is not a settled system to build a small
+program on.</li>
+<li><strong>Pediatrics and proxies are a real barrier.</strong> IAL2
+verification is tied to the person being verified. If I am acquiring on
+behalf of my son, who has no government issued ID and whose name does
+not match mine, I may not be able to complete verification at all.
+Populations that need extra support with devices or identity documents
+will struggle too.</li>
+<li><strong>The obligations can land on you.</strong> Like the portal
+pathway, IAS is offered either as an API you integrate yourself, which
+requires serious ongoing engineering and a full time software engineer
+as you roll it out, or bundled into a platform you pay for. I have been
+in vendor conversations where the model asked the participant to sign on
+as an IAS user and the research entity to sign on as an IAS participant,
+which pushes network obligations and compliance responsibilities onto
+the advocacy group or study lead. For a group serving a disease that
+affects perhaps a hundred known people a year, that is a great deal to
+take on for something you did not set out to run.</li>
+</ul>
+<p>None of this means the promise is not real. The government has
+encouraged these networks precisely to make exchange easier, and they
+will keep maturing. It means that today, for a small rare disease
+effort, you should go in with clear eyes about coverage, verification
+friction, and who ends up holding the obligations.</p>
+<h4 id="summary-matching-the-method-to-your-use-case">Summary: matching
+the method to your use case</h4>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>What you typically get</th>
+<th>Best used for</th>
+<th>Cost and effort</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Patient or caregiver portal download</td>
+<td>Portal level notes and documents from each connected site</td>
+<td>Confirming conditions, sketching the burden and patient journey,
+learning the data types</td>
+<td>Free; you or a free tool do the analysis</td>
+</tr>
+<tr class="even">
+<td>Vendor mediated portal download</td>
+<td>Essentially the same portal level data, combined across sites the
+person connects</td>
+<td>Same as above, at more scale, with less manual effort per
+participant</td>
+<td>Paid, often bundled with surveys; you usually still analyze</td>
+</tr>
+<tr class="odd">
+<td>HIPAA authorization, third party retrieval</td>
+<td>Much more comprehensive, multi site records, often as PDFs</td>
+<td>A fuller picture including records outside the portal, when you can
+handle the volume and noise</td>
+<td>Expensive; comprehensive but harder to curate</td>
+</tr>
+<tr class="even">
+<td>Clinician or therapeutic relationship access</td>
+<td>Higher quality clinical data available to treating providers</td>
+<td>Rich collaborations with clinicians and academic centers</td>
+<td>Superior data, but you may not be allowed to co-own it</td>
+</tr>
+<tr class="odd">
+<td>Network exchange (TEFCA / IAS)</td>
+<td>Records matched across participating providers via identity
+verification</td>
+<td>Broad reach in theory, as the networks mature</td>
+<td>Integration or platform cost; identity verification and coverage
+gaps; obligations can shift to you</td>
+</tr>
+</tbody>
+</table>
+<h3 id="good-and-bad-questions-to-ask-a-vendor">Good and bad questions
+to ask a vendor</h3>
+<p>You will get more out of a vendor conversation if you ask the right
+things and hold reasonable expectations. Here is what I have learned
+from sitting through many of these.</p>
+<p>On money, get specific:</p>
+<ul>
+<li>What is the activation fee, and what is the per record fee if they
+are pulling records? Then operationalize “per record” carefully. Does
+one patient with ten different sites count as one record or ten? Does a
+failed retrieval attempt count?</li>
+<li>Are there monthly fees, and is pricing tied to scale or volume? If
+you will pull no more than 70 records a year but their pricing assumes
+10,000 people, ask whether there is a way to scale it down for you.
+Remember there is real, sometimes hidden, cost in project management and
+activation on their side too.</li>
+</ul>
+<p>On the vendor’s stability and security:</p>
+<ul>
+<li>How long have they been in business, and what happens to your
+electronic health record data if they go out of business or change their
+model? You do not want to be stranded.</li>
+<li>Ask for a completed security review. Academic institutions use a
+standardized questionnaire called the HECVAT, the Higher Education
+Community Vendor Assessment Toolkit, from EDUCAUSE. It is free, widely
+adopted, and covers cybersecurity, privacy, accessibility, and now AI
+use. Most established vendors will have completed one, and you can bring
+it to someone with IT expertise. You can find it on the <a
+href="https://www.educause.edu/higher-education-community-vendor-assessment-toolkit">EDUCAUSE
+HECVAT page</a>.</li>
+<li>Ask for references and talk to groups they have worked with.</li>
+</ul>
+<p>My general guidance on governance: if it seems too complicated for
+you, it probably is. If you cannot tell what is expected of you legally,
+that is a signal, and you need a lawyer to review all of this
+regardless. This is a space with some fly by night operators, and you do
+not want to discover a governance problem after the fact.</p>
+<p>On demonstrations, ask for something fair:</p>
+<ul>
+<li>It is very reasonable to ask a vendor to walk you through a test
+patient. You do not need a real person. Ask them to show you what a pull
+looks like, what the output is, what the patient sees, and whether
+results can be returned to patients. Seeing it in action is fair. There
+are example test patient files we can share for this.</li>
+<li>A pilot with a handful of real participants across vendors can work,
+but it is burdensome on families and requires IRB, so a test patient is
+often the better first step.</li>
+<li>Do not ask vendors for things outside their scope. If a vendor
+cannot guarantee they will find every reference to wheelchairs or
+devices in a note, that is usually not a mark against them, because
+detailed extraction from narrative is not their job unless they are also
+a research organization, and very few are.</li>
+</ul>
+<p>On who is in the room and what you get at the end:</p>
+<ul>
+<li>Pay attention to whether you are talking to salespeople or data
+people. Early calls with sales are fine, but you need someone technical
+on the line, and you need a technical person on your side, because
+salespeople sometimes promise things they do not fully understand.</li>
+<li>Ask how quickly you can export, and in what format. Export format
+has real downstream consequences, because it dictates how much work you
+do on the back end.</li>
+<li>Ask whether you will have access to the raw data and be able to run
+your own analysis. It is a red flag for me when an organization will not
+give you the raw data but will extract whatever you specify. That may
+just be their business model, not dishonesty, but it means you are
+trusting them to know what you are looking for, and if someone later
+questions how you did things, you may not have the transparency or the
+evidence trail you need.</li>
+</ul>
+<h3 id="staying-current">Staying current</h3>
+<p>This is a rapidly evolving space, and I will probably feel
+differently in a month as new vendors, new coverage, and new policies
+appear. So keep up. In the United States, the federal health IT office
+(ONC, now ASTP/ONC) is the best place to watch policy, and it also
+publishes <a
+href="https://healthit.gov/health-it-basics/health-it-curriculum-resources-educators/">Health
+IT Curriculum Resources for Educators</a>, which are a good on-ramp if
+you want to build your own team’s literacy. It is also worth following
+the OHDSI community and AMIA, the American Medical Informatics
+Association, and the people they promote.</p>
+<p>One last point. Health IT is a discipline of its own. It is not the
+same as statistics, it is not exactly informatics, and it is not
+computer science, though they all fold together. If you are going to get
+into this work seriously, learn who the leaders in these fields are and
+who the good actors are. That, more than any single vendor feature, is
+what will keep you oriented.</p>
+<p><em>This is part two of a series. See <a
+data-view="guide_vendor">part one, How to Meet with a Patient
+Registry Vendor</a>, for how to prepare for and conduct a registry
+vendor review. A separate post on the OHDSI community and federated
+analytics is coming.</em></p>
+<div class="gd-nav"><a class="btn sm sec" data-view="guide_vendor">&larr; Part one: meeting a vendor</a><a class="btn sm sec" data-view="comprehensive">Comprehensive dictionary</a><a class="btn sm sec" data-view="planres">Resource directory</a></div>
+</div>
+</script>
 <script>
 /* ============ helpers ============ */
 const $=s=>document.querySelector(s);
@@ -372,6 +1210,7 @@ VIEWS.home=()=>`
     <li>Surveys: <a data-view="survey_genetic">Genetic Testing</a>, <a data-view="survey_seizure">Seizure History</a>, <a data-view="survey_dev">Development</a>, <a data-view="survey_qol">Quality of Life</a>, and <a data-view="survey_diet">Diet &amp; Supplements</a>.</li>
     <li><a data-view="connect">Connect Health Records</a> and <a data-view="ccda">Download &amp; Upload (C-CDA)</a>: the two patient-directed record paths.</li>
     <li><a data-view="sources">Data Sources &amp; References</a>, <a data-view="dashboard">Record Status</a>, and <a data-view="reports">Reports</a>.</li>
+    <li><b>Guides:</b> <a data-view="guide_vendor">How to Meet with a Patient Registry Vendor</a> and <a data-view="guide_ehr">Electronic Health Record Data for Patient Registries</a>, two written guides for advocacy groups evaluating vendors.</li>
   </ul>
 `;
 
@@ -966,6 +1805,7 @@ const RES=[
  {t:'HL7 FHIR',u:'https://www.hl7.org/fhir/',cat:'Standards and interoperability',topics:['exchange']},
  {t:'SMART Health IT',u:'https://smarthealthit.org/',cat:'Standards and interoperability',topics:['exchange']},
  {t:'TEFCA (ONC)',u:'https://www.healthit.gov/topic/interoperability/policy/trusted-exchange-framework-and-common-agreement-tefca',cat:'Standards and interoperability',topics:['exchange']},
+  {t:'ONC: Health IT Curriculum Resources for Educators',u:'https://healthit.gov/health-it-basics/health-it-curriculum-resources-educators/',cat:'Standards and interoperability',topics:['standards','exchange']},
  {t:'FAIR principles',u:'https://www.go-fair.org/fair-principles/',cat:'Standards and interoperability',topics:['standards']},
  {t:'GA4GH (Phenopackets)',u:'https://www.ga4gh.org/',cat:'Standards and interoperability',topics:['standards','vocab']},
  {t:'PFDD trial readiness in rare DEEs (paper)',u:'https://pmc.ncbi.nlm.nih.gov/articles/PMC10834124/',cat:'Methods',topics:['methods','pfdd','cadence']},
@@ -1006,6 +1846,9 @@ VIEWS.planres=()=>`
   ${RESCATS.map(c=>{const rows=RES.filter(r=>r.cat===c);return rows.length?`<div class="resgrp"><h3>${esc(c)}</h3>${rows.map(r=>`<div class="resrow"><a class="rl" href="${r.u}" target="_blank" rel="noopener">${r.t} &#8599;</a><span class="rtags">${(r.topics||[]).filter(id=>KB[id]).map(id=>`<a class="schip" onclick="openTopic('${id}')">${KB[id].t}</a>`).join('')}</span></div>`).join('')}</div>`:'';}).join('')}
   <div class="note" style="margin-top:14px">This directory is seeded with verified resources and is built to grow. Group-specific and community-contributed resources can be slotted under the same topics.</div>
 `;
+
+VIEWS.guide_vendor=()=>document.getElementById('art-vendor').innerHTML;
+VIEWS.guide_ehr=()=>document.getElementById('art-ehr').innerHTML;
 
 /* ============ router ============ */
 function go(view){
